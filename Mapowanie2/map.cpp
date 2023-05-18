@@ -4,18 +4,10 @@ Map::Map(QWidget *parent) : QWidget{parent} {
 
     dev_pos_pixmap = new QPixmap(":/device_pos.svg");
     *dev_pos_pixmap = dev_pos_pixmap->scaled(dev_pos_pixmap->width() / 2, dev_pos_pixmap->height() / 2);
-    curr_dev_pose = new DevicePoint(*dev_pos_pixmap, {40, -120, 0});
-
-    point_pixmap = new QPixmap(":/point.svg");
-    for (int i = 0; i < 6; i++) {
-        curr_points.push_back(ObstaclePoint(*point_pixmap, {(i + 1) * 20, 50}));
-    }
-
-    point_prev_pixmap = new QPixmap(":/point_prev.svg");
-
     dev_pos_prev_pixmap = new QPixmap(":/device_pos_prev.svg");
-
     *dev_pos_prev_pixmap = dev_pos_prev_pixmap->scaled(dev_pos_prev_pixmap->width() / 2, dev_pos_prev_pixmap->height() / 2);
+    point_pixmap = new QPixmap(":/point.svg");
+    point_prev_pixmap = new QPixmap(":/point_prev.svg");
 }
 
 //void Map::resizeEvent(QResizeEvent *event){
@@ -74,13 +66,18 @@ void Map::drawGrid(QPainter& painter, int mapWidth, int mapHeight) {
 
 
 void Map::drawPoints(QPainter& painter) {
-    std::array<int, 2> position = transormCoordinates({curr_dev_pose->getPose()[0], curr_dev_pose->getPose()[1]}, curr_dev_pose->getPixmap().width(),
-                                                      curr_dev_pose->getPixmap().height());
-    painter.drawPixmap(position[0], position[1], curr_dev_pose->getPixmap());
+
 
     if (!prev_dev_pose.empty()) {
         for (auto point : prev_dev_pose) {
             std::array<int, 2> position = transormCoordinates({point.getPose()[0], point.getPose()[1]}, point.getPixmap().width(), point.getPixmap().height());
+            painter.drawPixmap(position[0], position[1], point.getPixmap());
+        }
+    }
+
+    if (!prev_points.empty()) {
+        for (auto point : prev_points) {
+            std::array<int, 2> position = transormCoordinates({point.getPos()[0], point.getPos()[1]}, point.getPixmap().width(), point.getPixmap().height());
             painter.drawPixmap(position[0], position[1], point.getPixmap());
         }
     }
@@ -91,12 +88,10 @@ void Map::drawPoints(QPainter& painter) {
             painter.drawPixmap(position[0], position[1], point.getPixmap());
         }
     }
-    if (!prev_points.empty()) {
-        for (auto point : prev_points) {
-            std::array<int, 2> position = transormCoordinates({point.getPos()[0], point.getPos()[1]}, point.getPixmap().width(), point.getPixmap().height());
-            painter.drawPixmap(position[0], position[1], point.getPixmap());
-        }
-    }
+
+    std::array<int, 2> position = transormCoordinates({curr_dev_pose->getPose()[0], curr_dev_pose->getPose()[1]}, curr_dev_pose->getPixmap().width(),
+                                                      curr_dev_pose->getPixmap().height());
+    painter.drawPixmap(position[0], position[1], curr_dev_pose->getPixmap());
 }
 
 std::array<int, 2> Map::transormCoordinates(std::array<int, 2> goalPosition, int pixmapWidth, int pixmapHeight) {

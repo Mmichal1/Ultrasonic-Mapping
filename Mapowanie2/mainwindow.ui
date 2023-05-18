@@ -154,7 +154,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
-           <widget class="ChangePoseButton" name="changePoseButton">
+           <widget class="QPushButton" name="changePoseButton">
             <property name="minimumSize">
              <size>
               <width>150</width>
@@ -167,7 +167,7 @@
            </widget>
           </item>
           <item>
-           <widget class="ResetButton" name="resetButton">
+           <widget class="QPushButton" name="resetButton">
             <property name="text">
              <string>Reset</string>
             </property>
@@ -226,16 +226,6 @@
    <extends>QWidget</extends>
    <header location="global">poselabel.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ResetButton</class>
-   <extends>QPushButton</extends>
-   <header location="global">resetbutton.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ChangePoseButton</class>
-   <extends>QPushButton</extends>
-   <header location="global">changeposebutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

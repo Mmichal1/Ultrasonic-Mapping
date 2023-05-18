@@ -5,13 +5,29 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
-class PoseLabel : public QWidget
-{
+//!  Klasa widgetu zawierającego label wyświetlający pozycje urządzenia
+/*!
+  Klasa wyświetla odpowiednio sformatowany tekst w polu tekstowym
+*/
+class PoseLabel : public QWidget {
     Q_OBJECT
 public:
+    //! Konstruktor klasy
+    /*!
+      W konstruktorze wywoływany jest layout, dodawane jest pole tekstowe do layoutu
+    */
     explicit PoseLabel(QWidget *parent = nullptr);
+
+    //! Metoda ustawiająca tekst wyświetlany przez label
+    /*!
+      \param text stała referenca do obiektu typu QString
+    */
     void setLabelText(const QString& text);
 private:
+    //! Prywatna zmienna
+    /*!
+      Zmienna przechowująca wskaźnik do obiektu typu label
+    */
     QLabel *label;
 public slots:
 };
