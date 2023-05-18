@@ -7,7 +7,6 @@
     Klasa czujnik posiada pola przechowujące informacje o ID czujnika
     oraz pinów mikrokontrolera używanych przez czujnika
  */
-
 class Sensor {
    public:
     uint8_t SENSOR_ID;  /*!< ID czujnika*/
