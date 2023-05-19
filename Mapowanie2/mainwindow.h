@@ -17,6 +17,7 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 //!  Klasa głównego okna
 /*!
   W oknie głównym wyświetlane są wszystkie dostępne widget i przyciski
