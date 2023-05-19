@@ -1,15 +1,11 @@
 #include "devicepoint.h"
 
 DevicePoint::DevicePoint(const QPixmap& pixmap, std::array<int, 3> pose)
-    : pixmap(pixmap), pose(pose){}
+    : pixmap(pixmap), pose(pose) {}
 
-std::array<int, 3> DevicePoint::getPose() {
-    return pose;
-}
+std::array<int, 3> DevicePoint::getPose() { return pose; }
 
-const QPixmap& DevicePoint::getPixmap() {
-    return pixmap;
-}
+const QPixmap& DevicePoint::getPixmap() { return pixmap; }
 
 void DevicePoint::setPixmap(const QPixmap& newPixmap) {
     DevicePoint::pixmap = newPixmap;
