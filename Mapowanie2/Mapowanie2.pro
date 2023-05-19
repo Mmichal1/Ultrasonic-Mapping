@@ -10,25 +10,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    changeposebutton.cpp \
     changeposewindow.cpp \
     devicepoint.cpp \
     main.cpp \
     mainwindow.cpp \
     map.cpp \
     obstaclepoint.cpp \
-    poselabel.cpp \
-    resetbutton.cpp
+    poselabel.cpp
 
 HEADERS += \
-    changeposebutton.h \
     changeposewindow.h \
     devicepoint.h \
     mainwindow.h \
     map.h \
     obstaclepoint.h \
-    poselabel.h \
-    resetbutton.h
+    poselabel.h
 
 FORMS += \
     changeposewindow.ui \
