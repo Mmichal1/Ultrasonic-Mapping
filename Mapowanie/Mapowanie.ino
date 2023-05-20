@@ -80,7 +80,7 @@ void loop() {
             sprintf(numstr, "%d %lu ", sensor.SENSOR_ID, distanceCm);
             data = data + numstr;
         }
-        delay(100);
+        delay(500);
     }
     for (char i: data) {
         crc.add(i);
@@ -88,6 +88,6 @@ void loop() {
     Serial.print(data);
     Serial.print("\t");
     Serial.println(crc.getCRC(), HEX);
-    delay(1000);
+    delay(5000);
     crc.reset();    
 } 

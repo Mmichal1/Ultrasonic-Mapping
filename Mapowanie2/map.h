@@ -1,7 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <math.h>
+#include <cmath>
 #include <vector>
 #include <iterator>
 #include <array>
@@ -39,6 +39,28 @@ public:
       \return Tablica współrzędnych oraz orientacji
     */
     std::array<int, 3> getDevicePose();
+
+public slots:
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku 'Reset'. Po wciśnięciu przycisku wszystkie wektory są czyszczone i tym samym
+      usuwane są zmapowane punkty a aktualna pozycja i orientacja urządzenia są ustawiane jako punkt odniesienia
+    */
+    void onResetButtonClicked();
+
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wysłany sygnał zawierający referencju do ciągu znaków. Ten ciąg znaków jest przetwarzany
+      a odpowiednie wartości, czyli współrzędne oraz orientacja są wyświetlane w polu tekstowym
+    */
+    void handleSentString(const QString& text);
+
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wysłany sygnał zawierający referencju do ciągu znaków przechowujące informacje otrzymane
+      z portu szeregowego
+    */
+    void handleSentStringFromSerial(const QString& message);
 
 private:
     QPixmap *dev_pos_pixmap;    /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
@@ -82,20 +104,13 @@ private:
     */
     std::array<int, 2> transormCoordinates(std::array<int, 2> goalPosition, int pixmapWidth, int pixmapHeight);
 
-public slots:
-    //! Prywatny slot
+    //! Metoda dodająca nowe punkty
     /*!
-      Slot reagujący na wciśnięcie przycisku 'Reset'. Po wciśnięciu przycisku wszystkie wektory są czyszczone i tym samym
-      usuwane są zmapowane punkty a aktualna pozycja i orientacja urządzenia są ustawiane jako punkt odniesienia
+      Na podstawie pozycji urządzenia oraz danych otrzymanych poprzez port seryjny, czyli id czujnika a tym samym kąt odchylenia
+      oraz zmierzonej odległości od przeszkody
+      \param data id czujnika oraz zmierzona odległość
     */
-    void onResetButtonClicked();
-
-    //! Prywatny slot
-    /*!
-      Slot reagujący na wysłany sygnał zawierający referencju do ciągu znaków. Ten ciąg znaków jest przetwarzany
-      a odpowiednie wartości, czyli współrzędne oraz orientacja są wyświetlane w polu tekstowym
-    */
-    void handleSentString(const QString& text);
+    void addPoints(std::array<int, 2> data);
 };
 
 #endif // MAP_H
