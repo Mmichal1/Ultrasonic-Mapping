@@ -42,8 +42,8 @@ public:
 
 private:
     QPixmap *dev_pos_pixmap;    /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
-    QPixmap *point_pixmap;  /*!< Wskaźnik na pixmap aktualnej pozycji punktu */
     QPixmap *dev_pos_prev_pixmap; /*!< Wskaźnik na pixmap poprzedniej pozycji obiektu */
+    QPixmap *point_pixmap;  /*!< Wskaźnik na pixmap aktualnej pozycji punktu */
     QPixmap *point_prev_pixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
     DevicePoint *curr_dev_pose; /*!< Wskaźnik na punkt przechowujący dane o urządzeniu */
     std::vector<DevicePoint> prev_dev_pose; /*!< Wektor poprzednich pozycji urządzenia */

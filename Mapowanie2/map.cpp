@@ -1,27 +1,20 @@
 #include "map.h"
 
 Map::Map(QWidget* parent) : QWidget{parent} {
+
     dev_pos_pixmap = new QPixmap(":/device_pos.svg");
     *dev_pos_pixmap = dev_pos_pixmap->scaled(dev_pos_pixmap->width() / 2,
                                              dev_pos_pixmap->height() / 2);
-    curr_dev_pose = new DevicePoint(*dev_pos_pixmap, {40, -120, 0});
-
-    point_pixmap = new QPixmap(":/point.svg");
-    for (int i = 0; i < 6; i++) {
-        curr_points.push_back(ObstaclePoint(*point_pixmap, {(i + 1) * 20, 50}));
-    }
-
-    point_prev_pixmap = new QPixmap(":/point_prev.svg");
 
     dev_pos_prev_pixmap = new QPixmap(":/device_pos_prev.svg");
-
     *dev_pos_prev_pixmap = dev_pos_prev_pixmap->scaled(
         dev_pos_prev_pixmap->width() / 2, dev_pos_prev_pixmap->height() / 2);
-}
 
-// void Map::resizeEvent(QResizeEvent *event){
-//     QWidget::resizeEvent(event);
-// }
+    point_pixmap = new QPixmap(":/point.svg");
+    point_prev_pixmap = new QPixmap(":/point_prev.svg");
+
+    curr_dev_pose = new DevicePoint(*dev_pos_pixmap, {0, 0, 0});
+}
 
 void Map::paintEvent(QPaintEvent* event) {
     QWidget::paintEvent(event);
@@ -46,13 +39,23 @@ void Map::drawGrid(QPainter& painter, int mapWidth, int mapHeight) {
 
     // Draw ticks and labels
     int tickDistance = 100;
-    for (int x = -mapWidth / 2 + tickDistance; x < mapWidth / 2;
+    for (int x = 0; x < mapWidth / 2;
          x += tickDistance) {
         painter.drawLine(x, -5, x, 5);
         painter.drawText(x - 10, 20, QString::number(x));
     }
-    for (int y = -mapHeight / 2 + tickDistance; y < mapHeight / 2;
+    for (int x = 0; x > - mapWidth / 2;
+         x -= tickDistance) {
+        painter.drawLine(x, -5, x, 5);
+        painter.drawText(x - 10, 20, QString::number(x));
+    }
+    for (int y = 0; y < mapHeight / 2;
          y += tickDistance) {
+        painter.drawLine(-5, y, 5, y);
+        painter.drawText(10, y + 5, QString::number(-y));
+    }
+    for (int y = 0; y > - mapHeight / 2;
+         y -= tickDistance) {
         painter.drawLine(-5, y, 5, y);
         painter.drawText(10, y + 5, QString::number(-y));
     }
@@ -63,12 +66,20 @@ void Map::drawGrid(QPainter& painter, int mapWidth, int mapHeight) {
 
     // Draw grid
     painter.setPen(QPen(Qt::gray, 1, Qt::DotLine));
-    for (int x = -mapWidth / 2 + tickDistance / 5; x < mapWidth / 2;
+    for (int x = 0; x < mapWidth / 2;
          x += tickDistance / 5) {
         painter.drawLine(x, -mapHeight / 2, x, mapHeight / 2);
     }
-    for (int y = -mapHeight / 2 + tickDistance / 5; y < mapHeight / 2;
+    for (int x = 0; x > - mapWidth / 2;
+         x -= tickDistance / 5) {
+        painter.drawLine(x, -mapHeight / 2, x, mapHeight / 2);
+    }
+    for (int y = 0; y < mapHeight / 2;
          y += tickDistance / 5) {
+        painter.drawLine(-mapWidth / 2, y, mapWidth / 2, y);
+    }
+    for (int y = 0; y > - mapHeight / 2;
+         y -= tickDistance / 5) {
         painter.drawLine(-mapWidth / 2, y, mapWidth / 2, y);
     }
 }

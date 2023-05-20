@@ -12,7 +12,11 @@
 #include <QPixmap>
 #include <QFile>
 #include <QXmlStreamReader>
-
+#include <QSerialPort>
+#include <QSerialPortInfo>
+#include <QTimer>
+#include <QStatusBar>
+#include <QFrame>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -49,6 +53,12 @@ public slots:
     */
     void onChangePoseButtonClicked();
 
+private slots:
+    void connectToPort(const QString &portName);
+    void readData();
+    void handleError(QSerialPort::SerialPortError error);
+    void refreshPortList();
+
 private:
     //! Prywatny obiekt
     /*!
@@ -69,5 +79,9 @@ private:
     */
     //!
     ChangePoseWindow *changePoseWindow;
+
+    QSerialPort serial;
+
+    QStatusBar *bar = nullptr;
 };
 #endif // MAINWINDOW_H
