@@ -32,7 +32,8 @@ class MainWindow : public QMainWindow {
 public:
     //! Konstruktor klasy
     /*!
-      W konstruktorze wywoływane definiowane są wszystkie obiekty typu QPixmap
+      W konstruktorze definiowane są potrzebne obiekty oraz łączene są wszystkie potrzebne sygnały
+      ze slotami.
     */
     MainWindow(QWidget *parent = nullptr);
     //! Domyślny destruktor
@@ -54,9 +55,27 @@ public slots:
     void onChangePoseButtonClicked();
 
 private slots:
+    //! Prywatny slot
+    /*!
+      Slot reagujący próbę połączenia z wybrtanym portem seryjnym
+      \param portName stała referencja do obiektu typu QString, przechowuje nazwę wybranego portu seryjnego
+    */
     void connectToPort(const QString &portName);
+    //! Prywatny slot
+    /*!
+      Slot, którego wywołanie powoduje wczytanie danych z portu seryjnego
+    */
     void readData();
+    //! Prywatny slot
+    /*!
+      Slot obsługujący błąd związany z otwarciem portu seryjnego lub utratą połączenia
+      \param error występujący błąd
+    */
     void handleError(QSerialPort::SerialPortError error);
+    //! Prywatny slot
+    /*!
+      Slot, którego wywołanie powoduje odświeżenie listy dostępnych portów seryjnych
+    */
     void refreshPortList();
 
 private:
@@ -80,8 +99,18 @@ private:
     //!
     ChangePoseWindow *changePoseWindow;
 
+    //! Prywatny obiekt
+    /*!
+      Obiekt przechowujący dane o porcie seryjnym
+    */
+    //!
     QSerialPort serial;
 
-    QStatusBar *bar = nullptr;
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt paska stanu
+    */
+    //!
+    QStatusBar *bar;
 };
 #endif // MAINWINDOW_H
