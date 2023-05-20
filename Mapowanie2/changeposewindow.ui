@@ -355,6 +355,13 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>textEditX</tabstop>
+  <tabstop>textEditY</tabstop>
+  <tabstop>textEditDeg</tabstop>
+  <tabstop>buttonCancel</tabstop>
+  <tabstop>buttonOk</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

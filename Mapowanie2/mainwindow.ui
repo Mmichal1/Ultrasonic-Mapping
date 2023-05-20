@@ -13,7 +13,7 @@
   <property name="maximumSize">
    <size>
     <width>1600</width>
-    <height>800</height>
+    <height>900</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -30,6 +30,35 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <widget class="Map" name="mapWidget" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>900</width>
+          <height>700</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>10000</width>
+          <height>10000</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>CrossCursor</cursorShape>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
     <item row="1" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <property name="leftMargin">
@@ -82,14 +111,21 @@
            </layout>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_4">
-            <property name="enabled">
-             <bool>true</bool>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="topMargin">
+             <number>0</number>
             </property>
-            <property name="text">
-             <string>Retry</string>
-            </property>
-           </widget>
+            <item>
+             <widget class="QComboBox" name="serialComboBox"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="refreshButton">
+              <property name="text">
+               <string>Refresh</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -103,7 +139,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>100</width>
+            <width>90</width>
             <height>20</height>
            </size>
           </property>
@@ -112,26 +148,82 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
-           <widget class="QLabel" name="label_2">
-            <property name="minimumSize">
-             <size>
-              <width>300</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::Box</enum>
-            </property>
-            <property name="text">
-             <string>Current pose:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>105</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>Current pose:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="PoseLabel" name="poseWidget" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="PoseLabel" name="poseWidget" native="true"/>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="maximumSize">
+               <size>
+                <width>110</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Box</enum>
+              </property>
+              <property name="text">
+               <string>Last message:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="serialPortLabel">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -145,7 +237,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>100</width>
+            <width>90</width>
             <height>20</height>
            </size>
           </property>
@@ -179,34 +271,8 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_9">
-      <item>
-       <widget class="Map" name="mapWidget" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>900</width>
-          <height>700</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>10000</width>
-          <height>10000</height>
-         </size>
-        </property>
-        <property name="cursor">
-         <cursorShape>CrossCursor</cursorShape>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-       </widget>
-      </item>
-     </layout>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="statusBarLayout"/>
     </item>
    </layout>
   </widget>
