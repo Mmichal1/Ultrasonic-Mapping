@@ -22,13 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(changePoseWindow, SIGNAL(textEntered(QString)), this,
             SLOT(onButtonClicked()));
     connect(&serial, &QSerialPort::readyRead,
-            this, &MainWindow::readData);
+            this, &MainWindow::readSerialData);
     connect(ui->serialComboBox, &QComboBox::currentTextChanged,
             this, &MainWindow::connectToPort);
     connect(&serial, SIGNAL(error(QSerialPort::SerialPortError)),
             this, SLOT(handleError(QSerialPort::SerialPortError)));
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(refreshPortList()));
+    connect(this, SIGNAL(sendStringFromSerial(QString)), ui->mapWidget, SLOT(handleSentStringFromSerial(QString)));
 
     QMetaObject::connectSlotsByName(this);
 
@@ -61,12 +62,14 @@ void MainWindow::onChangePoseButtonClicked() {
     changePoseWindow->exec();
 }
 
-void MainWindow::readData()
+void MainWindow::readSerialData()
 {
     QByteArray data = serial.readAll();
     QString string = QString(data);
     string.chop(1);  // Cut last char as it's a new line character
     ui->serialPortLabel->setText(string);
+//    qDebug("error");
+    emit sendStringFromSerial(string);
 }
 
 void MainWindow::connectToPort(const QString &portName)

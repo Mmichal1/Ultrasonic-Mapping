@@ -130,6 +130,7 @@ std::array<int, 2> Map::transormCoordinates(std::array<int, 2> goalPosition,
 
 std::array<int, 3> Map::getDevicePose() { return curr_dev_pose->getPose(); }
 
+
 void Map::onResetButtonClicked() {
     curr_points.clear();
     prev_points.clear();
@@ -139,7 +140,6 @@ void Map::onResetButtonClicked() {
 }
 
 void Map::handleSentString(const QString& text) {
-    //    qDebug() << text;
     QStringList list = text.split(" ");
     prev_dev_pose.push_back(*curr_dev_pose);
     prev_dev_pose.back().setPixmap(*dev_pos_prev_pixmap);
@@ -155,4 +155,35 @@ void Map::handleSentString(const QString& text) {
     for (auto& i : prev_points) {
         i.setPixmap(*point_prev_pixmap);
     }
+}
+
+void Map::handleSentStringFromSerial(const QString& message) {
+
+    QStringList list = message.split(" ");
+//    std::string crc = list.last();
+    list.removeLast();
+    std::array<int, 2> data;
+
+    for (int i = 0; i < 5; i++) {
+        data = {list.at(i).toInt(), list.at(i+1).toInt()};
+        i++;
+        addPoints(data);
+    }
+
+//    qDebug("koniec listy");
+
+}
+
+void Map::addPoints(std::array<int, 2> data) {
+    std::array<int, 3> angles = {-45, 0, 45};
+    std::array<int, 2> pos;
+
+//    qDebug("%d", angles[data[0]]);
+    double alpha = 0.0 + angles[data[0]] + curr_dev_pose->getPose()[2];
+//    qDebug("%f", alpha);
+    pos[0] = round(sin(alpha) * data[1]) + curr_dev_pose->getPose()[0];
+    pos[1] = round(cos(alpha) * data[1]) + curr_dev_pose->getPose()[1];
+
+    curr_points.push_back(ObstaclePoint(*point_pixmap, pos));
+    update();
 }

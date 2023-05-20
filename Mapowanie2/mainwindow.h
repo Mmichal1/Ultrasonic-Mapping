@@ -57,26 +57,36 @@ public slots:
 private slots:
     //! Prywatny slot
     /*!
-      Slot reagujący próbę połączenia z wybrtanym portem seryjnym
-      \param portName stała referencja do obiektu typu QString, przechowuje nazwę wybranego portu seryjnego
+      Slot reagujący próbę połączenia z wybranym portem szeregowym
+      \param portName stała referencja do obiektu typu QString, przechowuje nazwę wybranego portu szeregowego
     */
     void connectToPort(const QString &portName);
+
     //! Prywatny slot
     /*!
-      Slot, którego wywołanie powoduje wczytanie danych z portu seryjnego
+      Slot, którego wywołanie powoduje wczytanie danych z portu szeregowego
     */
-    void readData();
+    void readSerialData();
+
     //! Prywatny slot
     /*!
-      Slot obsługujący błąd związany z otwarciem portu seryjnego lub utratą połączenia
+      Slot obsługujący błąd związany z otwarciem portu szeregowego lub utratą połączenia
       \param error występujący błąd
     */
     void handleError(QSerialPort::SerialPortError error);
+
     //! Prywatny slot
     /*!
-      Slot, którego wywołanie powoduje odświeżenie listy dostępnych portów seryjnych
+      Slot, którego wywołanie powoduje odświeżenie listy dostępnych portów szeregowych
     */
     void refreshPortList();
+
+signals:
+    //! Sygnał
+    /*!
+      Sygnały przesyłający wczytane dane z portu szeregowego
+    */
+    void sendStringFromSerial(const QString& message);
 
 private:
     //! Prywatny obiekt
@@ -101,7 +111,7 @@ private:
 
     //! Prywatny obiekt
     /*!
-      Obiekt przechowujący dane o porcie seryjnym
+      Obiekt przechowujący dane o porcie szeregowym
     */
     //!
     QSerialPort serial;
