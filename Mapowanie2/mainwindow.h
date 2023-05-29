@@ -18,6 +18,7 @@
 #include <QTimer>
 #include <QStatusBar>
 #include <QFrame>
+#include <QByteArray>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -41,7 +42,8 @@ public:
     //! Domyślny destruktor
     ~MainWindow();
 
-    void showWelcomeDialog();
+    void showWelcomeWindow();
+
 
 public slots:
     //! Publiczny slot
@@ -57,6 +59,8 @@ public slots:
       wyświetlane jest okno dialogowe umożliwiające zmianę pozycji oraz orientację urządzenia.
     */
     void onChangePoseButtonClicked();
+
+
 
 private slots:
     //! Prywatny slot
@@ -90,7 +94,7 @@ signals:
     /*!
       Sygnały przesyłający wczytane dane z portu szeregowego
     */
-    void sendStringFromSerial(const QString& message);
+    void sendStringFromSerial(const QStringList& message);
 
 private:
     //! Prywatny obiekt
@@ -123,12 +127,13 @@ private:
     //!
     ChangePoseWindow *changePoseWindow;
 
+    WelcomeDialog *welcomeWindow;
+
     //! Prywatna metoda
     /*!
       Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
     */
     void printPoseToLabel();
 
-    WelcomeDialog *welcomeWindow;
 };
 #endif // MAINWINDOW_H

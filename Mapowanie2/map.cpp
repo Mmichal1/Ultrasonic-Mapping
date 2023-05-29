@@ -157,11 +157,8 @@ void Map::handleSentString(const QString& text) {
     }
 }
 
-void Map::handleSentStringFromSerial(const QString& message) {
+void Map::handleSentStringFromSerial(const QStringList &list) {
 
-    QStringList list = message.split(" ");
-//    std::string crc = list.last();
-    list.removeLast();
     std::array<int, 2> data;
 
     for (int i = 0; i < 5; i++) {

@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     welcomeWindow = new WelcomeDialog(this);
 
+
     bar = new QStatusBar(this);
     bar->setMaximumHeight(17);
     ui->statusBarLayout->addWidget(bar);
@@ -32,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(handleError(QSerialPort::SerialPortError)));
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(refreshPortList()));
-    connect(this, SIGNAL(sendStringFromSerial(QString)), ui->mapWidget, SLOT(handleSentStringFromSerial(QString)));
+    connect(this, SIGNAL(sendStringFromSerial(QStringList)), ui->mapWidget, SLOT(handleSentStringFromSerial(QStringList)));
 
     QMetaObject::connectSlotsByName(this);
 
@@ -69,10 +70,26 @@ void MainWindow::readSerialData()
 {
     QByteArray data = serial.readAll();
     QString string = QString(data);
+
     string.chop(1);  // Cut last char as it's a new line character
     ui->serialPortLabel->setText(string);
+
+    QStringList list = string.split(" ");
+    quint16 crcDevice = list.last().toUShort();
+    list.removeLast();
+
+    quint16 crcHost = qChecksum(list.join("").toUtf8().constData(), 10);
+
+    qDebug() << crcDevice;
+    qDebug() << crcHost;
+
+    if (crcDevice == crcHost) {
+
+        qDebug("works");
+    }
+
 //    qDebug("error");
-    emit sendStringFromSerial(string);
+    emit sendStringFromSerial(list);
 }
 
 void MainWindow::connectToPort(const QString &portName)
@@ -97,11 +114,11 @@ void MainWindow::connectToPort(const QString &portName)
             bar->showMessage(tr("Serial port opened successfully"), 2000);
         } else {
             qDebug("Error opening the serial port");
-            bar->showMessage(tr("Error opening the serial port"), 2000);
+            bar->showMessage(tr("Serial port busy"), 2000);
         }
     } else {
         qDebug("Error opening the serial port");
-        bar->showMessage(tr("Error opening the serial port"), 2000);
+        bar->showMessage(tr("Serial port busy"), 2000);
     }
 }
 
@@ -121,7 +138,8 @@ void MainWindow::refreshPortList()
     }
 }
 
-void MainWindow::showWelcomeDialog() {
+void MainWindow::showWelcomeWindow() {
     welcomeWindow->setModal(true);
     welcomeWindow->exec();
 }
+

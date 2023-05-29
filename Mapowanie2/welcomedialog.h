@@ -1,8 +1,6 @@
 #ifndef WELCOMEDIALOG_H
 #define WELCOMEDIALOG_H
 
-#include "mainwindow.h"
-
 #include <QDialog>
 
 namespace Ui {
@@ -19,7 +17,6 @@ public:
 
 private:
     Ui::WelcomeDialog *ui;
-
 };
 
 #endif // WELCOMEDIALOG_H

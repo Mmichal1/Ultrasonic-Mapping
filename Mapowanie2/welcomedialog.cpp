@@ -6,6 +6,7 @@ WelcomeDialog::WelcomeDialog(QWidget *parent) :
     ui(new Ui::WelcomeDialog)
 {
     ui->setupUi(this);
+//    setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::CustomizeWindowHint);
 }
 
 WelcomeDialog::~WelcomeDialog()

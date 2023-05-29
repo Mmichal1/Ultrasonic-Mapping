@@ -61,7 +61,7 @@ public slots:
       Slot reagujący na wysłany sygnał zawierający referencju do ciągu znaków przechowujące informacje otrzymane
       z portu szeregowego
     */
-    void handleSentStringFromSerial(const QString& message);
+    void handleSentStringFromSerial(const QStringList& list);
 
 private:
     QPixmap *dev_pos_pixmap;    /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
