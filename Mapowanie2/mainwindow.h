@@ -3,6 +3,7 @@
 
 #include "map.h"
 #include "changeposewindow.h"
+#include "welcomedialog.h"
 
 #include <QUiLoader>
 #include <QMainWindow>
@@ -36,8 +37,11 @@ public:
       ze slotami.
     */
     MainWindow(QWidget *parent = nullptr);
+
     //! Domyślny destruktor
     ~MainWindow();
+
+    void showWelcomeDialog();
 
 public slots:
     //! Publiczny slot
@@ -96,18 +100,7 @@ private:
     //!
     Ui::MainWindow *ui;
 
-    //! Prywatna metoda
-    /*!
-      Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
-    */
-    void printPoseToLabel();
 
-    //! Prywatny obiekt
-    /*!
-      Wskaźnik na obiekt okna dialogowego zmiany pozycji
-    */
-    //!
-    ChangePoseWindow *changePoseWindow;
 
     //! Prywatny obiekt
     /*!
@@ -122,5 +115,20 @@ private:
     */
     //!
     QStatusBar *bar;
+
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt okna dialogowego zmiany pozycji
+    */
+    //!
+    ChangePoseWindow *changePoseWindow;
+
+    //! Prywatna metoda
+    /*!
+      Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
+    */
+    void printPoseToLabel();
+
+    WelcomeDialog *welcomeWindow;
 };
 #endif // MAINWINDOW_H

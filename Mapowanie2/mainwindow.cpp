@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     changePoseWindow = new ChangePoseWindow(this);
+
+    welcomeWindow = new WelcomeDialog(this);
+
     bar = new QStatusBar(this);
     bar->setMaximumHeight(17);
     ui->statusBarLayout->addWidget(bar);
@@ -116,4 +119,9 @@ void MainWindow::refreshPortList()
     foreach (const QSerialPortInfo &portInfo, QSerialPortInfo::availablePorts()) {
         ui->serialComboBox->addItem(portInfo.portName());
     }
+}
+
+void MainWindow::showWelcomeDialog() {
+    welcomeWindow->setModal(true);
+    welcomeWindow->exec();
 }

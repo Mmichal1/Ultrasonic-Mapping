@@ -17,7 +17,8 @@ SOURCES += \
     mainwindow.cpp \
     map.cpp \
     obstaclepoint.cpp \
-    poselabel.cpp
+    poselabel.cpp \
+    welcomedialog.cpp
 
 HEADERS += \
     changeposewindow.h \
@@ -25,11 +26,13 @@ HEADERS += \
     mainwindow.h \
     map.h \
     obstaclepoint.h \
-    poselabel.h
+    poselabel.h \
+    welcomedialog.h
 
 FORMS += \
     changeposewindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    welcomedialog.ui
 
 RESOURCES += \
     point.svg \

@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "changeposewindow.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -9,8 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-//    ChangePoseWindow w;
-//    w.setWindowTitle("Change Pose");
     w.show();
+    w.showWelcomeDialog();
     return a.exec();
 }

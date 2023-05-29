@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include <cmath>
+#include <math.h>
 #include <vector>
 #include <iterator>
 #include <array>
