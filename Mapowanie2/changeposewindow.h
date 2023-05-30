@@ -16,8 +16,7 @@ class ChangePoseWindow;
   wpisuje nowe współrzędne oraz kąt obrotu urządzenia. Layout okna oraz
   instancje obiektów tworzone są w pliku .ui.
 */
-class ChangePoseWindow : public QDialog
-{
+class ChangePoseWindow : public QDialog {
     Q_OBJECT
 
 public:

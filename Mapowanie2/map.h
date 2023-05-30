@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include <cmath>
+#include <math.h>
 #include <vector>
 #include <iterator>
 #include <array>
@@ -33,6 +34,7 @@ public:
       W konstruktorze definiowane są wszystkie obiekty typu QPixmap
     */
     explicit Map(QWidget *parent = nullptr);
+
     //! Metoda pobierająca tablice zawierające informacje o współrzędnych
     //! i orientacji urządzenia
     /*!
@@ -60,24 +62,24 @@ public slots:
       Slot reagujący na wysłany sygnał zawierający referencju do ciągu znaków przechowujące informacje otrzymane
       z portu szeregowego
     */
-    void handleSentStringFromSerial(const QString& message);
+    void handleSentStringFromSerial(const QStringList& list);
 
 private:
-    QPixmap *dev_pos_pixmap;    /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
-    QPixmap *dev_pos_prev_pixmap; /*!< Wskaźnik na pixmap poprzedniej pozycji obiektu */
-    QPixmap *point_pixmap;  /*!< Wskaźnik na pixmap aktualnej pozycji punktu */
-    QPixmap *point_prev_pixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
-    DevicePoint *curr_dev_pose; /*!< Wskaźnik na punkt przechowujący dane o urządzeniu */
-    std::vector<DevicePoint> prev_dev_pose; /*!< Wektor poprzednich pozycji urządzenia */
-    std::vector<ObstaclePoint> curr_points; /*!< Wektor aktualnych pozycji zmapowanych punktów */
-    std::vector<ObstaclePoint> prev_points; /*!< Wektor poprzednich pozycji zmapowanych punktów */
+    QPixmap *devPosPixmap;    /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
+    QPixmap *devPosPrevPixmap; /*!< Wskaźnik na pixmap poprzedniej pozycji obiektu */
+    QPixmap *pointPixmap;  /*!< Wskaźnik na pixmap aktualnej pozycji punktu */
+    QPixmap *pointPrevPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
+    DevicePoint *currDevPose; /*!< Wskaźnik na punkt przechowujący dane o urządzeniu */
+    std::vector<DevicePoint> prevDevPose; /*!< Wektor poprzednich pozycji urządzenia */
+    std::vector<ObstaclePoint> currPoints; /*!< Wektor aktualnych pozycji zmapowanych punktów */
+    std::vector<ObstaclePoint> prevPoints; /*!< Wektor poprzednich pozycji zmapowanych punktów */
 
     //! Metoda nadpisująca funkcję paintEvent
     /*!
       Za pomocą tej metody rysowany jest układ współrzędnych oraz punkty na mapie
       \param event wskaźnik na obiekt typu QPaintEvent
     */
-    void paintEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event) override;
 
     //! Metoda rysująca układ współrzędnych
     /*!
@@ -94,6 +96,13 @@ private:
       \param painter referencja do obiektu typu QPainter umożliwiającego rysowanie
     */
     void drawPoints(QPainter& painter);
+
+    //! Metoda rysująca obszar detekcji czujników
+    /*!
+      Za pomocą tej metody rysowany jest obszar jaki obejmują czujniki
+      \param painter referencja do obiektu typu QPainter umożliwiającego rysowanie
+    */
+    void drawDetectionArea(QPainter& painter);
 
     //! Metoda transformująca współrzędne punktów
     /*!

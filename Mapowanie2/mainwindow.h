@@ -3,6 +3,7 @@
 
 #include "map.h"
 #include "changeposewindow.h"
+#include "welcomedialog.h"
 
 #include <QUiLoader>
 #include <QMainWindow>
@@ -16,7 +17,9 @@
 #include <QSerialPortInfo>
 #include <QTimer>
 #include <QStatusBar>
-#include <QFrame>
+#include <QSignalMapper>
+#include <QByteArray>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,8 +39,16 @@ public:
       ze slotami.
     */
     MainWindow(QWidget *parent = nullptr);
+
     //! Domyślny destruktor
     ~MainWindow();
+
+
+    //! Publiczna metoda
+    /*!
+      Publiczna metoda wyświetlająca okno powitalne
+    */
+    void showWelcomeWindow();
 
 public slots:
     //! Publiczny slot
@@ -53,6 +64,12 @@ public slots:
       wyświetlane jest okno dialogowe umożliwiające zmianę pozycji oraz orientację urządzenia.
     */
     void onChangePoseButtonClicked();
+
+    //! Publiczny slot
+    /*!
+      Slot wywoływany podczas zamykania programu
+    */
+    void performActionOnExit();
 
 private slots:
     //! Prywatny slot
@@ -81,12 +98,20 @@ private slots:
     */
     void refreshPortList();
 
+    //! Prywatny slot
+    /*!
+      Slot, którego wywołanie powoduje wysłanie wiadomości na port seryjny w celu próby połączenia
+    */
+    void onConnectButtonClicked();
+
+    void onRefreshButtonClicked();
+
 signals:
     //! Sygnał
     /*!
       Sygnały przesyłający wczytane dane z portu szeregowego
     */
-    void sendStringFromSerial(const QString& message);
+    void sendStringFromSerial(const QStringList& message);
 
 private:
     //! Prywatny obiekt
@@ -95,19 +120,6 @@ private:
     */
     //!
     Ui::MainWindow *ui;
-
-    //! Prywatna metoda
-    /*!
-      Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
-    */
-    void printPoseToLabel();
-
-    //! Prywatny obiekt
-    /*!
-      Wskaźnik na obiekt okna dialogowego zmiany pozycji
-    */
-    //!
-    ChangePoseWindow *changePoseWindow;
 
     //! Prywatny obiekt
     /*!
@@ -122,5 +134,36 @@ private:
     */
     //!
     QStatusBar *bar;
+
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt okna dialogowego zmiany pozycji
+    */
+    //!
+    ChangePoseWindow *changePoseWindow;
+
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt okna powitalnego
+    */
+    //!
+    WelcomeDialog *welcomeWindow;
+
+    QPixmap *connectionOkPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
+    QPixmap *connectionBadPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
+
+    //! Prywatna metoda
+    /*!
+      Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
+    */
+    void printPoseToLabel();
+
+    //! Prywatna metoda
+    /*!
+      Metoda za pomocą której wysyłana jest wiadomość na port seryjny
+    */
+    void sendDataToSerial(const QByteArray &message);
+
+
 };
 #endif // MAINWINDOW_H

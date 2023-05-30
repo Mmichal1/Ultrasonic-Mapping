@@ -21,5 +21,9 @@ void ChangePoseWindow::onOkButtonClicked() {
                    ui->textEditY->toPlainText() + " " +
                    ui->textEditDeg->toPlainText();
 
+    ui->textEditX->clear();
+    ui->textEditY->clear();
+    ui->textEditDeg->clear();
+
     emit textEntered(text);
 }

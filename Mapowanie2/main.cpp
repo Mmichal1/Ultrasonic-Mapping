@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "changeposewindow.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -7,10 +6,12 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-//    ChangePoseWindow w;
-//    w.setWindowTitle("Change Pose");
-    w.show();
-    return a.exec();
+    QApplication app(argc, argv);
+    MainWindow mainWindow;
+
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, &mainWindow, &MainWindow::performActionOnExit);
+
+    mainWindow.show();
+    mainWindow.showWelcomeWindow();
+    return app.exec();
 }

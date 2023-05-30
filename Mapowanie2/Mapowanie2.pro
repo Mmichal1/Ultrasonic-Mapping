@@ -17,7 +17,9 @@ SOURCES += \
     mainwindow.cpp \
     map.cpp \
     obstaclepoint.cpp \
-    poselabel.cpp
+    poselabel.cpp \
+    posetextedit.cpp \
+    welcomedialog.cpp
 
 HEADERS += \
     changeposewindow.h \
@@ -25,18 +27,22 @@ HEADERS += \
     mainwindow.h \
     map.h \
     obstaclepoint.h \
-    poselabel.h
+    poselabel.h \
+    posetextedit.h \
+    welcomedialog.h
 
 FORMS += \
     changeposewindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    welcomedialog.ui
 
 RESOURCES += \
     point.svg \
     point_prev.svg \
     device_pos.svg \
     device_pos_prev.svg \
-    dev_point.svg
+    connection_bad.svg \
+    connection_ok.svg
 
 CONFIG += lrelease
 CONFIG += embed_translations
