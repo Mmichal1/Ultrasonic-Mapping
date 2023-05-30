@@ -32,6 +32,14 @@ Sensor list[] = {Sensor(0, 4, 5), Sensor(1, 8, 9),
                  Sensor(2, 12, 13)};  //!< Lista przechowująca instancje czujników
 CRC16 crc;                            //!< Inicjalizacja instancji obiektu, dzięki któremu obliczana będzie suma kontrolna
 
+unsigned long previousTimeReadSensor = 0;
+unsigned long previousTimeStartLoop = 0;
+byte incomingData = 0;
+long duration, distanceCm;  
+char numstr[21];  
+String data = "";  
+bool startMapping = false;
+
 /*!
     Funkcja zwracająca długość pulsu z danego czujnika
     \param[in] Trigger PIN
@@ -45,6 +53,20 @@ long readFromSensor(int TRIG_PIN, int ECHO_PIN) {
     delayMicroseconds(10);
     digitalWrite(TRIG_PIN, LOW);
     return pulseIn(ECHO_PIN, HIGH);
+}
+
+void readFromSerial() {
+  if (Serial.available() > 0) {
+    // read the incoming byte:
+    incomingData = Serial.read();
+    if (incomingData == 49) {
+      Serial.println(incomingData);
+      startMapping = true;
+    } else if (incomingData == 48) {
+      Serial.println(incomingData);
+      startMapping = false;
+    }
+  }
 }
 
 /*!
@@ -67,27 +89,45 @@ void setup() {
     Główna pętla programu.
 */
 void loop() {
-    long duration, distanceCm;  
-    char numstr[21];  
-    String data = "";  
 
-    for (Sensor sensor : list) {
-        duration = readFromSensor(sensor.TRIG_PIN, sensor.ECHO_PIN);
-        distanceCm = duration / 29.1 / 2;
-        if (distanceCm <= 0) {
-            Serial.println("Out of range");
-        } else {
-            sprintf(numstr, "%d %lu ", sensor.SENSOR_ID, distanceCm);
-            data = data + numstr;
-        }
-        delay(500);
+    readFromSerial();
+    
+    if (millis() - previousTimeStartLoop >= 5000UL && startMapping) {
+      previousTimeStartLoop = millis();
+
+      data = ""; 
+
+      for (int i = 0; i < sizeof(list) / sizeof(int) - 1 ;) {
+
+          readFromSerial();
+        
+          if (millis() - previousTimeReadSensor >= 500UL) {
+            previousTimeReadSensor = millis();
+
+            duration = readFromSensor(list[i].TRIG_PIN, list[i].ECHO_PIN);
+            distanceCm = duration / 29.1 / 2;
+            
+            if (distanceCm <= 0) {
+                Serial.println("Out of range");
+            } else {
+                sprintf(numstr, "%d %lu ", list[i].SENSOR_ID, distanceCm);
+                data = data + numstr;
+            }
+            i++;
+          }
+      }
+
+      for (char i: data) {
+          crc.add(i);
+      }
+      
+      Serial.print(data);
+      Serial.print("\t");
+      Serial.println(crc.getCRC(), DEC);
+      crc.reset();    
     }
-    for (char i: data) {
-        crc.add(i);
-    }
-    Serial.print(data);
-    Serial.print("\t");
-    Serial.println(crc.getCRC(), HEX);
-    delay(5000);
-    crc.reset();    
 } 
+
+
+
+

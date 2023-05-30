@@ -105,7 +105,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QTextEdit" name="textEditX">
+          <widget class="PoseTextEdit" name="textEditX">
            <property name="minimumSize">
             <size>
              <width>50</width>
@@ -190,7 +190,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QTextEdit" name="textEditY">
+          <widget class="PoseTextEdit" name="textEditY">
            <property name="maximumSize">
             <size>
              <width>50</width>
@@ -272,7 +272,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QTextEdit" name="textEditDeg">
+          <widget class="PoseTextEdit" name="textEditDeg">
            <property name="maximumSize">
             <size>
              <width>50</width>
@@ -355,6 +355,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PoseTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header location="global">posetextedit.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>textEditX</tabstop>
   <tabstop>textEditY</tabstop>

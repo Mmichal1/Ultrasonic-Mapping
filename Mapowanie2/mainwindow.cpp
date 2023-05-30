@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     welcomeWindow = new WelcomeDialog(this);
 
-
     bar = new QStatusBar(this);
     bar->setMaximumHeight(17);
     ui->statusBarLayout->addWidget(bar);
@@ -33,7 +32,10 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(handleError(QSerialPort::SerialPortError)));
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(refreshPortList()));
-    connect(this, SIGNAL(sendStringFromSerial(QStringList)), ui->mapWidget, SLOT(handleSentStringFromSerial(QStringList)));
+    connect(this, SIGNAL(sendStringFromSerial(QStringList)),
+            ui->mapWidget, SLOT(handleSentStringFromSerial(QStringList)));
+    connect(ui->connectButton, SIGNAL(clicked()),
+            this, SLOT(onConnectButtonClicked()));
 
     QMetaObject::connectSlotsByName(this);
 
@@ -47,6 +49,9 @@ MainWindow::MainWindow(QWidget *parent)
     connectToPort(ui->serialComboBox->currentText());
 
     printPoseToLabel();
+
+//    timer.setSingleShot(true);  // Only fires once
+//    timer.setInterval(5000);
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -62,38 +67,51 @@ void MainWindow::printPoseToLabel() {
 void MainWindow::onButtonClicked() { printPoseToLabel(); }
 
 void MainWindow::onChangePoseButtonClicked() {
+
     changePoseWindow->setModal(true);
     changePoseWindow->exec();
 }
 
 void MainWindow::readSerialData()
 {
+    //    qDebug("host");
+    //    qDebug() << crcHost;
+
+    //    if (crcDevice == crcHost) {
+
+    //        qDebug("works");
+    //    }
+
+    //    qDebug("error");
+
     QByteArray data = serial.readAll();
     QString string = QString(data);
+
+    if (string == "49\r\n") {
+        bar->showMessage(tr("Connection successfull"), 2000);
+        qDebug() << string;
+    }
+
 
     string.chop(1);  // Cut last char as it's a new line character
     ui->serialPortLabel->setText(string);
 
     QStringList list = string.split(" ");
-    quint16 crcDevice = list.last().toUShort();
+//    QString crcDevice = list.last();
+//    quint16 crcDevice = list.last().toUShort();
     list.removeLast();
+//    quint16 crcHost = qChecksum(list.join("").toUtf8().constData(), 10);
 
-    quint16 crcHost = qChecksum(list.join("").toUtf8().constData(), 10);
+    qDebug("device");
+    qDebug() << list.length();
 
-    qDebug() << crcDevice;
-    qDebug() << crcHost;
-
-    if (crcDevice == crcHost) {
-
-        qDebug("works");
+    if (list.length() == 6) {
+        emit sendStringFromSerial(list);
     }
-
-//    qDebug("error");
-    emit sendStringFromSerial(list);
 }
 
-void MainWindow::connectToPort(const QString &portName)
-{
+void MainWindow::connectToPort(const QString &portName) {
+
     if (serial.isOpen()) {
         serial.close();
     }
@@ -109,29 +127,33 @@ void MainWindow::connectToPort(const QString &portName)
 
     if (portExists) {
         serial.setPortName(portName);
-        if (serial.open(QIODevice::ReadOnly)) {
+        if (serial.open(QIODevice::ReadWrite)) {
             qDebug("Serial port opened successfully");
             bar->showMessage(tr("Serial port opened successfully"), 2000);
         } else {
             qDebug("Error opening the serial port");
-            bar->showMessage(tr("Serial port busy"), 2000);
+            QByteArray ba = serial.errorString().toLocal8Bit();
+            bar->showMessage(tr(ba.data()), 2000);
         }
     } else {
+        QByteArray ba = serial.errorString().toLocal8Bit();
         qDebug("Error opening the serial port");
-        bar->showMessage(tr("Serial port busy"), 2000);
+        bar->showMessage(tr(ba.data()), 2000);
     }
 }
 
-void MainWindow::handleError(QSerialPort::SerialPortError error)
-{
+void MainWindow::handleError(QSerialPort::SerialPortError error) {
+
     if (error == QSerialPort::ResourceError) {
         qDebug("error");
     }
 }
 
-void MainWindow::refreshPortList()
-{
+void MainWindow::refreshPortList() {
+
+    sendDataToSerial("0");
     ui->serialComboBox->clear();
+
 
     foreach (const QSerialPortInfo &portInfo, QSerialPortInfo::availablePorts()) {
         ui->serialComboBox->addItem(portInfo.portName());
@@ -139,7 +161,32 @@ void MainWindow::refreshPortList()
 }
 
 void MainWindow::showWelcomeWindow() {
+
     welcomeWindow->setModal(true);
     welcomeWindow->exec();
+}
+
+void MainWindow::onConnectButtonClicked() {
+
+    sendDataToSerial("1");
+}
+
+void MainWindow::performActionOnExit() {
+
+    qDebug() << "Performing action on application exit...";
+    sendDataToSerial("0");
+}
+
+void MainWindow::sendDataToSerial(const QByteArray &message) {
+
+    qint64 bytesWritten = serial.write(message);
+
+    if (bytesWritten == -1) {
+        qDebug() << "Failed to write to serial port:" << serial.errorString();
+        QByteArray ba = serial.errorString().toLocal8Bit();
+        bar->showMessage(tr(ba.data()), 2000);
+    } else {
+        qDebug() << "Message sent:" << message;
+    }
 }
 

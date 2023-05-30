@@ -18,6 +18,7 @@ SOURCES += \
     map.cpp \
     obstaclepoint.cpp \
     poselabel.cpp \
+    posetextedit.cpp \
     welcomedialog.cpp
 
 HEADERS += \
@@ -27,6 +28,7 @@ HEADERS += \
     map.h \
     obstaclepoint.h \
     poselabel.h \
+    posetextedit.h \
     welcomedialog.h
 
 FORMS += \

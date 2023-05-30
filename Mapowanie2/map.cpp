@@ -85,10 +85,17 @@ void Map::drawGrid(QPainter& painter, int mapWidth, int mapHeight) {
 }
 
 void Map::drawPoints(QPainter& painter) {
-    std::array<int, 2> position = transormCoordinates(
+    std::array<int, 2> positionDev = transormCoordinates(
         {curr_dev_pose->getPose()[0], curr_dev_pose->getPose()[1]},
         curr_dev_pose->getPixmap().width(),
         curr_dev_pose->getPixmap().height());
+
+    painter.setPen(QPen(Qt::blue, 1, Qt::DashLine));
+    if (curr_points.size() > 0) {
+        painter.drawLine(curr_dev_pose->getPose()[0], - curr_dev_pose->getPose()[1], curr_points.at(0).getPos()[0] * 100, - curr_points.at(0).getPos()[1] * 100);
+
+        painter.drawLine(curr_dev_pose->getPose()[0], - curr_dev_pose->getPose()[1], curr_points.at(2).getPos()[0] * 100, - curr_points.at(2).getPos()[1] * 100);
+    }
 
     if (!prev_dev_pose.empty()) {
         for (auto point : prev_dev_pose) {
@@ -99,7 +106,7 @@ void Map::drawPoints(QPainter& painter) {
         }
     }
 
-    painter.drawPixmap(position[0], position[1], curr_dev_pose->getPixmap());
+    painter.drawPixmap(positionDev[0], positionDev[1], curr_dev_pose->getPixmap());
 
     if (!prev_points.empty()) {
         for (auto point : prev_points) {
@@ -118,6 +125,8 @@ void Map::drawPoints(QPainter& painter) {
             painter.drawPixmap(position[0], position[1], point.getPixmap());
         }
     }
+
+
 }
 
 std::array<int, 2> Map::transormCoordinates(std::array<int, 2> goalPosition,
@@ -161,6 +170,8 @@ void Map::handleSentStringFromSerial(const QStringList &list) {
 
     std::array<int, 2> data;
 
+    curr_points.clear(); // Only keep the newest sensor data
+
     for (int i = 0; i < 5; i++) {
         data = {list.at(i).toInt(), list.at(i+1).toInt()};
         i++;
@@ -172,8 +183,6 @@ void Map::addPoints(std::array<int, 2> data) {
     std::array<int, 3> angles = {-45, 0, 45};
     std::array<int, 2> pos;
 
-    curr_points.clear(); // Only keep the newest sensor data
-
     double alpha = (angles[data[0]] + curr_dev_pose->getPose()[2]) * M_PI / 180;
     pos[0] = round(sin(alpha) * data[1]) + curr_dev_pose->getPose()[0];
     pos[1] = round(cos(alpha) * data[1]) + curr_dev_pose->getPose()[1];
@@ -182,3 +191,4 @@ void Map::addPoints(std::array<int, 2> data) {
 
     update();
 }
+

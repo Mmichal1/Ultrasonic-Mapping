@@ -38,7 +38,7 @@
     <string>Welcome</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="connectButton">
+  <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -48,7 +48,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Connect to device</string>
+    <string>Start</string>
    </property>
   </widget>
  </widget>

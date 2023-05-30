@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::WelcomeDialog *ui;
+
 };
 
 #endif // WELCOMEDIALOG_H

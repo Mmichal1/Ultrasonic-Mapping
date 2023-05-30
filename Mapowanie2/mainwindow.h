@@ -17,7 +17,7 @@
 #include <QSerialPortInfo>
 #include <QTimer>
 #include <QStatusBar>
-#include <QFrame>
+#include <QSignalMapper>
 #include <QByteArray>
 
 QT_BEGIN_NAMESPACE
@@ -44,7 +44,6 @@ public:
 
     void showWelcomeWindow();
 
-
 public slots:
     //! Publiczny slot
     /*!
@@ -59,6 +58,8 @@ public slots:
       wyświetlane jest okno dialogowe umożliwiające zmianę pozycji oraz orientację urządzenia.
     */
     void onChangePoseButtonClicked();
+
+    void performActionOnExit();
 
 
 
@@ -88,6 +89,9 @@ private slots:
       Slot, którego wywołanie powoduje odświeżenie listy dostępnych portów szeregowych
     */
     void refreshPortList();
+
+    void onConnectButtonClicked();
+
 
 signals:
     //! Sygnał
@@ -129,11 +133,14 @@ private:
 
     WelcomeDialog *welcomeWindow;
 
+
     //! Prywatna metoda
     /*!
       Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
     */
     void printPoseToLabel();
+
+    void sendDataToSerial(const QByteArray &message);
 
 };
 #endif // MAINWINDOW_H
