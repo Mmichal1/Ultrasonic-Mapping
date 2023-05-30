@@ -7,15 +7,22 @@ namespace Ui {
 class WelcomeDialog;
 }
 
-class WelcomeDialog : public QDialog
-{
+//!  Klasa okna powitalnego
+class WelcomeDialog : public QDialog {
     Q_OBJECT
 
 public:
+    //! Konstruktor klasy
     explicit WelcomeDialog(QWidget *parent = nullptr);
+    //! Destruktor klasy
     ~WelcomeDialog();
 
 private:
+    //! Prywatny obiekt
+    /*!
+      Instacja obiektu Ui.
+    */
+    //!
     Ui::WelcomeDialog *ui;
 
 };

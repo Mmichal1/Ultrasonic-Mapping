@@ -2,18 +2,18 @@
 
 Map::Map(QWidget* parent) : QWidget{parent} {
 
-    dev_pos_pixmap = new QPixmap(":/device_pos.svg");
-    *dev_pos_pixmap = dev_pos_pixmap->scaled(dev_pos_pixmap->width() / 2,
-                                             dev_pos_pixmap->height() / 2);
+    devPosPixmap = new QPixmap(":/device_pos.svg");
+    *devPosPixmap = devPosPixmap->scaled(devPosPixmap->width() / 2,
+                                             devPosPixmap->height() / 2);
 
-    dev_pos_prev_pixmap = new QPixmap(":/device_pos_prev.svg");
-    *dev_pos_prev_pixmap = dev_pos_prev_pixmap->scaled(
-        dev_pos_prev_pixmap->width() / 2, dev_pos_prev_pixmap->height() / 2);
+    devPosPrevPixmap = new QPixmap(":/device_pos_prev.svg");
+    *devPosPrevPixmap = devPosPrevPixmap->scaled(
+        devPosPrevPixmap->width() / 2, devPosPrevPixmap->height() / 2);
 
-    point_pixmap = new QPixmap(":/point.svg");
-    point_prev_pixmap = new QPixmap(":/point_prev.svg");
+    pointPixmap = new QPixmap(":/point.svg");
+    pointPrevPixmap = new QPixmap(":/point_prev.svg");
 
-    curr_dev_pose = new DevicePoint(*dev_pos_pixmap, {0, 0, 0});
+    currDevPose = new DevicePoint(*devPosPixmap, {0, 0, 0});
 }
 
 void Map::paintEvent(QPaintEvent* event) {
@@ -86,19 +86,16 @@ void Map::drawGrid(QPainter& painter, int mapWidth, int mapHeight) {
 
 void Map::drawPoints(QPainter& painter) {
     std::array<int, 2> positionDev = transormCoordinates(
-        {curr_dev_pose->getPose()[0], curr_dev_pose->getPose()[1]},
-        curr_dev_pose->getPixmap().width(),
-        curr_dev_pose->getPixmap().height());
+        {currDevPose->getPose()[0], currDevPose->getPose()[1]},
+        currDevPose->getPixmap().width(),
+        currDevPose->getPixmap().height());
 
     painter.setPen(QPen(Qt::blue, 1, Qt::DashLine));
-    if (curr_points.size() > 0) {
-        painter.drawLine(curr_dev_pose->getPose()[0], - curr_dev_pose->getPose()[1], curr_points.at(0).getPos()[0] * 100, - curr_points.at(0).getPos()[1] * 100);
 
-        painter.drawLine(curr_dev_pose->getPose()[0], - curr_dev_pose->getPose()[1], curr_points.at(2).getPos()[0] * 100, - curr_points.at(2).getPos()[1] * 100);
-    }
+    drawDetectionArea(painter);
 
-    if (!prev_dev_pose.empty()) {
-        for (auto point : prev_dev_pose) {
+    if (!prevDevPose.empty()) {
+        for (auto point : prevDevPose) {
             std::array<int, 2> position = transormCoordinates(
                 {point.getPose()[0], point.getPose()[1]},
                 point.getPixmap().width(), point.getPixmap().height());
@@ -106,10 +103,10 @@ void Map::drawPoints(QPainter& painter) {
         }
     }
 
-    painter.drawPixmap(positionDev[0], positionDev[1], curr_dev_pose->getPixmap());
+    painter.drawPixmap(positionDev[0], positionDev[1], currDevPose->getPixmap());
 
-    if (!prev_points.empty()) {
-        for (auto point : prev_points) {
+    if (!prevPoints.empty()) {
+        for (auto point : prevPoints) {
             std::array<int, 2> position = transormCoordinates(
                 {point.getPos()[0], point.getPos()[1]},
                 point.getPixmap().width(), point.getPixmap().height());
@@ -117,16 +114,42 @@ void Map::drawPoints(QPainter& painter) {
         }
     }
 
-    if (!curr_points.empty()) {
-        for (auto point : curr_points) {
+    if (!currPoints.empty()) {
+        for (auto point : currPoints) {
             std::array<int, 2> position = transormCoordinates(
                 {point.getPos()[0], point.getPos()[1]},
                 point.getPixmap().width(), point.getPixmap().height());
             painter.drawPixmap(position[0], position[1], point.getPixmap());
         }
     }
+}
 
+void Map::drawDetectionArea(QPainter& painter) {
 
+    std::array<int, 2> posLeft;
+    std::array<int, 2> posRight;
+    int distance = 400;
+    double alpha = 0.0;
+
+    alpha = (- 45 + currDevPose->getPose()[2]) * M_PI / 180;
+    posLeft[0] = round(sin(alpha) * distance) + currDevPose->getPose()[0];
+    posLeft[1] = round(cos(alpha) * distance) + currDevPose->getPose()[1];
+
+    painter.drawLine(currDevPose->getPose()[0], - currDevPose->getPose()[1], posLeft[0] , - posLeft[1] );
+
+    alpha = (45 + currDevPose->getPose()[2]) * M_PI / 180;
+    posRight[0] = round(sin(alpha) * distance) + currDevPose->getPose()[0];
+    posRight[1] = round(cos(alpha) * distance) + currDevPose->getPose()[1];
+
+    painter.drawLine(currDevPose->getPose()[0], - currDevPose->getPose()[1], posRight[0] , - posRight[1] );
+
+//    int width = 450;  // Width of the arc's bounding rectangle
+//    int height = 100; // Height of the arc's bounding rectangle
+//    int startAngle = 100 * 16; // Start angle (in 1/16th of a degree)
+//    int spanAngle = 120 * 16; // Span angle (in 1/16th of a degree)
+
+//    painter.drawArc(posLeft[0], - posLeft[1], width, height, startAngle, spanAngle);
+    painter.drawLine(posLeft[0], - posLeft[1], posRight[0] , - posRight[1] );
 }
 
 std::array<int, 2> Map::transormCoordinates(std::array<int, 2> goalPosition,
@@ -137,32 +160,32 @@ std::array<int, 2> Map::transormCoordinates(std::array<int, 2> goalPosition,
     return position;
 }
 
-std::array<int, 3> Map::getDevicePose() { return curr_dev_pose->getPose(); }
+std::array<int, 3> Map::getDevicePose() { return currDevPose->getPose(); }
 
 
 void Map::onResetButtonClicked() {
-    curr_points.clear();
-    prev_points.clear();
-    prev_dev_pose.clear();
-    curr_dev_pose->setPose({0, 0, 0});
+    currPoints.clear();
+    prevPoints.clear();
+    prevDevPose.clear();
+    currDevPose->setPose({0, 0, 0});
     update();
 }
 
 void Map::handleSentString(const QString& text) {
     QStringList list = text.split(" ");
-    prev_dev_pose.push_back(*curr_dev_pose);
-    prev_dev_pose.back().setPixmap(*dev_pos_prev_pixmap);
-    curr_dev_pose->setPose({list[0].toInt(), list[1].toInt(), list[2].toInt()});
+    prevDevPose.push_back(*currDevPose);
+    prevDevPose.back().setPixmap(*devPosPrevPixmap);
+    currDevPose->setPose({list[0].toInt(), list[1].toInt(), list[2].toInt()});
     update();
 
-    prev_points.insert(prev_points.end(),
-                       std::make_move_iterator(curr_points.begin()),
-                       std::make_move_iterator(curr_points.end()));
+    prevPoints.insert(prevPoints.end(),
+                       std::make_move_iterator(currPoints.begin()),
+                       std::make_move_iterator(currPoints.end()));
 
-    curr_points.erase(curr_points.begin(), curr_points.end());
+    currPoints.erase(currPoints.begin(), currPoints.end());
 
-    for (auto& i : prev_points) {
-        i.setPixmap(*point_prev_pixmap);
+    for (auto& i : prevPoints) {
+        i.setPixmap(*pointPrevPixmap);
     }
 }
 
@@ -170,7 +193,7 @@ void Map::handleSentStringFromSerial(const QStringList &list) {
 
     std::array<int, 2> data;
 
-    curr_points.clear(); // Only keep the newest sensor data
+    currPoints.clear(); // Only keep the newest sensor data
 
     for (int i = 0; i < 5; i++) {
         data = {list.at(i).toInt(), list.at(i+1).toInt()};
@@ -183,11 +206,11 @@ void Map::addPoints(std::array<int, 2> data) {
     std::array<int, 3> angles = {-45, 0, 45};
     std::array<int, 2> pos;
 
-    double alpha = (angles[data[0]] + curr_dev_pose->getPose()[2]) * M_PI / 180;
-    pos[0] = round(sin(alpha) * data[1]) + curr_dev_pose->getPose()[0];
-    pos[1] = round(cos(alpha) * data[1]) + curr_dev_pose->getPose()[1];
+    double alpha = (angles[data[0]] + currDevPose->getPose()[2]) * M_PI / 180;
+    pos[0] = round(sin(alpha) * data[1]) + currDevPose->getPose()[0];
+    pos[1] = round(cos(alpha) * data[1]) + currDevPose->getPose()[1];
 
-    curr_points.push_back(ObstaclePoint(*point_pixmap, pos));
+    currPoints.push_back(ObstaclePoint(*pointPixmap, pos));
 
     update();
 }

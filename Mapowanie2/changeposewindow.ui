@@ -366,8 +366,8 @@
   <tabstop>textEditX</tabstop>
   <tabstop>textEditY</tabstop>
   <tabstop>textEditDeg</tabstop>
-  <tabstop>buttonCancel</tabstop>
   <tabstop>buttonOk</tabstop>
+  <tabstop>buttonCancel</tabstop>
  </tabstops>
  <resources/>
  <connections/>

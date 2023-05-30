@@ -28,7 +28,7 @@ Sensor::Sensor(uint8_t SENSOR_ID, uint8_t TRIG_PIN, uint8_t ECHO_PIN) {
     Sensor::ECHO_PIN = ECHO_PIN;
 }
 
-Sensor list[] = {Sensor(0, 4, 5), Sensor(1, 8, 9),
+Sensor sensorList[] = {Sensor(0, 4, 5), Sensor(1, 8, 9),
                  Sensor(2, 12, 13)};  //!< Lista przechowująca instancje czujników
 CRC16 crc;                            //!< Inicjalizacja instancji obiektu, dzięki któremu obliczana będzie suma kontrolna
 
@@ -77,12 +77,17 @@ void readFromSerial() {
     Ustawienie wielomianu CRC.
 */
 void setup() {
-    for (Sensor sensor : list) {
+    for (Sensor sensor : sensorList) {
         pinMode(sensor.TRIG_PIN, OUTPUT);
         pinMode(sensor.ECHO_PIN, INPUT);
     }
     Serial.begin(9600);      
-    crc.setPolynome(0x1021); 
+    crc.setPolynome(0x8811); 
+    // crc.setPolynome(0x1021); 
+    crc.setStartXOR(0xFFFF); 
+    // crc.setStartXOR(0x1D0F);
+    crc.setReverseIn(false);
+    crc.setReverseOut(false);
 }
 
 /*!
@@ -97,20 +102,20 @@ void loop() {
 
       data = ""; 
 
-      for (int i = 0; i < sizeof(list) / sizeof(int) - 1 ;) {
+      for (int i = 0; i < sizeof(sensorList) / sizeof(int) - 1 ;) {
 
           readFromSerial();
         
           if (millis() - previousTimeReadSensor >= 500UL) {
             previousTimeReadSensor = millis();
 
-            duration = readFromSensor(list[i].TRIG_PIN, list[i].ECHO_PIN);
+            duration = readFromSensor(sensorList[i].TRIG_PIN, sensorList[i].ECHO_PIN);
             distanceCm = duration / 29.1 / 2;
             
             if (distanceCm <= 0) {
                 Serial.println("Out of range");
             } else {
-                sprintf(numstr, "%d %lu ", list[i].SENSOR_ID, distanceCm);
+                sprintf(numstr, "%d %lu ", sensorList[i].SENSOR_ID, distanceCm);
                 data = data + numstr;
             }
             i++;
@@ -122,8 +127,7 @@ void loop() {
       }
       
       Serial.print(data);
-      Serial.print("\t");
-      Serial.println(crc.getCRC(), DEC);
+      Serial.println(crc.getCRC(), HEX);
       crc.reset();    
     }
 } 

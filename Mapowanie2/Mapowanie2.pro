@@ -41,7 +41,8 @@ RESOURCES += \
     point_prev.svg \
     device_pos.svg \
     device_pos_prev.svg \
-    dev_point.svg
+    connection_bad.svg \
+    connection_ok.svg
 
 CONFIG += lrelease
 CONFIG += embed_translations

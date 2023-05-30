@@ -19,6 +19,7 @@
 #include <QStatusBar>
 #include <QSignalMapper>
 #include <QByteArray>
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,6 +43,11 @@ public:
     //! Domyślny destruktor
     ~MainWindow();
 
+
+    //! Publiczna metoda
+    /*!
+      Publiczna metoda wyświetlająca okno powitalne
+    */
     void showWelcomeWindow();
 
 public slots:
@@ -59,9 +65,11 @@ public slots:
     */
     void onChangePoseButtonClicked();
 
+    //! Publiczny slot
+    /*!
+      Slot wywoływany podczas zamykania programu
+    */
     void performActionOnExit();
-
-
 
 private slots:
     //! Prywatny slot
@@ -90,8 +98,13 @@ private slots:
     */
     void refreshPortList();
 
+    //! Prywatny slot
+    /*!
+      Slot, którego wywołanie powoduje wysłanie wiadomości na port seryjny w celu próby połączenia
+    */
     void onConnectButtonClicked();
 
+    void onRefreshButtonClicked();
 
 signals:
     //! Sygnał
@@ -107,8 +120,6 @@ private:
     */
     //!
     Ui::MainWindow *ui;
-
-
 
     //! Prywatny obiekt
     /*!
@@ -131,8 +142,15 @@ private:
     //!
     ChangePoseWindow *changePoseWindow;
 
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt okna powitalnego
+    */
+    //!
     WelcomeDialog *welcomeWindow;
 
+    QPixmap *connectionOkPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
+    QPixmap *connectionBadPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
 
     //! Prywatna metoda
     /*!
@@ -140,7 +158,12 @@ private:
     */
     void printPoseToLabel();
 
+    //! Prywatna metoda
+    /*!
+      Metoda za pomocą której wysyłana jest wiadomość na port seryjny
+    */
     void sendDataToSerial(const QByteArray &message);
+
 
 };
 #endif // MAINWINDOW_H
