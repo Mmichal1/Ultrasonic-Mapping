@@ -6,6 +6,7 @@ WelcomeDialog::WelcomeDialog(QWidget *parent) :
 
     ui->setupUi(this);
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(close()));
+    setWindowTitle(tr("Welcome"));
 }
 
 WelcomeDialog::~WelcomeDialog() {

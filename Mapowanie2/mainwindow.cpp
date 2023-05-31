@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusBarLayout->addWidget(bar);
     ui->connectionLabel->setPixmap(*connectionBadPixmap);
 
+    setWindowTitle(tr("Ultrasonic Mapping"));
     refreshPortList();
     printPoseToLabel();
 }
@@ -79,7 +80,7 @@ void MainWindow::readSerialData() {
     string.chop(2);
 
     if (string == "49") {
-        bar->showMessage(tr("Connection successfull"), 2000);
+        bar->showMessage(tr("Connection successful"), 5000);
         ui->connectionLabel->setPixmap(*connectionOkPixmap);
         qDebug() << string;
     }

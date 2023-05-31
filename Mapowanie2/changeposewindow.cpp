@@ -11,6 +11,8 @@ ChangePoseWindow::ChangePoseWindow(QWidget *parent)
             SLOT(onOkButtonClicked()));
     connect(ui->buttonOk, SIGNAL(clicked(bool)), this, SLOT(close()));
 
+    setWindowTitle(tr("Change pose"));
+
     setTabOrder(ui->textEditX, ui->textEditY);
 }
 

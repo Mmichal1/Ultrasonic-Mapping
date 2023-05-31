@@ -128,7 +128,7 @@ void Map::drawDetectionArea(QPainter& painter) {
 
     std::array<int, 2> posLeft;
     std::array<int, 2> posRight;
-    int distance = 400;
+    int distance = 450;
     double alpha = 0.0;
 
     alpha = (- 45 + currDevPose->getPose()[2]) * M_PI / 180;
