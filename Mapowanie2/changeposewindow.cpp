@@ -12,6 +12,8 @@ ChangePoseWindow::ChangePoseWindow(QWidget *parent)
     connect(ui->buttonOk, SIGNAL(clicked(bool)), this, SLOT(close()));
 
     setWindowTitle(tr("Change pose"));
+    ui->textLabel->setText(tr("Enter new pose:"));
+    ui->buttonCancel->setText(tr("Cancel"));
 
     setTabOrder(ui->textEditX, ui->textEditY);
 }

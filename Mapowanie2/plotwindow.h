@@ -8,8 +8,7 @@ namespace Ui {
 class PlotWindow;
 }
 
-class PlotWindow : public QDialog
-{
+class PlotWindow : public QDialog {
     Q_OBJECT
 
 public:
@@ -20,6 +19,9 @@ public:
 
 private:
     Ui::PlotWindow *ui;
+
+private slots:
+    void selectionChanged();
 
 public slots:
     void clearData();

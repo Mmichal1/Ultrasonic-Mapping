@@ -21,6 +21,7 @@
 #include <QSignalMapper>
 #include <QByteArray>
 #include <QThread>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -114,6 +115,10 @@ private slots:
 
     void timerCallback();
 
+    void onStopStartButtonClicked();
+
+    void languageSelection(const QString& selectedText);
+
 
 
 signals:
@@ -181,6 +186,10 @@ private:
     int timeFromStart;
 
     QTimer timer;
+
+    QPushButton *stopStartButton;
+
+    QTranslator* translator;
 
 };
 #endif // MAINWINDOW_H

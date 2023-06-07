@@ -49,6 +49,10 @@ RESOURCES += \
     connection_bad.svg \
     connection_ok.svg
 
+TRANSLATIONS += \
+    mapowanie_en.ts \
+    mapowanie_pl.ts
+
 CONFIG += lrelease
 CONFIG += embed_translations
 
@@ -56,3 +60,4 @@ CONFIG += embed_translations
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+

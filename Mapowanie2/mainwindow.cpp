@@ -6,16 +6,20 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+
+    translator = new QTranslator();
+
     changePoseWindow = new ChangePoseWindow(this);
     welcomeWindow = new WelcomeDialog(this);
     plotWindow = new PlotWindow(this);
-
     bar = new QStatusBar(this);
     connectionOkPixmap = new QPixmap(":/connection_ok.svg");
     connectionBadPixmap = new QPixmap(":/connection_bad.svg");
     sensorDataBuffer = new std::array<int, 3>{0, 0, 0};
 
     QPushButton *clearButton = plotWindow->findChild<QPushButton*>("clearButton");
+    QComboBox *languageComboBox = welcomeWindow->findChild<QComboBox*>("languageComboBox");
+    stopStartButton = plotWindow->findChild<QPushButton*>("stopStartButton");
 
     connect(ui->resetButton, SIGNAL(clicked()),
             ui->mapWidget, SLOT(onResetButtonClicked()));
@@ -47,7 +51,13 @@ MainWindow::MainWindow(QWidget *parent)
             plotWindow, SLOT(clearData()));
     connect(ui->resetButton, SIGNAL(clicked()),
             this, SLOT(onClearButtonClicked()));
-    connect(clearButton, SIGNAL(clicked()), this, SLOT(onClearButtonClicked()));
+    connect(clearButton, SIGNAL(clicked()),
+            this, SLOT(onClearButtonClicked()));
+    connect(stopStartButton, SIGNAL(clicked()),
+            this, SLOT(onStopStartButtonClicked()));
+    connect(languageComboBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::languageSelection);
+
 
     QMetaObject::connectSlotsByName(this);
 
@@ -57,21 +67,21 @@ MainWindow::MainWindow(QWidget *parent)
     serial.setStopBits(QSerialPort::OneStop);
 
     connectToPort(ui->serialComboBox->currentText());
-
-    bar->setMaximumHeight(17);
-    ui->statusBarLayout->addWidget(bar);
-    ui->connectionLabel->setPixmap(*connectionBadPixmap);
-
-    timeFromStart = 0;
-
     setWindowTitle(tr("Ultrasonic Mapping"));
     refreshPortList();
     printPoseToLabel();
+    bar->setMaximumHeight(17);
+    ui->statusBarLayout->addWidget(bar);
+    ui->connectionLabel->setPixmap(*connectionBadPixmap);
+    stopStartButton->setText("Stop");
+    ui->refreshButton->setText(tr("Refresh"));
+    ui->connectButton->setText(tr("Connect"));
+    ui->currPoseLabel->setText(tr("Current pose:"));
+    ui->graphButton->setText(tr("Show Graph"));
+    ui->changePoseButton->setText(tr("Change Pose"));
 
-
-
-
-    timer.setInterval(1000); // Set the timer interval to 1 second
+    timeFromStart = 0;
+    timer.setInterval(1000);
     connect(&timer, &QTimer::timeout, this, &MainWindow::timerCallback);
     timer.start();
 }
@@ -118,7 +128,7 @@ void MainWindow::readSerialData() {
         qDebug() << string;
     }
 
-    ui->serialPortLabel->setText(string);
+    qDebug() << string;
 //    QString crcDevice = string.right(4);
     string.chop(4);
 //    QByteArray bytes = string.toUtf8();
@@ -217,11 +227,11 @@ void MainWindow::sendDataToSerial(const QByteArray &message) {
     qint64 bytesWritten = serial.write(message);
 
     if (bytesWritten == -1) {
-        qDebug() << "Failed to write to serial port:" << serial.errorString();
+        qDebug() << tr("Failed to write to serial port:") << serial.errorString();
         QByteArray ba = serial.errorString().toLocal8Bit();
         bar->showMessage(tr(ba.data()), 2000);
     } else {
-        qDebug() << "Message sent:" << message;
+        qDebug() << tr("Message sent:") << message;
     }
 }
 
@@ -235,4 +245,28 @@ void MainWindow::onClearButtonClicked() {
     sensorDataBuffer->fill(0);
 }
 
+void MainWindow::onStopStartButtonClicked() {
+    if (stopStartButton->text() == "Stop") {
+        stopStartButton->setText("Start");
+        timer.stop();
+    }
+    else {
+        stopStartButton->setText("Stop");
+        timer.start();
+    }
+}
+
+void MainWindow::languageSelection(const QString& selectedText) {
+    if (selectedText == "PL") {
+        qApp->removeTranslator(translator);
+        if (translator->load("mapowanie_pl","/home/michal/Desktop/WDS/Mapowanie2/")) {
+            qApp->installTranslator(translator);
+        }
+    } else if (selectedText == "EN") {
+        qApp->removeTranslator(translator);
+        if (translator->load("mapowanie_en","/home/michal/Desktop/WDS/Mapowanie2/")) {
+            qApp->installTranslator(translator);
+        }
+    }
+}
 
