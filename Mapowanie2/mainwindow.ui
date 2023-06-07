@@ -177,6 +177,13 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
+             <widget class="QPushButton" name="graphButton">
+              <property name="text">
+               <string>Show Graph</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QLabel" name="label_2">
               <property name="maximumSize">
                <size>

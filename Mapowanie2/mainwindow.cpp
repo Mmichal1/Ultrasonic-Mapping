@@ -8,9 +8,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     changePoseWindow = new ChangePoseWindow(this);
     welcomeWindow = new WelcomeDialog(this);
+    plotWindow = new PlotWindow(this);
+    for (int i = 0; i < 100; i++) {
+
+    }
+
     bar = new QStatusBar(this);
     connectionOkPixmap = new QPixmap(":/connection_ok.svg");
     connectionBadPixmap = new QPixmap(":/connection_bad.svg");
+    sensorDataBuffer = new std::array<int, 3>();
 
     connect(ui->resetButton, SIGNAL(clicked()),
             ui->mapWidget, SLOT(onResetButtonClicked()));
@@ -36,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(onConnectButtonClicked()));
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(onRefreshButtonClicked()));
+    connect(ui->graphButton, SIGNAL(clicked()),
+            this, SLOT(onGraphButtonClicked()));
 
     QMetaObject::connectSlotsByName(this);
 
@@ -50,9 +58,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusBarLayout->addWidget(bar);
     ui->connectionLabel->setPixmap(*connectionBadPixmap);
 
+    timeFromStart = 0;
+
     setWindowTitle(tr("Ultrasonic Mapping"));
     refreshPortList();
     printPoseToLabel();
+
+    timer.setInterval(1000); // Set the timer interval to 1 second
+    connect(&timer, &QTimer::timeout, this, &MainWindow::incrementCounter);
+    timer.start();
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -71,6 +85,12 @@ void MainWindow::onChangePoseButtonClicked() {
 
     changePoseWindow->setModal(true);
     changePoseWindow->exec();
+}
+
+void MainWindow::onGraphButtonClicked() {
+
+    plotWindow->setWindowModality(Qt::NonModal);
+    plotWindow->show();
 }
 
 void MainWindow::readSerialData() {
@@ -104,6 +124,9 @@ void MainWindow::readSerialData() {
 //    }
 
     if (list.length() == 6) {
+        MainWindow::sensorDataBuffer->at(0) = list.at(1).toInt();
+        MainWindow::sensorDataBuffer->at(1) = list.at(3).toInt();
+        MainWindow::sensorDataBuffer->at(2) = list.at(5).toInt();
         emit sendStringFromSerial(list);
     }
 }
@@ -193,5 +216,10 @@ void MainWindow::sendDataToSerial(const QByteArray &message) {
     } else {
         qDebug() << "Message sent:" << message;
     }
+}
+
+void MainWindow::incrementCounter() {
+    timeFromStart++;
+    plotWindow->addPointsToPlot(timeFromStart, sensorDataBuffer->at(0), sensorDataBuffer->at(1), sensorDataBuffer->at(2));
 }
 

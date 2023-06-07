@@ -2,7 +2,7 @@ QT       += core gui
 QT       += uitools
 QT       += serialport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 CONFIG += c++17
 
@@ -17,8 +17,10 @@ SOURCES += \
     mainwindow.cpp \
     map.cpp \
     obstaclepoint.cpp \
+    plotwindow.cpp \
     poselabel.cpp \
     posetextedit.cpp \
+    qcustomplot.cpp \
     welcomedialog.cpp
 
 HEADERS += \
@@ -27,13 +29,16 @@ HEADERS += \
     mainwindow.h \
     map.h \
     obstaclepoint.h \
+    plotwindow.h \
     poselabel.h \
     posetextedit.h \
+    qcustomplot.h \
     welcomedialog.h
 
 FORMS += \
     changeposewindow.ui \
     mainwindow.ui \
+    plotwindow.ui \
     welcomedialog.ui
 
 RESOURCES += \

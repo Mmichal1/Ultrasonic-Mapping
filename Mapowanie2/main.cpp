@@ -8,10 +8,11 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     MainWindow mainWindow;
+//    PlotWindow mainWindow;
 
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &mainWindow, &MainWindow::performActionOnExit);
 
     mainWindow.show();
-    mainWindow.showWelcomeWindow();
+//    mainWindow.showWelcomeWindow();
     return app.exec();
 }

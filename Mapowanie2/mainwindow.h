@@ -4,6 +4,7 @@
 #include "map.h"
 #include "changeposewindow.h"
 #include "welcomedialog.h"
+#include "plotwindow.h"
 
 #include <QUiLoader>
 #include <QMainWindow>
@@ -65,6 +66,8 @@ public slots:
     */
     void onChangePoseButtonClicked();
 
+    void onGraphButtonClicked();
+
     //! Publiczny slot
     /*!
       Slot wywoływany podczas zamykania programu
@@ -105,6 +108,9 @@ private slots:
     void onConnectButtonClicked();
 
     void onRefreshButtonClicked();
+
+    void incrementCounter();
+
 
 signals:
     //! Sygnał
@@ -149,6 +155,8 @@ private:
     //!
     WelcomeDialog *welcomeWindow;
 
+    PlotWindow *plotWindow;
+
     QPixmap *connectionOkPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
     QPixmap *connectionBadPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
 
@@ -164,6 +172,11 @@ private:
     */
     void sendDataToSerial(const QByteArray &message);
 
+    std::array<int, 3>* sensorDataBuffer;
+
+    int timeFromStart;
+
+    QTimer timer;
 
 };
 #endif // MAINWINDOW_H
