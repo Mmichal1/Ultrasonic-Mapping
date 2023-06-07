@@ -9,14 +9,13 @@ MainWindow::MainWindow(QWidget *parent)
     changePoseWindow = new ChangePoseWindow(this);
     welcomeWindow = new WelcomeDialog(this);
     plotWindow = new PlotWindow(this);
-    for (int i = 0; i < 100; i++) {
-
-    }
 
     bar = new QStatusBar(this);
     connectionOkPixmap = new QPixmap(":/connection_ok.svg");
     connectionBadPixmap = new QPixmap(":/connection_bad.svg");
-    sensorDataBuffer = new std::array<int, 3>();
+    sensorDataBuffer = new std::array<int, 3>{0, 0, 0};
+
+    QPushButton *clearButton = plotWindow->findChild<QPushButton*>("clearButton");
 
     connect(ui->resetButton, SIGNAL(clicked()),
             ui->mapWidget, SLOT(onResetButtonClicked()));
@@ -44,6 +43,11 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(onRefreshButtonClicked()));
     connect(ui->graphButton, SIGNAL(clicked()),
             this, SLOT(onGraphButtonClicked()));
+    connect(ui->resetButton, SIGNAL(clicked()),
+            plotWindow, SLOT(clearData()));
+    connect(ui->resetButton, SIGNAL(clicked()),
+            this, SLOT(onClearButtonClicked()));
+    connect(clearButton, SIGNAL(clicked()), this, SLOT(onClearButtonClicked()));
 
     QMetaObject::connectSlotsByName(this);
 
@@ -64,8 +68,11 @@ MainWindow::MainWindow(QWidget *parent)
     refreshPortList();
     printPoseToLabel();
 
+
+
+
     timer.setInterval(1000); // Set the timer interval to 1 second
-    connect(&timer, &QTimer::timeout, this, &MainWindow::incrementCounter);
+    connect(&timer, &QTimer::timeout, this, &MainWindow::timerCallback);
     timer.start();
 }
 
@@ -218,8 +225,14 @@ void MainWindow::sendDataToSerial(const QByteArray &message) {
     }
 }
 
-void MainWindow::incrementCounter() {
-    timeFromStart++;
+void MainWindow::timerCallback() {
     plotWindow->addPointsToPlot(timeFromStart, sensorDataBuffer->at(0), sensorDataBuffer->at(1), sensorDataBuffer->at(2));
+    timeFromStart++;
 }
+
+void MainWindow::onClearButtonClicked() {
+    timeFromStart = 0;
+    sensorDataBuffer->fill(0);
+}
+
 

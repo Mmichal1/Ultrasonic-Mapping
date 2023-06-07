@@ -21,6 +21,9 @@ public:
 private:
     Ui::PlotWindow *ui;
 
+public slots:
+    void clearData();
+
 };
 
 #endif // PLOTWINDOW_H

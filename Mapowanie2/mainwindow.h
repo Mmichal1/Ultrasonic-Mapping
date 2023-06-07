@@ -109,7 +109,11 @@ private slots:
 
     void onRefreshButtonClicked();
 
-    void incrementCounter();
+    void onClearButtonClicked();
+
+
+    void timerCallback();
+
 
 
 signals:
