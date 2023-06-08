@@ -34,7 +34,6 @@ PlotWindow::PlotWindow(QWidget *parent) :
 
     ui->plotWidget->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables | QCP::iSelectLegend);
 
-    setWindowTitle(tr("Graph"));
     ui->closeButton->setText(tr("Close"));
     ui->clearButton->setText(tr("Clear"));
 }

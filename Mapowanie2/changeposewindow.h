@@ -26,7 +26,8 @@ public:
       Łączone są wysyłane sygnały z przycisków ze slotami
     */
     explicit ChangePoseWindow(QWidget *parent = nullptr);
-    //! Domyślny destruktor
+
+    //! Destruktor
     ~ChangePoseWindow();
 
 private:
@@ -34,7 +35,6 @@ private:
     /*!
       Instacja obiektu Ui.
     */
-    //!
     Ui::ChangePoseWindow *ui;
 
     //! Metoda wirtualna nadpisująca changeEvent

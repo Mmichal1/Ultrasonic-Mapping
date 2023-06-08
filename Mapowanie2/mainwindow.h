@@ -42,9 +42,8 @@ public:
     */
     MainWindow(QWidget *parent = nullptr);
 
-    //! Domyślny destruktor
+    //! Destruktor
     ~MainWindow();
-
 
     //! Publiczna metoda
     /*!
@@ -55,27 +54,9 @@ public:
 public slots:
     //! Publiczny slot
     /*!
-      Slot reagujący na wciśnięcie przycisku. Po wciśnięciu przycisku
-      współrzędne i orientacja urządzenia są wyświetlane w polu tekstowym
-    */
-    void onButtonClicked();
-
-    //! Publiczny slot
-    /*!
-      Slot reagujący na wciśnięcie przycisku 'Change Pose'. Po wciśnięciu przycisku
-      wyświetlane jest okno dialogowe umożliwiające zmianę pozycji oraz orientację urządzenia.
-    */
-    void onChangePoseButtonClicked();
-
-    void onGraphButtonClicked();
-
-    //! Publiczny slot
-    /*!
       Slot wywoływany podczas zamykania programu
     */
     void performActionOnExit();
-
-
 
 private slots:
     //! Prywatny slot
@@ -95,6 +76,7 @@ private slots:
     /*!
       Slot obsługujący błąd związany z otwarciem portu szeregowego lub utratą połączenia
       \param error występujący błąd
+      Zmienna inkrementowana przy callbacku timera, liczy czas od początku działania lub resetu
     */
     void handleError(QSerialPort::SerialPortError error);
 
@@ -110,18 +92,61 @@ private slots:
     */
     void onConnectButtonClicked();
 
-    void onRefreshButtonClicked();
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku. Po wciśnięciu przycisku
+      współrzędne i orientacja urządzenia są wyświetlane w polu tekstowym
+    */
+    void onButtonClicked();
 
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku zmiany pozycji. Po wciśnięciu przycisku
+      wyświetlane jest okno dialogowe umożliwiające zmianę pozycji oraz orientację urządzenia.
+    */
+    void onChangePoseButtonClicked();
+
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku wyświetlenia wykresu. Po wciśnięciu przycisku
+      wyświetlane jest okno dialogowe w którym rysowany jest wykres wskazań czujników.
+    */
+    void onGraphButtonClicked();
+
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku odświeżenia. Po wciśnięciu przycisku
+      zamykany jest port szeregowy i aktualizowana jest lista dostępnych portów
+    */
+    void onRefreshButtonClicked();
+\
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku wyczyszczenia pobranego z klasy wyświetlającej wykres.
+      Po wciśnięciu przycisku resetowany jest timer oraz licznik zliczający czas.
+    */
     void onClearButtonClicked();
 
-
-    void timerCallback();
-
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wciśnięcie przycisku stop/start pobranego z klasy wyświetlającej wykres.
+      Po wciśnięciu przycisku timer jest zatrzymywany lub restartowany.
+    */
     void onStopStartButtonClicked();
 
+    //! Prywatny slot
+    /*!
+      Callback timera wysyłający dane dopisywane do wykresu
+    */
+    void timerCallback();
+
+    //! Prywatny slot
+    /*!
+      Slot reagujący na wybór pozycji z listy dostępnych języków. Wybrany język jest załadowywany do translatora
+      a następnie do instancji aplikacji. Po wybraniu nowej pozycji translator jest usuwany z aplikacji i proces jest powtarzany
+      z nowym językiem
+    */
     void languageSelection(const QString& selectedText);
-
-
 
 signals:
     //! Sygnał
@@ -135,41 +160,73 @@ private:
     /*!
       Instacja obiektu Ui.
     */
-    //!
     Ui::MainWindow *ui;
 
     //! Prywatny obiekt
     /*!
       Obiekt przechowujący dane o porcie szeregowym
     */
-    //!
     QSerialPort serial;
 
     //! Prywatny obiekt
     /*!
       Wskaźnik na obiekt paska stanu
     */
-    //!
     QStatusBar *bar;
 
     //! Prywatny obiekt
     /*!
       Wskaźnik na obiekt okna dialogowego zmiany pozycji
     */
-    //!
     ChangePoseWindow *changePoseWindow;
 
     //! Prywatny obiekt
     /*!
       Wskaźnik na obiekt okna powitalnego
     */
-    //!
     WelcomeDialog *welcomeWindow;
 
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt okna wyświetlającego wykres
+    */
     PlotWindow *plotWindow;
 
-    QPixmap *connectionOkPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
-    QPixmap *connectionBadPixmap; /*!< Wskaźnik na pixmap aktualnej pozycji obiektu */
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na pixmap wyświetlający rodzaj połączenia
+    */
+    QPixmap *connectionOkPixmap;
+
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na pixmap wyświetlający rodzaj połączenia
+    */
+    QPixmap *connectionBadPixmap;
+
+    //! Prywatny obiekt
+    /*!
+      Instacja obiektu timera
+    */
+    QTimer timer;
+
+    //! Prywatny obiekt
+    /*!
+      Wskaźnik na obiekt przycisku stop/start w klasie wyświetlającej okno z wykresem
+    */
+    QPushButton *stopStartButton;
+
+    //! Prywatna zmienna
+    /*!
+      Zmienna inkrementowana przy callbacku timera, liczy czas od początku działania lub resetu
+    */
+    int timeFromStart;
+
+    //! Prywatna tablica
+    /*!
+      Wskaźnik na tablicę przechowujący najnowsze dane otrzymane z czujników
+    */
+    std::array<int, 3>* sensorDataBuffer;
 
     //! Prywatna metoda
     /*!
@@ -183,14 +240,6 @@ private:
     */
     void sendDataToSerial(const QByteArray &message);
 
-    std::array<int, 3>* sensorDataBuffer;
-
-    int timeFromStart;
-
-    QTimer timer;
-
-    QPushButton *stopStartButton;
-
     //! Metoda wirtualna nadpisująca changeEvent
     /*!
       Za pomocą tej metody tłumaczony jest interfejs użytkownika wtedy, kiedy wykryte zotanie
@@ -198,7 +247,5 @@ private:
       \param event wskaźnik na obiekt typu QEvent
     */
     virtual void changeEvent(QEvent *event) override;
-
-
 };
 #endif // MAINWINDOW_H

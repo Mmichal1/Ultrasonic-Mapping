@@ -8,24 +8,61 @@ namespace Ui {
 class PlotWindow;
 }
 
+//!  Klasa okna dialogowego wyświetlającego wykresy
+/*!
+  W tym oknie znajduję się widget, w którym rysowane są wskazania z czujnikóœ w czasie rzeczywistym.
+  Do rysowania wykresy użyto klasy QCustomPlot. W oknie znajdują się również przyciski, które
+  zamykają okno, usuwają dane i czyszczą wykres oraz zatrzymują lub restartują timer.
+*/
 class PlotWindow : public QDialog {
     Q_OBJECT
 
 public:
+    //! Konstruktor klasy
+    /*!
+      W konstruktorze załadowywane są instancje obiektów z pliku .ui do obiektu ui.
+      Wywoływane są wszystkie metode służące do poprawnej konfiguracji widgetu z wykresem.
+      Łączone są wszystkie potrzebne sygnały ze slotami
+    */
     explicit PlotWindow(QWidget *parent = nullptr);
+
+    //! Destruktor
     ~PlotWindow();
 
+    //! Publiczna metoda
+    /*!
+      Za pomocą tej metody dodawane są nowe dane do wykresu
+    */
     void addPointsToPlot(int timeFromStart, int sensorData0, int sensorData1, int sensorData2);
 
 private:
+    //! Prywatny obiekt
+    /*!
+      Instacja obiektu Ui.
+    */
     Ui::PlotWindow *ui;
 
+    //! Metoda wirtualna nadpisująca changeEvent
+    /*!
+      Za pomocą tej metody tłumaczony jest interfejs użytkownika wtedy, kiedy wykryte zotanie
+      wydarzenie zmiany języka
+      \param event wskaźnik na obiekt typu QEvent
+    */
     virtual void changeEvent(QEvent *event) override;
 
 private slots:
+    //! Prywatny slot
+    /*!
+      Slot reagujący na zmianę zaznaczenia poszczególnego wykresu poprzez zaznaczenie odpowiadającej
+      pozycji w legendzie i odwrotnie
+    */
     void selectionChanged();
 
 public slots:
+    //! Publiczny slot
+    /*!
+      Wywołanie tego slotu skutkuje w usunięciu wszystkich danych z wykresu
+    */
     void clearData();
 
 };
