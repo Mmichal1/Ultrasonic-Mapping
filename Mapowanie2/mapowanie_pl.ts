@@ -4,10 +4,6 @@
 <context>
     <name>ChangePoseWindow</name>
     <message>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Enter new pose:</source>
         <translation>Wprowadź nową pozycję:</translation>
     </message>
@@ -33,15 +29,15 @@
     </message>
     <message>
         <source>Change pose</source>
+        <translation type="vanished">Zmień pozycję</translation>
+    </message>
+    <message>
+        <source>Change Pose</source>
         <translation>Zmień pozycję</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation></translation>
-    </message>
     <message>
         <source>Refresh</source>
         <translation>Odśwież</translation>
@@ -56,7 +52,7 @@
     </message>
     <message>
         <source>Show Graph</source>
-        <translation>Pokaż wykres</translation>
+        <translation type="vanished">Pokaż wykres</translation>
     </message>
     <message>
         <source>Change pose</source>
@@ -72,7 +68,7 @@
     </message>
     <message>
         <source>Change Pose</source>
-        <translation>Zmień pozycję</translation>
+        <translation type="vanished">Zmień pozycję</translation>
     </message>
     <message>
         <source>Connection successful</source>
@@ -94,13 +90,13 @@
         <source>Message sent:</source>
         <translation>Wysłano wiadmość:</translation>
     </message>
+    <message>
+        <source>Show graph</source>
+        <translation>Pokaż wykres</translation>
+    </message>
 </context>
 <context>
     <name>PlotWindow</name>
-    <message>
-        <source>Form</source>
-        <translation></translation>
-    </message>
     <message>
         <source>Close</source>
         <translation>Zamknij</translation>
@@ -133,16 +129,16 @@
 <context>
     <name>WelcomeDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Welcome</source>
         <translation>Witaj</translation>
     </message>
     <message>
         <source>Start</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Choose language:</source>
+        <translation>Wybierz język:</translation>
     </message>
 </context>
 </TS>

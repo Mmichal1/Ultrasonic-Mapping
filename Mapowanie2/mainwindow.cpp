@@ -6,9 +6,6 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
-
-    translator = new QTranslator();
-
     changePoseWindow = new ChangePoseWindow(this);
     welcomeWindow = new WelcomeDialog(this);
     plotWindow = new PlotWindow(this);
@@ -37,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::connectToPort);
     connect(&serial, SIGNAL(error(QSerialPort::SerialPortError)),
             this, SLOT(handleError(QSerialPort::SerialPortError)));
+    connect(languageComboBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::languageSelection);
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(refreshPortList()));
     connect(this, SIGNAL(sendStringFromSerial(QStringList)),
@@ -55,9 +54,6 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(onClearButtonClicked()));
     connect(stopStartButton, SIGNAL(clicked()),
             this, SLOT(onStopStartButtonClicked()));
-    connect(languageComboBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
-            this, &MainWindow::languageSelection);
-
 
     QMetaObject::connectSlotsByName(this);
 
@@ -67,18 +63,12 @@ MainWindow::MainWindow(QWidget *parent)
     serial.setStopBits(QSerialPort::OneStop);
 
     connectToPort(ui->serialComboBox->currentText());
-    setWindowTitle(tr("Ultrasonic Mapping"));
     refreshPortList();
     printPoseToLabel();
     bar->setMaximumHeight(17);
     ui->statusBarLayout->addWidget(bar);
     ui->connectionLabel->setPixmap(*connectionBadPixmap);
     stopStartButton->setText("Stop");
-    ui->refreshButton->setText(tr("Refresh"));
-    ui->connectButton->setText(tr("Connect"));
-    ui->currPoseLabel->setText(tr("Current pose:"));
-    ui->graphButton->setText(tr("Show Graph"));
-    ui->changePoseButton->setText(tr("Change Pose"));
 
     timeFromStart = 0;
     timer.setInterval(1000);
@@ -257,6 +247,9 @@ void MainWindow::onStopStartButtonClicked() {
 }
 
 void MainWindow::languageSelection(const QString& selectedText) {
+
+    static QTranslator *translator = new QTranslator();
+
     if (selectedText == "PL") {
         qApp->removeTranslator(translator);
         if (translator->load("mapowanie_pl","/home/michal/Desktop/WDS/Mapowanie2/")) {
@@ -268,5 +261,13 @@ void MainWindow::languageSelection(const QString& selectedText) {
             qApp->installTranslator(translator);
         }
     }
+}
+
+void MainWindow::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+    QMainWindow::changeEvent(event);
 }
 

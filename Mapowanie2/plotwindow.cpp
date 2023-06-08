@@ -74,3 +74,11 @@ void PlotWindow::selectionChanged() {
         }
     }
 }
+
+void PlotWindow::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+    QDialog::changeEvent(event);
+}

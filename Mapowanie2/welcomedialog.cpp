@@ -6,13 +6,18 @@ WelcomeDialog::WelcomeDialog(QWidget *parent) :
 
     ui->setupUi(this);
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(close()));
-    setWindowTitle(tr("Welcome"));
-    ui->label->setText(tr("Welcome"));
-    ui->languageLabel->setText(tr("Choose language"));
-    ui->languageComboBox->addItem("PL");
     ui->languageComboBox->addItem("EN");
+    ui->languageComboBox->addItem("PL");
 }
 
 WelcomeDialog::~WelcomeDialog() {
     delete ui;
+}
+
+void WelcomeDialog::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+    QDialog::changeEvent(event);
 }

@@ -20,6 +20,8 @@ public:
 private:
     Ui::PlotWindow *ui;
 
+    virtual void changeEvent(QEvent *event) override;
+
 private slots:
     void selectionChanged();
 

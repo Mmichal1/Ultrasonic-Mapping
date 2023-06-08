@@ -37,6 +37,15 @@ private:
     //!
     Ui::ChangePoseWindow *ui;
 
+    //! Metoda wirtualna nadpisująca changeEvent
+    /*!
+      Za pomocą tej metody tłumaczony jest interfejs użytkownika wtedy, kiedy wykryte zotanie
+      wydarzenie zmiany języka
+      \param event wskaźnik na obiekt typu QEvent
+    */
+    virtual void changeEvent(QEvent *event) override;
+
+
 private slots:
     //! Prywatny slot
     /*!

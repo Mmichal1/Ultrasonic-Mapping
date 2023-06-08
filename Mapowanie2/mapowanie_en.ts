@@ -4,10 +4,6 @@
 <context>
     <name>ChangePoseWindow</name>
     <message>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Enter new pose:</source>
         <translation></translation>
     </message>
@@ -32,16 +28,12 @@
         <translation></translation>
     </message>
     <message>
-        <source>Change pose</source>
+        <source>Change Pose</source>
         <translation></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation></translation>
-    </message>
     <message>
         <source>Refresh</source>
         <translation></translation>
@@ -56,7 +48,7 @@
     </message>
     <message>
         <source>Show Graph</source>
-        <translation>Show graph</translation>
+        <translation type="vanished">Show graph</translation>
     </message>
     <message>
         <source>Change pose</source>
@@ -68,10 +60,6 @@
     </message>
     <message>
         <source>Ultrasonic Mapping</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Change Pose</source>
         <translation></translation>
     </message>
     <message>
@@ -94,13 +82,13 @@
         <source>Message sent:</source>
         <translation></translation>
     </message>
+    <message>
+        <source>Show graph</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>PlotWindow</name>
-    <message>
-        <source>Form</source>
-        <translation></translation>
-    </message>
     <message>
         <source>Close</source>
         <translation></translation>
@@ -133,15 +121,15 @@
 <context>
     <name>WelcomeDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Welcome</source>
         <translation></translation>
     </message>
     <message>
         <source>Start</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Choose language:</source>
         <translation></translation>
     </message>
 </context>

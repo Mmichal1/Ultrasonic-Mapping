@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Change Pose</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>

@@ -17,13 +17,3 @@ int main(int argc, char *argv[])
     mainWindow.showWelcomeWindow();
     return app.exec();
 }
-
-void changeTranslation(const QString& translationFile)
-{
-    // Remove the previously installed translator
-    qApp->removeTranslator(&translator);
-
-    // Load and install the new translation file
-    translator.load(translationFile);
-    qApp->installTranslator(&translator);
-}

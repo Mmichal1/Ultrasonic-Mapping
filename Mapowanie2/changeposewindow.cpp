@@ -10,12 +10,6 @@ ChangePoseWindow::ChangePoseWindow(QWidget *parent)
     connect(ui->buttonOk, SIGNAL(clicked(bool)), this,
             SLOT(onOkButtonClicked()));
     connect(ui->buttonOk, SIGNAL(clicked(bool)), this, SLOT(close()));
-
-    setWindowTitle(tr("Change pose"));
-    ui->textLabel->setText(tr("Enter new pose:"));
-    ui->buttonCancel->setText(tr("Cancel"));
-
-    setTabOrder(ui->textEditX, ui->textEditY);
 }
 
 ChangePoseWindow::~ChangePoseWindow() { delete ui; }
@@ -30,4 +24,12 @@ void ChangePoseWindow::onOkButtonClicked() {
     ui->textEditDeg->clear();
 
     emit textEntered(text);
+}
+
+void ChangePoseWindow::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+    QDialog::changeEvent(event);
 }

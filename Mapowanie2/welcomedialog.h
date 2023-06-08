@@ -25,6 +25,7 @@ private:
     //!
     Ui::WelcomeDialog *ui;
 
+    virtual void changeEvent(QEvent *event) override;
 };
 
 #endif // WELCOMEDIALOG_H
