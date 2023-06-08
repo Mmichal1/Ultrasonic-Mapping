@@ -23,6 +23,10 @@
 #include <QThread>
 #include <QTranslator>
 
+#define POLYNOMIAL_9 0x0161
+
+typedef unsigned char byte;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -247,5 +251,28 @@ private:
       \param event wskaźnik na obiekt typu QEvent
     */
     virtual void changeEvent(QEvent *event) override;
+
+    //! Prywatna metoda
+    /*!
+      Za pomocą tej metody obliczana jest suma kontrolna dla pojedynczego bajta danych
+      \param data dane na podstawie których obliczana jest suma kontrolna
+    */
+    unsigned int CRC8_SingleByte(unsigned int data);
+
+    //! Prywatna metoda
+    /*!
+      Za pomocą tej metody obliczana jest suma kontrolna dla tablicy bajtów
+      \param pData wskaźnik na tablice danych na podstawie których obliczana jest suma kontrolna
+      \param len długość danych
+    */
+    byte CRC8_DataArray(byte* pData, byte len);
+
+    //! Prywatna metoda
+    /*!
+      Metoda konwertująca zmienną typu string na tablice bajtów
+      \param data wskaźnik na obiekt typu std::string
+      \param len wskaźnik na zmienną przechowującą informacje o długości danych
+    */
+    byte* stringToUnsignedCharArray(const std::string& data, size_t& len);
 };
 #endif // MAINWINDOW_H

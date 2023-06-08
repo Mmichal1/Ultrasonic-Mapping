@@ -74,6 +74,8 @@ MainWindow::MainWindow(QWidget *parent)
     timer.setInterval(1000);
     connect(&timer, &QTimer::timeout, this, &MainWindow::timerCallback);
     timer.start();
+
+
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -102,39 +104,42 @@ void MainWindow::onGraphButtonClicked() {
 
 void MainWindow::readSerialData() {
 
-    QString string = QString(serial.readAll());
+    QString serialData = QString(serial.readAll());
 
-    string.chop(2);
+    serialData.chop(2);
 
-    if (string == "49") {
+    if (serialData == "49") {
         bar->showMessage(tr("Connection successful"), 5000);
         ui->connectionLabel->setPixmap(*connectionOkPixmap);
-        qDebug() << string;
+        qDebug() << serialData;
+        return;
     }
 
-    if (string == "48") {
+    if (serialData == "48") {
         bar->showMessage(tr("Disconnected"), 2000);
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
-        qDebug() << string;
+        qDebug() << serialData;
+        return;
     }
 
-    qDebug() << string;
-//    QString crcDevice = string.right(4);
-    string.chop(4);
-//    QByteArray bytes = string.toUtf8();
-//    quint16 crcHost = qChecksum(bytes.constData(), bytes.size());
-    string.chop(1);
-    QStringList list = string.split(" ");
+    QByteArray data = serialData.right(4).toUtf8();
+    byte* CRC8_Device = reinterpret_cast<byte*>(data.data());
+    serialData.chop(5);
+    std::string message = serialData.toStdString();;
+    size_t len;
+    byte* dataToCRC = stringToUnsignedCharArray(message, len);
+    byte CRC8_Host = CRC8_DataArray(dataToCRC, sizeof(dataToCRC));
 
-//    if (crcDevice == crcHost) {
-//        qDebug("works");
-//    }
+    if (*CRC8_Device == CRC8_Host) {
 
-    if (list.length() == 6) {
-        MainWindow::sensorDataBuffer->at(0) = list.at(1).toInt();
-        MainWindow::sensorDataBuffer->at(1) = list.at(3).toInt();
-        MainWindow::sensorDataBuffer->at(2) = list.at(5).toInt();
-        emit sendStringFromSerial(list);
+        QStringList serialDataList = serialData.split(" ");
+
+        if (serialDataList.length() == 6) {
+            MainWindow::sensorDataBuffer->at(0) = serialDataList.at(1).toInt();
+            MainWindow::sensorDataBuffer->at(1) = serialDataList.at(3).toInt();
+            MainWindow::sensorDataBuffer->at(2) = serialDataList.at(5).toInt();
+            emit sendStringFromSerial(serialDataList);
+        }
     }
 }
 
@@ -269,5 +274,39 @@ void MainWindow::changeEvent(QEvent *event) {
         return;
     }
     QMainWindow::changeEvent(event);
+}
+
+unsigned int MainWindow::CRC8_SingleByte(unsigned int data) {
+    unsigned int poly = (POLYNOMIAL_9 << 8);
+
+    for (byte i = 0; i < 8; ++i) {
+        data <<= 1;
+        if ((data & 0x10000) != 0) {
+            data ^= poly;
+        }
+    }
+    return data;
+}
+
+byte MainWindow::CRC8_DataArray(byte* pData, byte len) {
+    unsigned int data = pData[0] << 8;
+
+    for (unsigned int i = 1; i < len; ++i) {
+        data |= pData[i];
+        data = CRC8_SingleByte(data);
+    }
+    data = CRC8_SingleByte(data);
+
+    return static_cast<byte>(data >> 8);
+}
+
+byte* MainWindow::stringToUnsignedCharArray(const std::string& data, size_t& len) {
+    len = data.length();
+    byte* array = new byte[len];
+    for (size_t i = 0; i < len; ++i) {
+        // Convert character to unsigned char and store it in the array
+        array[i] = static_cast<byte>(data[i]);
+    }
+    return array;
 }
 
