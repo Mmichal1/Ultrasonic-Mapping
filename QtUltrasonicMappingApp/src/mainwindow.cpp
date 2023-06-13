@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "../inc/mainwindow.h"
 
 #include "ui_mainwindow.h"
 
@@ -8,9 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     changePoseWindow = new ChangePoseWindow(this);
     welcomeWindow = new WelcomeDialog(this);
+    plotWindow = new PlotWindow(this);
     bar = new QStatusBar(this);
-    connectionOkPixmap = new QPixmap(":/connection_ok.svg");
-    connectionBadPixmap = new QPixmap(":/connection_bad.svg");
+    connectionOkPixmap = new QPixmap(":/icons/connection_ok.svg");
+    connectionBadPixmap = new QPixmap(":/icons/connection_bad.svg");
+    sensorDataBuffer = new std::array<int, 3>{0, 0, 0};
+    crc = new CRC16();
+
+    QPushButton *clearButton = plotWindow->findChild<QPushButton*>("clearButton");
+    QComboBox *languageComboBox = welcomeWindow->findChild<QComboBox*>("languageComboBox");
+    stopStartButton = plotWindow->findChild<QPushButton*>("stopStartButton");
 
     connect(ui->resetButton, SIGNAL(clicked()),
             ui->mapWidget, SLOT(onResetButtonClicked()));
@@ -28,6 +35,8 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::connectToPort);
     connect(&serial, SIGNAL(error(QSerialPort::SerialPortError)),
             this, SLOT(handleError(QSerialPort::SerialPortError)));
+    connect(languageComboBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::languageSelection);
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(refreshPortList()));
     connect(this, SIGNAL(sendStringFromSerial(QStringList)),
@@ -36,6 +45,16 @@ MainWindow::MainWindow(QWidget *parent)
             this, SLOT(onConnectButtonClicked()));
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(onRefreshButtonClicked()));
+    connect(ui->graphButton, SIGNAL(clicked()),
+            this, SLOT(onGraphButtonClicked()));
+    connect(ui->resetButton, SIGNAL(clicked()),
+            plotWindow, SLOT(clearData()));
+    connect(ui->resetButton, SIGNAL(clicked()),
+            this, SLOT(onClearButtonClicked()));
+    connect(clearButton, SIGNAL(clicked()),
+            this, SLOT(onClearButtonClicked()));
+    connect(stopStartButton, SIGNAL(clicked()),
+            this, SLOT(onStopStartButtonClicked()));
 
     QMetaObject::connectSlotsByName(this);
 
@@ -45,13 +64,19 @@ MainWindow::MainWindow(QWidget *parent)
     serial.setStopBits(QSerialPort::OneStop);
 
     connectToPort(ui->serialComboBox->currentText());
-
+    refreshPortList();
+    printPoseToLabel();
     bar->setMaximumHeight(17);
     ui->statusBarLayout->addWidget(bar);
     ui->connectionLabel->setPixmap(*connectionBadPixmap);
+    stopStartButton->setText("Start");
 
-    refreshPortList();
-    printPoseToLabel();
+    timeFromStart = 0;
+    timer.setInterval(1000);
+    connect(&timer, &QTimer::timeout, this, &MainWindow::timerCallback);
+    timer.stop();
+
+
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -72,38 +97,50 @@ void MainWindow::onChangePoseButtonClicked() {
     changePoseWindow->exec();
 }
 
+void MainWindow::onGraphButtonClicked() {
+
+    plotWindow->setWindowModality(Qt::NonModal);
+    plotWindow->show();
+}
+
 void MainWindow::readSerialData() {
 
-    QString string = QString(serial.readAll());
+    QString serialData = QString(serial.readAll());
+    serialData.chop(2);
 
-    string.chop(2);
-
-    if (string == "49") {
-        bar->showMessage(tr("Connection successfull"), 2000);
+    if (serialData == "49") {
+        bar->showMessage(tr("Connection successful"), 5000);
         ui->connectionLabel->setPixmap(*connectionOkPixmap);
-        qDebug() << string;
+        stopStartButton->setText("Stop");
+        timer.start();
+        return;
     }
 
-    if (string == "48") {
+    if (serialData == "48") {
         bar->showMessage(tr("Disconnected"), 2000);
+        stopStartButton->setText("Start");
+        timer.stop();
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
-        qDebug() << string;
+        return;
     }
 
-    ui->serialPortLabel->setText(string);
-//    QString crcDevice = string.right(4);
-    string.chop(4);
-//    QByteArray bytes = string.toUtf8();
-//    quint16 crcHost = qChecksum(bytes.constData(), bytes.size());
-    string.chop(1);
-    QStringList list = string.split(" ");
+    serialData.chop(4);
+    const uint8_t* buffer = convertQStringToUint8(serialData);
+    uint16_t host_crc = crc->calculateCRC16(buffer, sizeof(buffer));
+    serialData.chop(1);
+    QStringList serialDataList = serialData.split(" ");
 
-//    if (crcDevice == crcHost) {
-//        qDebug("works");
-//    }
+    if (serialDataList.length() == 6) {
+        for (int i = 1; i < 6; i += 2) {
+            if (serialDataList.at(i).toInt() > 500) {
+                return;
+            }
+        }
 
-    if (list.length() == 6) {
-        emit sendStringFromSerial(list);
+        MainWindow::sensorDataBuffer->at(0) = serialDataList.at(1).toInt();
+        MainWindow::sensorDataBuffer->at(1) = serialDataList.at(3).toInt();
+        MainWindow::sensorDataBuffer->at(2) = serialDataList.at(5).toInt();
+        emit sendStringFromSerial(serialDataList);
     }
 }
 
@@ -126,18 +163,16 @@ void MainWindow::connectToPort(const QString &portName) {
     if (portExists) {
         serial.setPortName(portName);
         if (serial.open(QIODevice::ReadWrite)) {
-            qDebug("Serial port opened successfully");
             bar->showMessage(tr("Serial port opened successfully"), 2000);
+            stopStartButton->setText("Stop");
         } else {
-            qDebug("Error opening the serial port");
             ui->connectionLabel->setPixmap(*connectionBadPixmap);
             QByteArray ba = serial.errorString().toLocal8Bit();
             bar->showMessage(tr(ba.data()), 2000);
         }
     } else {
-        QByteArray ba = serial.errorString().toLocal8Bit();
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
-        qDebug("Error opening the serial port");
+        QByteArray ba = serial.errorString().toLocal8Bit();
         bar->showMessage(tr(ba.data()), 2000);
     }
 }
@@ -145,7 +180,6 @@ void MainWindow::connectToPort(const QString &portName) {
 void MainWindow::handleError(QSerialPort::SerialPortError error) {
 
     if (error == QSerialPort::ResourceError) {
-        qDebug("error");
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
     }
 }
@@ -186,11 +220,67 @@ void MainWindow::sendDataToSerial(const QByteArray &message) {
     qint64 bytesWritten = serial.write(message);
 
     if (bytesWritten == -1) {
-        qDebug() << "Failed to write to serial port:" << serial.errorString();
         QByteArray ba = serial.errorString().toLocal8Bit();
         bar->showMessage(tr(ba.data()), 2000);
-    } else {
-        qDebug() << "Message sent:" << message;
+    } 
+}
+
+void MainWindow::timerCallback() {
+    plotWindow->addPointsToPlot(timeFromStart, sensorDataBuffer->at(0), sensorDataBuffer->at(1), sensorDataBuffer->at(2));
+    timeFromStart++;
+}
+
+void MainWindow::onClearButtonClicked() {
+    timeFromStart = 0;
+    sensorDataBuffer->fill(0);
+}
+
+void MainWindow::onStopStartButtonClicked() {
+    if (stopStartButton->text() == "Stop") {
+        stopStartButton->setText("Start");
+        timer.stop();
+    }
+    else {
+        stopStartButton->setText("Stop");
+        timer.start();
     }
 }
 
+void MainWindow::languageSelection(const QString& selectedText) {
+
+    static QTranslator *translator = new QTranslator();
+
+    if (selectedText == "PL") {
+        qApp->removeTranslator(translator);
+        if (translator->load("mapowanie_pl","/home/michal/Desktop/WDS/Mapowanie2/")) {
+            qApp->installTranslator(translator);
+        }
+    } else if (selectedText == "EN") {
+        qApp->removeTranslator(translator);
+        if (translator->load("mapowanie_en","/home/michal/Desktop/WDS/Mapowanie2/")) {
+            qApp->installTranslator(translator);
+        }
+    }
+}
+
+void MainWindow::changeEvent(QEvent *event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        return;
+    }
+    QMainWindow::changeEvent(event);
+}
+
+const uint8_t* MainWindow::convertQStringToUint8(const QString& str)
+{
+    // Convert QString to QByteArray using the desired encoding
+    QByteArray byteArray = str.toUtf8(); // or any other encoding like toLatin1()
+
+    // Allocate memory for the resulting uint8_t buffer
+    uint8_t* buffer = new uint8_t[byteArray.size()];
+
+    // Copy the data from QByteArray to the uint8_t buffer
+    memcpy(buffer, byteArray.constData(), byteArray.size());
+
+    return buffer;
+}

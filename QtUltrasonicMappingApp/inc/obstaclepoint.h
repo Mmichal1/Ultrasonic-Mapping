@@ -23,7 +23,7 @@ public:
     */
     ObstaclePoint(const QPixmap& pixmap, std::array<int, 2> position);
 
-    //! Metoda pobierająca tablice zawierające informacje o współrzędnych
+    //! Metoda pobierająca tablicę zawierającą informacje o współrzędnych
     /*!
       \return Tablica współrzędnych
     */

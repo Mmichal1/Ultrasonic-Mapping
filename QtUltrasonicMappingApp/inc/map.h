@@ -42,7 +42,7 @@ public:
     */
     std::array<int, 3> getDevicePose();
 
-public slots:
+private slots:
     //! Prywatny slot
     /*!
       Slot reagujący na wciśnięcie przycisku 'Reset'. Po wciśnięciu przycisku wszystkie wektory są czyszczone i tym samym

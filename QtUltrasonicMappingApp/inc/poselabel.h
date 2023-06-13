@@ -24,12 +24,12 @@ public:
     */
     void setLabelText(const QString& text);
 private:
+
     //! Prywatna zmienna
     /*!
       Zmienna przechowująca wskaźnik do obiektu typu label
     */
     QLabel *label;
-public slots:
 };
 
 #endif // POSELABEL_H

@@ -1,0 +1,10 @@
+<RCC>
+  <qresource>
+    <file>icons/connection_bad.svg</file>
+    <file>icons/connection_ok.svg</file>    
+    <file>icons/device_pos_prev.svg</file>
+    <file>icons/device_pos.svg</file>      
+    <file>icons/point_prev.svg</file>
+    <file>icons/point.svg</file>    
+  </qresource>
+</RCC>

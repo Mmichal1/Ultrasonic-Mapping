@@ -14,6 +14,7 @@ class WelcomeDialog : public QDialog {
 public:
     //! Konstruktor klasy
     explicit WelcomeDialog(QWidget *parent = nullptr);
+
     //! Destruktor klasy
     ~WelcomeDialog();
 
@@ -22,9 +23,15 @@ private:
     /*!
       Instacja obiektu Ui.
     */
-    //!
     Ui::WelcomeDialog *ui;
 
+    //! Metoda wirtualna nadpisująca changeEvent
+    /*!
+      Za pomocą tej metody tłumaczony jest interfejs użytkownika wtedy, kiedy wykryte zotanie
+      wydarzenie zmiany języka
+      \param event wskaźnik na obiekt typu QEvent
+    */
+    virtual void changeEvent(QEvent *event) override;
 };
 
 #endif // WELCOMEDIALOG_H
