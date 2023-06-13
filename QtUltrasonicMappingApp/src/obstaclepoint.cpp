@@ -1,4 +1,4 @@
-#include "obstaclepoint.h"
+#include "../inc/obstaclepoint.h"
 
 ObstaclePoint::ObstaclePoint(const QPixmap& pixmap, std::array<int, 2> position)
     : pixmap(pixmap), position(position) {}

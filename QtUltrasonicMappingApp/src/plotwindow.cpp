@@ -1,4 +1,4 @@
-#include "plotwindow.h"
+#include "../inc/plotwindow.h"
 #include "ui_plotwindow.h"
 
 PlotWindow::PlotWindow(QWidget *parent) :
