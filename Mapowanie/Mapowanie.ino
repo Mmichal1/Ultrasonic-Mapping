@@ -1,3 +1,5 @@
+/**@file Mapowanie.ino */
+
 #include "crc16.h"
 
 /*!
@@ -27,7 +29,7 @@ Sensor::Sensor(uint8_t SENSOR_ID, uint8_t TRIG_PIN, uint8_t ECHO_PIN) {
 
 Sensor sensorList[] = { Sensor(0, 4, 5), Sensor(1, 8, 9), Sensor(2, 12, 13) };  //!< Lista przechowująca instancje czujników
 
-CRC16 crc;
+CRC16 crc; //!< Instancja obiektu za pomocą którego wyznaczana jest suma kontrolna
 
 unsigned long previousTimeReadSensor = 0;
 unsigned long previousTimeStartLoop = 0;

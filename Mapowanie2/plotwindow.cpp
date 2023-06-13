@@ -56,7 +56,6 @@ void PlotWindow::addPointsToPlot(int timeFromStart, int sensorData0, int sensorD
 }
 
 void PlotWindow::clearData() {
-    qDebug("click");
     ui->plotWidget->graph(0)->data()->clear();
     ui->plotWidget->graph(1)->data()->clear();
     ui->plotWidget->graph(2)->data()->clear();

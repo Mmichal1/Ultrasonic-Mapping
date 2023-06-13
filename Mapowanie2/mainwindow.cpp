@@ -106,39 +106,28 @@ void MainWindow::onGraphButtonClicked() {
 void MainWindow::readSerialData() {
 
     QString serialData = QString(serial.readAll());
-
     serialData.chop(2);
-
-    qDebug() << "Data: " << serialData;
 
     if (serialData == "49") {
         bar->showMessage(tr("Connection successful"), 5000);
         ui->connectionLabel->setPixmap(*connectionOkPixmap);
-        stopStartButton->setText("Start");
+        stopStartButton->setText("Stop");
         timer.start();
-        qDebug() << serialData;
         return;
     }
 
     if (serialData == "48") {
         bar->showMessage(tr("Disconnected"), 2000);
-        stopStartButton->setText("Stop");
+        stopStartButton->setText("Start");
         timer.stop();
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
-        qDebug() << serialData;
         return;
     }
 
     serialData.chop(4);
-
     const uint8_t* buffer = convertQStringToUint8(serialData);
-
     uint16_t host_crc = crc->calculateCRC16(buffer, sizeof(buffer));
-
-    qDebug() << "CRC:" << QString::number(host_crc, 16).toUpper();;
-
     serialData.chop(1);
-
     QStringList serialDataList = serialData.split(" ");
 
     if (serialDataList.length() == 6) {
@@ -147,6 +136,7 @@ void MainWindow::readSerialData() {
                 return;
             }
         }
+
         MainWindow::sensorDataBuffer->at(0) = serialDataList.at(1).toInt();
         MainWindow::sensorDataBuffer->at(1) = serialDataList.at(3).toInt();
         MainWindow::sensorDataBuffer->at(2) = serialDataList.at(5).toInt();
@@ -173,18 +163,16 @@ void MainWindow::connectToPort(const QString &portName) {
     if (portExists) {
         serial.setPortName(portName);
         if (serial.open(QIODevice::ReadWrite)) {
-            qDebug("Serial port opened successfully");
             bar->showMessage(tr("Serial port opened successfully"), 2000);
+            stopStartButton->setText("Stop");
         } else {
-            qDebug("Error opening the serial port");
             ui->connectionLabel->setPixmap(*connectionBadPixmap);
             QByteArray ba = serial.errorString().toLocal8Bit();
             bar->showMessage(tr(ba.data()), 2000);
         }
     } else {
-        QByteArray ba = serial.errorString().toLocal8Bit();
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
-        qDebug("Error opening the serial port");
+        QByteArray ba = serial.errorString().toLocal8Bit();
         bar->showMessage(tr(ba.data()), 2000);
     }
 }
@@ -192,7 +180,6 @@ void MainWindow::connectToPort(const QString &portName) {
 void MainWindow::handleError(QSerialPort::SerialPortError error) {
 
     if (error == QSerialPort::ResourceError) {
-        qDebug("error");
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
     }
 }
@@ -233,12 +220,9 @@ void MainWindow::sendDataToSerial(const QByteArray &message) {
     qint64 bytesWritten = serial.write(message);
 
     if (bytesWritten == -1) {
-        qDebug() << tr("Failed to write to serial port:") << serial.errorString();
         QByteArray ba = serial.errorString().toLocal8Bit();
         bar->showMessage(tr(ba.data()), 2000);
-    } else {
-        qDebug() << tr("Message sent:") << message;
-    }
+    } 
 }
 
 void MainWindow::timerCallback() {
