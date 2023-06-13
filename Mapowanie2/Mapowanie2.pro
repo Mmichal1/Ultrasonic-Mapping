@@ -12,6 +12,7 @@ CONFIG += c++17
 
 SOURCES += \
     changeposewindow.cpp \
+    crc16.cpp \
     devicepoint.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     changeposewindow.h \
+    crc16.h \
     devicepoint.h \
     mainwindow.h \
     map.h \

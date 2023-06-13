@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     connectionOkPixmap = new QPixmap(":/connection_ok.svg");
     connectionBadPixmap = new QPixmap(":/connection_bad.svg");
     sensorDataBuffer = new std::array<int, 3>{0, 0, 0};
+    crc = new CRC16();
 
     QPushButton *clearButton = plotWindow->findChild<QPushButton*>("clearButton");
     QComboBox *languageComboBox = welcomeWindow->findChild<QComboBox*>("languageComboBox");
@@ -68,12 +69,12 @@ MainWindow::MainWindow(QWidget *parent)
     bar->setMaximumHeight(17);
     ui->statusBarLayout->addWidget(bar);
     ui->connectionLabel->setPixmap(*connectionBadPixmap);
-    stopStartButton->setText("Stop");
+    stopStartButton->setText("Start");
 
     timeFromStart = 0;
     timer.setInterval(1000);
     connect(&timer, &QTimer::timeout, this, &MainWindow::timerCallback);
-    timer.start();
+    timer.stop();
 
 
 }
@@ -108,38 +109,48 @@ void MainWindow::readSerialData() {
 
     serialData.chop(2);
 
+    qDebug() << "Data: " << serialData;
+
     if (serialData == "49") {
         bar->showMessage(tr("Connection successful"), 5000);
         ui->connectionLabel->setPixmap(*connectionOkPixmap);
+        stopStartButton->setText("Start");
+        timer.start();
         qDebug() << serialData;
         return;
     }
 
     if (serialData == "48") {
         bar->showMessage(tr("Disconnected"), 2000);
+        stopStartButton->setText("Stop");
+        timer.stop();
         ui->connectionLabel->setPixmap(*connectionBadPixmap);
         qDebug() << serialData;
         return;
     }
 
-    QByteArray data = serialData.right(4).toUtf8();
-    byte* CRC8_Device = reinterpret_cast<byte*>(data.data());
-    serialData.chop(5);
-    std::string message = serialData.toStdString();;
-    size_t len;
-    byte* dataToCRC = stringToUnsignedCharArray(message, len);
-    byte CRC8_Host = CRC8_DataArray(dataToCRC, sizeof(dataToCRC));
+    serialData.chop(4);
 
-    if (*CRC8_Device == CRC8_Host) {
+    const uint8_t* buffer = convertQStringToUint8(serialData);
 
-        QStringList serialDataList = serialData.split(" ");
+    uint16_t host_crc = crc->calculateCRC16(buffer, sizeof(buffer));
 
-        if (serialDataList.length() == 6) {
-            MainWindow::sensorDataBuffer->at(0) = serialDataList.at(1).toInt();
-            MainWindow::sensorDataBuffer->at(1) = serialDataList.at(3).toInt();
-            MainWindow::sensorDataBuffer->at(2) = serialDataList.at(5).toInt();
-            emit sendStringFromSerial(serialDataList);
+    qDebug() << "CRC:" << QString::number(host_crc, 16).toUpper();;
+
+    serialData.chop(1);
+
+    QStringList serialDataList = serialData.split(" ");
+
+    if (serialDataList.length() == 6) {
+        for (int i = 1; i < 6; i += 2) {
+            if (serialDataList.at(i).toInt() > 500) {
+                return;
+            }
         }
+        MainWindow::sensorDataBuffer->at(0) = serialDataList.at(1).toInt();
+        MainWindow::sensorDataBuffer->at(1) = serialDataList.at(3).toInt();
+        MainWindow::sensorDataBuffer->at(2) = serialDataList.at(5).toInt();
+        emit sendStringFromSerial(serialDataList);
     }
 }
 
@@ -276,37 +287,16 @@ void MainWindow::changeEvent(QEvent *event) {
     QMainWindow::changeEvent(event);
 }
 
-unsigned int MainWindow::CRC8_SingleByte(unsigned int data) {
-    unsigned int poly = (POLYNOMIAL_9 << 8);
+const uint8_t* MainWindow::convertQStringToUint8(const QString& str)
+{
+    // Convert QString to QByteArray using the desired encoding
+    QByteArray byteArray = str.toUtf8(); // or any other encoding like toLatin1()
 
-    for (byte i = 0; i < 8; ++i) {
-        data <<= 1;
-        if ((data & 0x10000) != 0) {
-            data ^= poly;
-        }
-    }
-    return data;
+    // Allocate memory for the resulting uint8_t buffer
+    uint8_t* buffer = new uint8_t[byteArray.size()];
+
+    // Copy the data from QByteArray to the uint8_t buffer
+    memcpy(buffer, byteArray.constData(), byteArray.size());
+
+    return buffer;
 }
-
-byte MainWindow::CRC8_DataArray(byte* pData, byte len) {
-    unsigned int data = pData[0] << 8;
-
-    for (unsigned int i = 1; i < len; ++i) {
-        data |= pData[i];
-        data = CRC8_SingleByte(data);
-    }
-    data = CRC8_SingleByte(data);
-
-    return static_cast<byte>(data >> 8);
-}
-
-byte* MainWindow::stringToUnsignedCharArray(const std::string& data, size_t& len) {
-    len = data.length();
-    byte* array = new byte[len];
-    for (size_t i = 0; i < len; ++i) {
-        // Convert character to unsigned char and store it in the array
-        array[i] = static_cast<byte>(data[i]);
-    }
-    return array;
-}
-

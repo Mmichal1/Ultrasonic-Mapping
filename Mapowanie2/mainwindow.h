@@ -5,6 +5,7 @@
 #include "changeposewindow.h"
 #include "welcomedialog.h"
 #include "plotwindow.h"
+#include "crc16.h"
 
 #include <QUiLoader>
 #include <QMainWindow>
@@ -232,6 +233,8 @@ private:
     */
     std::array<int, 3>* sensorDataBuffer;
 
+    CRC16 *crc;
+
     //! Prywatna metoda
     /*!
       Metoda wyświetlająca współrzędne oraz orientacją w polu tekstowym.
@@ -254,25 +257,10 @@ private:
 
     //! Prywatna metoda
     /*!
-      Za pomocą tej metody obliczana jest suma kontrolna dla pojedynczego bajta danych
-      \param data dane na podstawie których obliczana jest suma kontrolna
+      Metoda konwertująca obiekt typu QString i zwracająca wskaźnik na bezznakową
+      liczbę całkowitą 8-bitową
+      \param str wskaźnik na obiekt typu QString
     */
-    unsigned int CRC8_SingleByte(unsigned int data);
-
-    //! Prywatna metoda
-    /*!
-      Za pomocą tej metody obliczana jest suma kontrolna dla tablicy bajtów
-      \param pData wskaźnik na tablice danych na podstawie których obliczana jest suma kontrolna
-      \param len długość danych
-    */
-    byte CRC8_DataArray(byte* pData, byte len);
-
-    //! Prywatna metoda
-    /*!
-      Metoda konwertująca zmienną typu string na tablice bajtów
-      \param data wskaźnik na obiekt typu std::string
-      \param len wskaźnik na zmienną przechowującą informacje o długości danych
-    */
-    byte* stringToUnsignedCharArray(const std::string& data, size_t& len);
+    const uint8_t* convertQStringToUint8(const QString& str);
 };
 #endif // MAINWINDOW_H
