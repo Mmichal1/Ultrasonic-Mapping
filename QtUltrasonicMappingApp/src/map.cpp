@@ -1,17 +1,17 @@
-#include "map.h"
+#include "../inc/map.h"
 
 Map::Map(QWidget* parent) : QWidget{parent} {
 
-    devPosPixmap = new QPixmap(":/device_pos.svg");
+    devPosPixmap = new QPixmap(":/icons/device_pos.svg");
     *devPosPixmap = devPosPixmap->scaled(devPosPixmap->width() / 2,
                                              devPosPixmap->height() / 2);
 
-    devPosPrevPixmap = new QPixmap(":/device_pos_prev.svg");
+    devPosPrevPixmap = new QPixmap(":/icons/device_pos_prev.svg");
     *devPosPrevPixmap = devPosPrevPixmap->scaled(
         devPosPrevPixmap->width() / 2, devPosPrevPixmap->height() / 2);
 
-    pointPixmap = new QPixmap(":/point.svg");
-    pointPrevPixmap = new QPixmap(":/point_prev.svg");
+    pointPixmap = new QPixmap(":/icons/point.svg");
+    pointPrevPixmap = new QPixmap(":/icons/point_prev.svg");
 
     currDevPose = new DevicePoint(*devPosPixmap, {0, 0, 0});
 }

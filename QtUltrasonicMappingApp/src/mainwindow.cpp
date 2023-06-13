@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "../inc/mainwindow.h"
 
 #include "ui_mainwindow.h"
 
@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     welcomeWindow = new WelcomeDialog(this);
     plotWindow = new PlotWindow(this);
     bar = new QStatusBar(this);
-    connectionOkPixmap = new QPixmap(":/connection_ok.svg");
-    connectionBadPixmap = new QPixmap(":/connection_bad.svg");
+    connectionOkPixmap = new QPixmap(":/icons/connection_ok.svg");
+    connectionBadPixmap = new QPixmap(":/icons/connection_bad.svg");
     sensorDataBuffer = new std::array<int, 3>{0, 0, 0};
     crc = new CRC16();
 
