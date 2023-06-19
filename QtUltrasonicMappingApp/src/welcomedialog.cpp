@@ -1,4 +1,4 @@
-#include "welcomedialog.h"
+#include "../inc/welcomedialog.h"
 #include "ui_welcomedialog.h"
 
 WelcomeDialog::WelcomeDialog(QWidget *parent) :

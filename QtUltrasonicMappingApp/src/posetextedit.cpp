@@ -1,4 +1,4 @@
-#include "posetextedit.h"
+#include "../inc/posetextedit.h"
 
 PoseTextEdit::PoseTextEdit(QWidget *parent) : QTextEdit{parent} {}
 

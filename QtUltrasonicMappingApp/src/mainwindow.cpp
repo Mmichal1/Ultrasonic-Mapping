@@ -252,12 +252,12 @@ void MainWindow::languageSelection(const QString& selectedText) {
 
     if (selectedText == "PL") {
         qApp->removeTranslator(translator);
-        if (translator->load("mapowanie_pl","/home/michal/Desktop/WDS/Mapowanie2/")) {
+        if (translator->load("mapowanie_pl","/home/michal/Desktop/WDS/QtUltrasonicMappingApp/pro/")) {
             qApp->installTranslator(translator);
         }
     } else if (selectedText == "EN") {
         qApp->removeTranslator(translator);
-        if (translator->load("mapowanie_en","/home/michal/Desktop/WDS/Mapowanie2/")) {
+        if (translator->load("mapowanie_en","/home/michal/Desktop/WDS/QtUltrasonicMappingApp/pro/")) {
             qApp->installTranslator(translator);
         }
     }
@@ -271,15 +271,9 @@ void MainWindow::changeEvent(QEvent *event) {
     QMainWindow::changeEvent(event);
 }
 
-const uint8_t* MainWindow::convertQStringToUint8(const QString& str)
-{
-    // Convert QString to QByteArray using the desired encoding
-    QByteArray byteArray = str.toUtf8(); // or any other encoding like toLatin1()
-
-    // Allocate memory for the resulting uint8_t buffer
+const uint8_t* MainWindow::convertQStringToUint8(const QString& str) {
+    QByteArray byteArray = str.toUtf8();
     uint8_t* buffer = new uint8_t[byteArray.size()];
-
-    // Copy the data from QByteArray to the uint8_t buffer
     memcpy(buffer, byteArray.constData(), byteArray.size());
 
     return buffer;

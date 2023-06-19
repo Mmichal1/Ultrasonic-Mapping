@@ -1,4 +1,4 @@
-#include "changeposewindow.h"
+#include "../inc/changeposewindow.h"
 
 #include "ui_changeposewindow.h"
 

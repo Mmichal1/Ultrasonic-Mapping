@@ -1,4 +1,4 @@
-#include "poselabel.h"
+#include "../inc/poselabel.h"
 
 PoseLabel::PoseLabel(QWidget *parent) : QWidget(parent) {
 

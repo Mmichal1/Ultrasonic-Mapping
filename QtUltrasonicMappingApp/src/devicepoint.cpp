@@ -1,4 +1,4 @@
-#include "devicepoint.h"
+#include "../inc/devicepoint.h"
 
 DevicePoint::DevicePoint(const QPixmap& pixmap, std::array<int, 3> pose)
     : pixmap(pixmap), pose(pose) {}
