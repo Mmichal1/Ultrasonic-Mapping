@@ -7,13 +7,13 @@ PlotWindow::PlotWindow(QWidget *parent) :
 
     ui->plotWidget->addGraph();
     ui->plotWidget->graph(0)->setPen(QPen(Qt::blue));
-    ui->plotWidget->graph(0)->setName(tr("Sensor 1 at -45°"));
+    ui->plotWidget->graph(0)->setName(tr("Sensor 1, -45°"));
     ui->plotWidget->addGraph();
     ui->plotWidget->graph(1)->setPen(QPen(Qt::red));
-    ui->plotWidget->graph(1)->setName(tr("Sensor 2 at 0°"));
+    ui->plotWidget->graph(1)->setName(tr("Sensor 2, 0°"));
     ui->plotWidget->addGraph();
     ui->plotWidget->graph(2)->setPen(QPen(Qt::green));
-    ui->plotWidget->graph(2)->setName(tr("Sensor 3 at 45°"));
+    ui->plotWidget->graph(2)->setName(tr("Sensor 3, 45°"));
 
     ui->plotWidget->yAxis->setRange(0, 200);
     ui->plotWidget->xAxis2->setVisible(true);

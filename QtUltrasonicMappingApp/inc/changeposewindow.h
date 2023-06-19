@@ -1,4 +1,4 @@
-#ifndef CHANGEPOSEWINDOW_H
+    #ifndef CHANGEPOSEWINDOW_H
 #define CHANGEPOSEWINDOW_H
 
 #include <QWidget>
