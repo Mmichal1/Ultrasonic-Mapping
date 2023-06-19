@@ -84,15 +84,19 @@
     </message>
     <message>
         <source>Failed to write to serial port:</source>
-        <translation>Błąd wysłania wiadomości na port szeregowy:</translation>
+        <translation type="vanished">Błąd wysłania wiadomości na port szeregowy:</translation>
     </message>
     <message>
         <source>Message sent:</source>
-        <translation>Wysłano wiadmość:</translation>
+        <translation type="vanished">Wysłano wiadmość:</translation>
     </message>
     <message>
         <source>Show graph</source>
         <translation>Pokaż wykres</translation>
+    </message>
+    <message>
+        <source>Language:</source>
+        <translation>Język:</translation>
     </message>
 </context>
 <context>
@@ -111,19 +115,31 @@
     </message>
     <message>
         <source>Sensor 1 at -45°</source>
-        <translation>Czujnik 1 na -45°</translation>
+        <translation type="vanished">Czujnik 1 na -45°</translation>
     </message>
     <message>
         <source>Sensor 2 at 0°</source>
-        <translation>Czujnik 2 na 0</translation>
+        <translation type="vanished">Czujnik 2 na 0</translation>
     </message>
     <message>
         <source>Sensor 3 at 45°</source>
-        <translation>Czujnik 3 na 45°</translation>
+        <translation type="vanished">Czujnik 3 na 45°</translation>
     </message>
     <message>
         <source>Graph</source>
         <translation>Wykres</translation>
+    </message>
+    <message>
+        <source>Sensor 1, -45°</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Sensor 2, 0°</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Sensor 3, 45°</source>
+        <translation></translation>
     </message>
 </context>
 <context>

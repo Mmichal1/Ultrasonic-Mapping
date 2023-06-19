@@ -75,15 +75,11 @@
         <translation></translation>
     </message>
     <message>
-        <source>Failed to write to serial port:</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Message sent:</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Show graph</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Language:</source>
         <translation></translation>
     </message>
 </context>
@@ -102,19 +98,19 @@
         <translation></translation>
     </message>
     <message>
-        <source>Sensor 1 at -45°</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Sensor 2 at 0°</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Sensor 3 at 45°</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Graph</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Sensor 1, -45°</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Sensor 2, 0°</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Sensor 3, 45°</source>
         <translation></translation>
     </message>
 </context>
