@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy QtUltrasonicMappingApp/src/devicepoint.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3486bfa7a5c63be95d42eac91c47a44f.html">QtUltrasonicMappingApp</a></li><li class="navelem"><a class="el" href="dir_677020398e6178bb519bdf7abbfe703d.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">devicepoint.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../inc/devicepoint.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="classDevicePoint.html#a7a8b2ec884df900e5a5c70e5714793a6">    3</a></span>&#160;<a class="code" href="classDevicePoint.html#a7a8b2ec884df900e5a5c70e5714793a6">DevicePoint::DevicePoint</a>(<span class="keyword">const</span> QPixmap&amp; pixmap, std::array&lt;int, 3&gt; pose)</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    : pixmap(pixmap), pose(pose) {}</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classDevicePoint.html#a18c0227dfb02d83b8ff14850226d285a">    6</a></span>&#160;std::array&lt;int, 3&gt; <a class="code" href="classDevicePoint.html#a18c0227dfb02d83b8ff14850226d285a">DevicePoint::getPose</a>() { <span class="keywordflow">return</span> <a class="code" href="classDevicePoint.html#a15f7b027e7687b5f11a535cb051b2094">pose</a>; }</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classDevicePoint.html#a121513eb75878b1196c48c662a9db6ec">    8</a></span>&#160;<span class="keyword">const</span> QPixmap&amp; <a class="code" href="classDevicePoint.html#a121513eb75878b1196c48c662a9db6ec">DevicePoint::getPixmap</a>() { <span class="keywordflow">return</span> <a class="code" href="classDevicePoint.html#a388b2db026bce4fbc02f5265f6ab5b38">pixmap</a>; }</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classDevicePoint.html#a17f9f7e673f0d04536ed994cb62d4dec">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDevicePoint.html#a17f9f7e673f0d04536ed994cb62d4dec">DevicePoint::setPixmap</a>(<span class="keyword">const</span> QPixmap&amp; newPixmap) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classDevicePoint.html#a388b2db026bce4fbc02f5265f6ab5b38">DevicePoint::pixmap</a> = newPixmap;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDevicePoint.html#ac884a55b845ba684ef9fa5ab627d6df2">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDevicePoint.html#ac884a55b845ba684ef9fa5ab627d6df2">DevicePoint::setPose</a>(std::array&lt;int, 3&gt; newPose) {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classDevicePoint.html#a15f7b027e7687b5f11a535cb051b2094">DevicePoint::pose</a> = newPose;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassDevicePoint_html_ac884a55b845ba684ef9fa5ab627d6df2"><div class="ttname"><a href="classDevicePoint.html#ac884a55b845ba684ef9fa5ab627d6df2">DevicePoint::setPose</a></div><div class="ttdeci">void setPose(std::array&lt; int, 3 &gt; newPose)</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8cpp_source.html#l00014">devicepoint.cpp:14</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html_a15f7b027e7687b5f11a535cb051b2094"><div class="ttname"><a href="classDevicePoint.html#a15f7b027e7687b5f11a535cb051b2094">DevicePoint::pose</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; pose</div><div class="ttdoc">Prywatna tablica.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8h_source.html#l00073">devicepoint.h:73</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html_a7a8b2ec884df900e5a5c70e5714793a6"><div class="ttname"><a href="classDevicePoint.html#a7a8b2ec884df900e5a5c70e5714793a6">DevicePoint::DevicePoint</a></div><div class="ttdeci">DevicePoint(const QPixmap &amp;pixmap, std::array&lt; int, 3 &gt; pose)</div><div class="ttdoc">Konstruktor klasy.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8cpp_source.html#l00003">devicepoint.cpp:3</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html_a17f9f7e673f0d04536ed994cb62d4dec"><div class="ttname"><a href="classDevicePoint.html#a17f9f7e673f0d04536ed994cb62d4dec">DevicePoint::setPixmap</a></div><div class="ttdeci">void setPixmap(const QPixmap &amp;newPixmap)</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8cpp_source.html#l00010">devicepoint.cpp:10</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html_a121513eb75878b1196c48c662a9db6ec"><div class="ttname"><a href="classDevicePoint.html#a121513eb75878b1196c48c662a9db6ec">DevicePoint::getPixmap</a></div><div class="ttdeci">const QPixmap &amp; getPixmap()</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8cpp_source.html#l00008">devicepoint.cpp:8</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html_a18c0227dfb02d83b8ff14850226d285a"><div class="ttname"><a href="classDevicePoint.html#a18c0227dfb02d83b8ff14850226d285a">DevicePoint::getPose</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; getPose()</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8cpp_source.html#l00006">devicepoint.cpp:6</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html_a388b2db026bce4fbc02f5265f6ab5b38"><div class="ttname"><a href="classDevicePoint.html#a388b2db026bce4fbc02f5265f6ab5b38">DevicePoint::pixmap</a></div><div class="ttdeci">QPixmap pixmap</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8h_source.html#l00065">devicepoint.h:65</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy ArduinoProgram/Mapowanie.ino</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_5d352d02223dcd3f805e7e43c4ef0926.html">ArduinoProgram</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Mapowanie.ino</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Mapowanie_8ino.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;crc16.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classSensor.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classSensor.html">Sensor</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classSensor.html#abb433a4e458642ce38396a78f9563d24">   12</a></span>&#160;    uint8_t <a class="code" href="classSensor.html#abb433a4e458642ce38396a78f9563d24">SENSOR_ID</a>;  </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classSensor.html#a56e9719932ee2f3e0e96a228054c40cb">   13</a></span>&#160;    uint8_t <a class="code" href="classSensor.html#a56e9719932ee2f3e0e96a228054c40cb">TRIG_PIN</a>;   </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classSensor.html#abb5525d806cb528c3970e6331fdeb83a">   14</a></span>&#160;    uint8_t <a class="code" href="classSensor.html#abb5525d806cb528c3970e6331fdeb83a">ECHO_PIN</a>;   </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classSensor.html#ab23129fc76619fd677fa39cc951c5b3b">Sensor</a>(uint8_t <a class="code" href="classSensor.html#abb433a4e458642ce38396a78f9563d24">SENSOR_ID</a>, uint8_t <a class="code" href="classSensor.html#a56e9719932ee2f3e0e96a228054c40cb">TRIG_PIN</a>, uint8_t <a class="code" href="classSensor.html#abb5525d806cb528c3970e6331fdeb83a">ECHO_PIN</a>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classSensor.html#ab23129fc76619fd677fa39cc951c5b3b">   25</a></span>&#160;<a class="code" href="classSensor.html#ab23129fc76619fd677fa39cc951c5b3b">Sensor::Sensor</a>(uint8_t SENSOR_ID, uint8_t TRIG_PIN, uint8_t ECHO_PIN) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classSensor.html#abb433a4e458642ce38396a78f9563d24">Sensor::SENSOR_ID</a> = <a class="code" href="classSensor.html#abb433a4e458642ce38396a78f9563d24">SENSOR_ID</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classSensor.html#a56e9719932ee2f3e0e96a228054c40cb">Sensor::TRIG_PIN</a> = <a class="code" href="classSensor.html#a56e9719932ee2f3e0e96a228054c40cb">TRIG_PIN</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classSensor.html#abb5525d806cb528c3970e6331fdeb83a">Sensor::ECHO_PIN</a> = <a class="code" href="classSensor.html#abb5525d806cb528c3970e6331fdeb83a">ECHO_PIN</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">   31</a></span>&#160;<a class="code" href="classSensor.html">Sensor</a> <a class="code" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a>[] = { <a class="code" href="classSensor.html">Sensor</a>(0, 4, 5), <a class="code" href="classSensor.html">Sensor</a>(1, 8, 9), <a class="code" href="classSensor.html">Sensor</a>(2, 12, 13) };  </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="Mapowanie_8ino.html#ad39ccfd1fb0fef1f3894269dbc62e2b9">   33</a></span>&#160;<a class="code" href="classCRC16.html">CRC16</a> <a class="code" href="Mapowanie_8ino.html#ad39ccfd1fb0fef1f3894269dbc62e2b9">crc</a>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> previousTimeReadSensor = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> previousTimeStartLoop = 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">byte</span> incomingData = 0;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">long</span> duration, distanceCm;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">char</span> numstr[21];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;String data = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">bool</span> startMapping = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="Mapowanie_8ino.html#a747bea727c0e5cee108e951a0bc8583a">   49</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="Mapowanie_8ino.html#a747bea727c0e5cee108e951a0bc8583a">readFromSensor</a>(<span class="keywordtype">int</span> TRIG_PIN, <span class="keywordtype">int</span> ECHO_PIN) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    digitalWrite(TRIG_PIN, LOW);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    delayMicroseconds(2);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    digitalWrite(TRIG_PIN, HIGH);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    delayMicroseconds(10);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    digitalWrite(TRIG_PIN, LOW);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> pulseIn(ECHO_PIN, HIGH);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> readFromSerial() {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (Serial.available() &gt; 0) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// read the incoming byte:</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        incomingData = Serial.read();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (incomingData == 49) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            Serial.println(incomingData);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            startMapping = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (incomingData == 48) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            Serial.println(incomingData);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            startMapping = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="Mapowanie_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="Mapowanie_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>() {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="classSensor.html">Sensor</a> sensor : <a class="code" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a>) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        pinMode(sensor.TRIG_PIN, OUTPUT);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        pinMode(sensor.ECHO_PIN, INPUT);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    Serial.begin(9600);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="Mapowanie_8ino.html#afe461d27b9c48d5921c00d521181f12f">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="Mapowanie_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    readFromSerial();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (millis() - previousTimeStartLoop &gt;= 1000UL &amp;&amp; startMapping) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        previousTimeStartLoop = millis();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        data = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <span class="keyword">sizeof</span>(<a class="code" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a>) / <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) - 1 ;) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          readFromSerial();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;          <span class="keywordflow">if</span> (millis() - previousTimeReadSensor &gt;= 200UL) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            previousTimeReadSensor = millis();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            duration = <a class="code" href="Mapowanie_8ino.html#a747bea727c0e5cee108e951a0bc8583a">readFromSensor</a>(<a class="code" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a>[i].TRIG_PIN, <a class="code" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a>[i].ECHO_PIN);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            distanceCm = duration / 29.1 / 2;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">if</span> (distanceCm &lt;= 0) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                Serial.println(<span class="stringliteral">&quot;Out of range&quot;</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                sprintf(numstr, <span class="stringliteral">&quot;%d %lu &quot;</span>, <a class="code" href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a>[i].SENSOR_ID, distanceCm);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                data = data + numstr;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            i++;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;          }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        uint16_t calculated_crc = <a class="code" href="Mapowanie_8ino.html#ad39ccfd1fb0fef1f3894269dbc62e2b9">crc</a>.<a class="code" href="classCRC16.html#a5a387dd73a51457ee1aa0edcde73a56f">calculateCRC16</a>(data.c_str(), <span class="keyword">sizeof</span>(data));</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        sprintf(numstr, <span class="stringliteral">&quot;%02X&quot;</span>, calculated_crc );</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        data = data + numstr;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        Serial.println(data);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aMapowanie_8ino_html_ad39ccfd1fb0fef1f3894269dbc62e2b9"><div class="ttname"><a href="Mapowanie_8ino.html#ad39ccfd1fb0fef1f3894269dbc62e2b9">crc</a></div><div class="ttdeci">CRC16 crc</div><div class="ttdoc">Instancja obiektu za pomocą którego wyznaczana jest suma kontrolna.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00033">Mapowanie.ino:33</a></div></div>
+<div class="ttc" id="aclassSensor_html_a56e9719932ee2f3e0e96a228054c40cb"><div class="ttname"><a href="classSensor.html#a56e9719932ee2f3e0e96a228054c40cb">Sensor::TRIG_PIN</a></div><div class="ttdeci">uint8_t TRIG_PIN</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00013">Mapowanie.ino:13</a></div></div>
+<div class="ttc" id="aclassCRC16_html_a5a387dd73a51457ee1aa0edcde73a56f"><div class="ttname"><a href="classCRC16.html#a5a387dd73a51457ee1aa0edcde73a56f">CRC16::calculateCRC16</a></div><div class="ttdeci">uint16_t calculateCRC16(const uint8_t *data, size_t length)</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="crc16_8cpp_source.html#l00040">crc16.cpp:40</a></div></div>
+<div class="ttc" id="aclassSensor_html"><div class="ttname"><a href="classSensor.html">Sensor</a></div><div class="ttdoc">Klasa czujnika ultradźwiękowego.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00010">Mapowanie.ino:10</a></div></div>
+<div class="ttc" id="aMapowanie_8ino_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="Mapowanie_8ino.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00092">Mapowanie.ino:92</a></div></div>
+<div class="ttc" id="aclassSensor_html_abb5525d806cb528c3970e6331fdeb83a"><div class="ttname"><a href="classSensor.html#abb5525d806cb528c3970e6331fdeb83a">Sensor::ECHO_PIN</a></div><div class="ttdeci">uint8_t ECHO_PIN</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00014">Mapowanie.ino:14</a></div></div>
+<div class="ttc" id="aclassCRC16_html"><div class="ttname"><a href="classCRC16.html">CRC16</a></div><div class="ttdoc">Klasa obliczająca sume kontrolną</div><div class="ttdef"><b>Definition:</b> <a href="crc16_8h_source.html#l00015">crc16.h:15</a></div></div>
+<div class="ttc" id="aMapowanie_8ino_html_a4fc01d736fe50cf5b977f755b675f11d"><div class="ttname"><a href="Mapowanie_8ino.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00080">Mapowanie.ino:80</a></div></div>
+<div class="ttc" id="aMapowanie_8ino_html_a747bea727c0e5cee108e951a0bc8583a"><div class="ttname"><a href="Mapowanie_8ino.html#a747bea727c0e5cee108e951a0bc8583a">readFromSensor</a></div><div class="ttdeci">long readFromSensor(int TRIG_PIN, int ECHO_PIN)</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00049">Mapowanie.ino:49</a></div></div>
+<div class="ttc" id="aclassSensor_html_ab23129fc76619fd677fa39cc951c5b3b"><div class="ttname"><a href="classSensor.html#ab23129fc76619fd677fa39cc951c5b3b">Sensor::Sensor</a></div><div class="ttdeci">Sensor(uint8_t SENSOR_ID, uint8_t TRIG_PIN, uint8_t ECHO_PIN)</div><div class="ttdoc">Konstruktor.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00025">Mapowanie.ino:25</a></div></div>
+<div class="ttc" id="aclassSensor_html_abb433a4e458642ce38396a78f9563d24"><div class="ttname"><a href="classSensor.html#abb433a4e458642ce38396a78f9563d24">Sensor::SENSOR_ID</a></div><div class="ttdeci">uint8_t SENSOR_ID</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00012">Mapowanie.ino:12</a></div></div>
+<div class="ttc" id="aMapowanie_8ino_html_ab58def8d465f9c3d195a4ee13ae84d2b"><div class="ttname"><a href="Mapowanie_8ino.html#ab58def8d465f9c3d195a4ee13ae84d2b">sensorList</a></div><div class="ttdeci">Sensor sensorList[]</div><div class="ttdoc">Lista przechowująca instancje czujników.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie_8ino_source.html#l00031">Mapowanie.ino:31</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

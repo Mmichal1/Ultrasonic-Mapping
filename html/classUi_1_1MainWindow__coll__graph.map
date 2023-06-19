@@ -1,0 +1,10 @@
+<map id="Ui::MainWindow" name="Ui::MainWindow">
+<area shape="rect" id="node1" title=" " alt="" coords="187,247,315,273"/>
+<area shape="rect" id="node2" href="$classUi__MainWindow.html" title=" " alt="" coords="188,171,315,197"/>
+<area shape="rect" id="node3" href="$classResetButton.html" title=" " alt="" coords="5,81,108,108"/>
+<area shape="rect" id="node4" title=" " alt="" coords="78,5,185,32"/>
+<area shape="rect" id="node8" href="$classChangePoseButton.html" title=" " alt="" coords="132,81,277,108"/>
+<area shape="rect" id="node5" href="$classMap.html" title=" " alt="" coords="310,81,361,108"/>
+<area shape="rect" id="node6" title=" " alt="" coords="345,5,424,32"/>
+<area shape="rect" id="node7" href="$classPoseLabel.html" title=" " alt="" coords="389,81,477,108"/>
+</map>

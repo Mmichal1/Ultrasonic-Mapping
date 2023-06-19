@@ -1,0 +1,6 @@
+<map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,80,83"/>
+<area shape="rect" id="node2" href="$classChangePoseWindow.html" title="Klasa okna dialogowego zmiany pozycji urządzenia." alt="" coords="128,5,283,32"/>
+<area shape="rect" id="node3" href="$classPlotWindow.html" title="Klasa okna dialogowego wyświetlającego wykresy." alt="" coords="156,56,255,83"/>
+<area shape="rect" id="node4" href="$classWelcomeDialog.html" title="Klasa okna powitalnego." alt="" coords="143,107,268,133"/>
+</map>

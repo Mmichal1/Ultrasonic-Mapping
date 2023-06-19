@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy QtUltrasonicMappingApp/inc/mainwindow.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3486bfa7a5c63be95d42eac91c47a44f.html">QtUltrasonicMappingApp</a></li><li class="navelem"><a class="el" href="dir_0bd7bf9e25b07e1533ecc55397d4e68a.html">inc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mainwindow.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MAINWINDOW_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MAINWINDOW_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;map.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;changeposewindow.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;welcomedialog.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;plotwindow.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;crc16.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;QUiLoader&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QApplication&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QPixmap&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;QFile&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;QXmlStreamReader&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;QSerialPort&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;QSerialPortInfo&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;QTimer&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;QStatusBar&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;QSignalMapper&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;QByteArray&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;QThread&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;QTranslator&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define POLYNOMIAL_9 0x0161</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> byte;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;QT_BEGIN_NAMESPACE</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>Ui { <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>; }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;QT_END_NAMESPACE</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classMainWindow.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a> : <span class="keyword">public</span> QMainWindow {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a04208142ce8707653af3edff52ec1420">showWelcomeWindow</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a1d62d90f9a3b25335135cfbf40b1c653">performActionOnExit</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#acbef195a567744592d6203716a032327">connectToPort</a>(<span class="keyword">const</span> QString &amp;portName);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ae545d37bc2193c9fbd66536b551b327d">readSerialData</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a19690cb09dbe0abd4252c6b8236d6810">handleError</a>(QSerialPort::SerialPortError error);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">refreshPortList</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3546900c922ca780ef575dd9aa8f9906">onConnectButtonClicked</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">onButtonClicked</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#aebc58cd5010cdb089b4d21de341ba986">onChangePoseButtonClicked</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a511eaa79f5d8843c8364e9110fe2806b">onGraphButtonClicked</a>();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a8e86f3cf2488e3ef62c2f20deb202f27">onRefreshButtonClicked</a>();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;\</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#afd4fbc936693efbe9cc5f6ea8ad64685">onClearButtonClicked</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a64f32395ead210e8fb37b763908e8fb0">onStopStartButtonClicked</a>();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#adc87d108fe34a3c4ca0a021a21bd2ac0">timerCallback</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a6ebe02cf3963403c628a18f098f11024">languageSelection</a>(<span class="keyword">const</span> QString&amp; selectedText);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;signals:</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3e43a546bf85373390dabe663394d8d0">sendStringFromSerial</a>(<span class="keyword">const</span> QStringList&amp; message);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">  177</a></span>&#160;    Ui::MainWindow *<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">  183</a></span>&#160;    QSerialPort <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">  189</a></span>&#160;    QStatusBar *<a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">  195</a></span>&#160;    <a class="code" href="classChangePoseWindow.html">ChangePoseWindow</a> *<a class="code" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">changePoseWindow</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">     * Wskaźnik na obiekt okna powitalnego</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="classMainWindow.html#a93c1217cf134dd71e5843465b4dbce32">  201</a></span>&#160;    <a class="code" href="classWelcomeDialog.html">WelcomeDialog</a> *<a class="code" href="classMainWindow.html#a93c1217cf134dd71e5843465b4dbce32">welcomeWindow</a>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="classMainWindow.html#a2d2cd5fd6400ac4b4b4ea9575d4a7796">  207</a></span>&#160;    <a class="code" href="classPlotWindow.html">PlotWindow</a> *<a class="code" href="classMainWindow.html#a2d2cd5fd6400ac4b4b4ea9575d4a7796">plotWindow</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="classMainWindow.html#a327da65064da525f966d8a5d4d71a0fc">  213</a></span>&#160;    QPixmap *<a class="code" href="classMainWindow.html#a327da65064da525f966d8a5d4d71a0fc">connectionOkPixmap</a>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="classMainWindow.html#af733d16a996377eecaf2116adca01a7d">  219</a></span>&#160;    QPixmap *<a class="code" href="classMainWindow.html#af733d16a996377eecaf2116adca01a7d">connectionBadPixmap</a>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classMainWindow.html#a3c80cf51d9dfb16e655a7e25f8016e3b">  226</a></span>&#160;    QTimer <a class="code" href="classMainWindow.html#a3c80cf51d9dfb16e655a7e25f8016e3b">timer</a>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="classMainWindow.html#a89cc7f7533b8953690694e2ba347ebbb">  232</a></span>&#160;    QPushButton *<a class="code" href="classMainWindow.html#a89cc7f7533b8953690694e2ba347ebbb">stopStartButton</a>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="classMainWindow.html#a51cd939e40a16cada72bdb49a3dafff7">  238</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMainWindow.html#a51cd939e40a16cada72bdb49a3dafff7">timeFromStart</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">     *  Wskaźnik na tablicę przechowującą najnowsze dane otrzymane z czujników</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">     */</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="classMainWindow.html#a19ddde44a79401daf188cc73709d8c7f">  244</a></span>&#160;    std::array&lt;int, 3&gt;* <a class="code" href="classMainWindow.html#a19ddde44a79401daf188cc73709d8c7f">sensorDataBuffer</a>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="classMainWindow.html#ad536bbf8c50666ce7c2f7e5f2230e604">  250</a></span>&#160;    <a class="code" href="classCRC16.html">CRC16</a> *<a class="code" href="classMainWindow.html#ad536bbf8c50666ce7c2f7e5f2230e604">crc</a>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">printPoseToLabel</a>();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a3e4bedce98bb6b4473277307dede422a">sendDataToSerial</a>(<span class="keyword">const</span> QByteArray &amp;message);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a416ae2140ac1aa9f03a6279316abdcad">changeEvent</a>(QEvent *event) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keyword">const</span> uint8_t* <a class="code" href="classMainWindow.html#a1dba2814648960a90116b2cc7bf3c550">convertQStringToUint8</a>(<span class="keyword">const</span> QString&amp; str);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;};</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#endif // MAINWINDOW_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassMainWindow_html_a64f32395ead210e8fb37b763908e8fb0"><div class="ttname"><a href="classMainWindow.html#a64f32395ead210e8fb37b763908e8fb0">MainWindow::onStopStartButtonClicked</a></div><div class="ttdeci">void onStopStartButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00243">mainwindow.cpp:243</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_afd4fbc936693efbe9cc5f6ea8ad64685"><div class="ttname"><a href="classMainWindow.html#afd4fbc936693efbe9cc5f6ea8ad64685">MainWindow::onClearButtonClicked</a></div><div class="ttdeci">void onClearButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00238">mainwindow.cpp:238</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a93c1217cf134dd71e5843465b4dbce32"><div class="ttname"><a href="classMainWindow.html#a93c1217cf134dd71e5843465b4dbce32">MainWindow::welcomeWindow</a></div><div class="ttdeci">WelcomeDialog * welcomeWindow</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00201">mainwindow.h:201</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a3546900c922ca780ef575dd9aa8f9906"><div class="ttname"><a href="classMainWindow.html#a3546900c922ca780ef575dd9aa8f9906">MainWindow::onConnectButtonClicked</a></div><div class="ttdeci">void onConnectButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00208">mainwindow.cpp:208</a></div></div>
+<div class="ttc" id="aclassChangePoseWindow_html"><div class="ttname"><a href="classChangePoseWindow.html">ChangePoseWindow</a></div><div class="ttdoc">Klasa okna dialogowego zmiany pozycji urządzenia.</div><div class="ttdef"><b>Definition:</b> <a href="changeposewindow_8h_source.html#l00018">changeposewindow.h:18</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_acbef195a567744592d6203716a032327"><div class="ttname"><a href="classMainWindow.html#acbef195a567744592d6203716a032327">MainWindow::connectToPort</a></div><div class="ttdeci">void connectToPort(const QString &amp;portName)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00152">mainwindow.cpp:152</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a89cc7f7533b8953690694e2ba347ebbb"><div class="ttname"><a href="classMainWindow.html#a89cc7f7533b8953690694e2ba347ebbb">MainWindow::stopStartButton</a></div><div class="ttdeci">QPushButton * stopStartButton</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00232">mainwindow.h:232</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ae98d00a93bc118200eeef9f9bba1dba7"><div class="ttname"><a href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdoc">Destruktor.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00087">mainwindow.cpp:87</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a2d2cd5fd6400ac4b4b4ea9575d4a7796"><div class="ttname"><a href="classMainWindow.html#a2d2cd5fd6400ac4b4b4ea9575d4a7796">MainWindow::plotWindow</a></div><div class="ttdeci">PlotWindow * plotWindow</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00207">mainwindow.h:207</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a3e4bedce98bb6b4473277307dede422a"><div class="ttname"><a href="classMainWindow.html#a3e4bedce98bb6b4473277307dede422a">MainWindow::sendDataToSerial</a></div><div class="ttdeci">void sendDataToSerial(const QByteArray &amp;message)</div><div class="ttdoc">Prywatna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00223">mainwindow.cpp:223</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a6ebe02cf3963403c628a18f098f11024"><div class="ttname"><a href="classMainWindow.html#a6ebe02cf3963403c628a18f098f11024">MainWindow::languageSelection</a></div><div class="ttdeci">void languageSelection(const QString &amp;selectedText)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00254">mainwindow.cpp:254</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a1d62d90f9a3b25335135cfbf40b1c653"><div class="ttname"><a href="classMainWindow.html#a1d62d90f9a3b25335135cfbf40b1c653">MainWindow::performActionOnExit</a></div><div class="ttdeci">void performActionOnExit()</div><div class="ttdoc">Publiczny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00218">mainwindow.cpp:218</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a68741ac8a8d924bb2f2d597161a56be5"><div class="ttname"><a href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">MainWindow::changePoseWindow</a></div><div class="ttdeci">ChangePoseWindow * changePoseWindow</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00195">mainwindow.h:195</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_add8e7b6f768513bef3e4249536335c4f"><div class="ttname"><a href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">MainWindow::bar</a></div><div class="ttdeci">QStatusBar * bar</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00189">mainwindow.h:189</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a92d2e44f31ed9946d8f2613f53e86a61"><div class="ttname"><a href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">MainWindow::serial</a></div><div class="ttdeci">QSerialPort serial</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00183">mainwindow.h:183</a></div></div>
+<div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdoc">Klasa głównego okna.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00041">mainwindow.h:41</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a996c5a2b6f77944776856f08ec30858d"><div class="ttname"><a href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Konstruktor klasy.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00005">mainwindow.cpp:5</a></div></div>
+<div class="ttc" id="aclassWelcomeDialog_html"><div class="ttname"><a href="classWelcomeDialog.html">WelcomeDialog</a></div><div class="ttdoc">Klasa okna powitalnego.</div><div class="ttdef"><b>Definition:</b> <a href="welcomedialog_8h_source.html#l00015">welcomedialog.h:15</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ae836db2d86325c5a7216429964a6a7d0"><div class="ttname"><a href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">MainWindow::onButtonClicked</a></div><div class="ttdeci">void onButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00097">mainwindow.cpp:97</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_af733d16a996377eecaf2116adca01a7d"><div class="ttname"><a href="classMainWindow.html#af733d16a996377eecaf2116adca01a7d">MainWindow::connectionBadPixmap</a></div><div class="ttdeci">QPixmap * connectionBadPixmap</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00219">mainwindow.h:219</a></div></div>
+<div class="ttc" id="aclassCRC16_html"><div class="ttname"><a href="classCRC16.html">CRC16</a></div><div class="ttdoc">Klasa obliczająca sume kontrolną</div><div class="ttdef"><b>Definition:</b> <a href="crc16_8h_source.html#l00015">crc16.h:15</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ad8fe5c9581816c97475cefc601c51c1b"><div class="ttname"><a href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">MainWindow::refreshPortList</a></div><div class="ttdeci">void refreshPortList()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00192">mainwindow.cpp:192</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a19ddde44a79401daf188cc73709d8c7f"><div class="ttname"><a href="classMainWindow.html#a19ddde44a79401daf188cc73709d8c7f">MainWindow::sensorDataBuffer</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; * sensorDataBuffer</div><div class="ttdoc">Prywatna tablica.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00244">mainwindow.h:244</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a51cd939e40a16cada72bdb49a3dafff7"><div class="ttname"><a href="classMainWindow.html#a51cd939e40a16cada72bdb49a3dafff7">MainWindow::timeFromStart</a></div><div class="ttdeci">int timeFromStart</div><div class="ttdoc">Prywatna zmienna.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00238">mainwindow.h:238</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a416ae2140ac1aa9f03a6279316abdcad"><div class="ttname"><a href="classMainWindow.html#a416ae2140ac1aa9f03a6279316abdcad">MainWindow::changeEvent</a></div><div class="ttdeci">virtual void changeEvent(QEvent *event) override</div><div class="ttdoc">Metoda wirtualna nadpisująca changeEvent.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00273">mainwindow.cpp:273</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a35466a70ed47252a0191168126a352a5"><div class="ttname"><a href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">MainWindow::ui</a></div><div class="ttdeci">Ui::MainWindow * ui</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00177">mainwindow.h:177</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a1dba2814648960a90116b2cc7bf3c550"><div class="ttname"><a href="classMainWindow.html#a1dba2814648960a90116b2cc7bf3c550">MainWindow::convertQStringToUint8</a></div><div class="ttdeci">const uint8_t * convertQStringToUint8(const QString &amp;str)</div><div class="ttdoc">Prywatna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00281">mainwindow.cpp:281</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a19690cb09dbe0abd4252c6b8236d6810"><div class="ttname"><a href="classMainWindow.html#a19690cb09dbe0abd4252c6b8236d6810">MainWindow::handleError</a></div><div class="ttdeci">void handleError(QSerialPort::SerialPortError error)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00185">mainwindow.cpp:185</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_aebc58cd5010cdb089b4d21de341ba986"><div class="ttname"><a href="classMainWindow.html#aebc58cd5010cdb089b4d21de341ba986">MainWindow::onChangePoseButtonClicked</a></div><div class="ttdeci">void onChangePoseButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00099">mainwindow.cpp:99</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a8e86f3cf2488e3ef62c2f20deb202f27"><div class="ttname"><a href="classMainWindow.html#a8e86f3cf2488e3ef62c2f20deb202f27">MainWindow::onRefreshButtonClicked</a></div><div class="ttdeci">void onRefreshButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00213">mainwindow.cpp:213</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a511eaa79f5d8843c8364e9110fe2806b"><div class="ttname"><a href="classMainWindow.html#a511eaa79f5d8843c8364e9110fe2806b">MainWindow::onGraphButtonClicked</a></div><div class="ttdeci">void onGraphButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00105">mainwindow.cpp:105</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ad536bbf8c50666ce7c2f7e5f2230e604"><div class="ttname"><a href="classMainWindow.html#ad536bbf8c50666ce7c2f7e5f2230e604">MainWindow::crc</a></div><div class="ttdeci">CRC16 * crc</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00250">mainwindow.h:250</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html"><div class="ttname"><a href="classPlotWindow.html">PlotWindow</a></div><div class="ttdoc">Klasa okna dialogowego wyświetlającego wykresy.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8h_source.html#l00017">plotwindow.h:17</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a3e43a546bf85373390dabe663394d8d0"><div class="ttname"><a href="classMainWindow.html#a3e43a546bf85373390dabe663394d8d0">MainWindow::sendStringFromSerial</a></div><div class="ttdeci">void sendStringFromSerial(const QStringList &amp;message)</div><div class="ttdoc">Sygnał</div></div>
+<div class="ttc" id="aclassMainWindow_html_adc87d108fe34a3c4ca0a021a21bd2ac0"><div class="ttname"><a href="classMainWindow.html#adc87d108fe34a3c4ca0a021a21bd2ac0">MainWindow::timerCallback</a></div><div class="ttdeci">void timerCallback()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00233">mainwindow.cpp:233</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a3c80cf51d9dfb16e655a7e25f8016e3b"><div class="ttname"><a href="classMainWindow.html#a3c80cf51d9dfb16e655a7e25f8016e3b">MainWindow::timer</a></div><div class="ttdeci">QTimer timer</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00226">mainwindow.h:226</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ae545d37bc2193c9fbd66536b551b327d"><div class="ttname"><a href="classMainWindow.html#ae545d37bc2193c9fbd66536b551b327d">MainWindow::readSerialData</a></div><div class="ttdeci">void readSerialData()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00111">mainwindow.cpp:111</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a6c25849a4d13afe7a5b61c165a0d6e86"><div class="ttname"><a href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">MainWindow::printPoseToLabel</a></div><div class="ttdeci">void printPoseToLabel()</div><div class="ttdoc">Prywatna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00089">mainwindow.cpp:89</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a04208142ce8707653af3edff52ec1420"><div class="ttname"><a href="classMainWindow.html#a04208142ce8707653af3edff52ec1420">MainWindow::showWelcomeWindow</a></div><div class="ttdeci">void showWelcomeWindow()</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8cpp_source.html#l00202">mainwindow.cpp:202</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a327da65064da525f966d8a5d4d71a0fc"><div class="ttname"><a href="classMainWindow.html#a327da65064da525f966d8a5d4d71a0fc">MainWindow::connectionOkPixmap</a></div><div class="ttdeci">QPixmap * connectionOkPixmap</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="mainwindow_8h_source.html#l00213">mainwindow.h:213</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

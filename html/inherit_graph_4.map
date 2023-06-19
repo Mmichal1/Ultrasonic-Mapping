@@ -1,0 +1,5 @@
+<map id="Graficzna hierarchia klas" name="Graficzna hierarchia klas">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,84,57"/>
+<area shape="rect" id="node2" href="$classMap.html" title="Klasa widgetu mapy." alt="" coords="151,5,201,32"/>
+<area shape="rect" id="node3" href="$classPoseLabel.html" title="Klasa widgetu zawierającego label wyświetlający pozycje urządzenia." alt="" coords="132,56,220,83"/>
+</map>

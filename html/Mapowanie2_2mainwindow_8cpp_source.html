@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy Mapowanie2/mainwindow.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e42649ba613e8cdc9c6f009c9185d1b0.html">Mapowanie2</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mainwindow.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Mapowanie2_2mainwindow_8h.html">mainwindow.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;ui_mainwindow.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">    5</a></span>&#160;<a class="code" href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow::MainWindow</a>(QWidget *parent)</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    : QMainWindow(parent), ui(new Ui::<a class="code" href="classMainWindow.html">MainWindow</a>) {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;setupUi(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">changePoseWindow</a> = <span class="keyword">new</span> <a class="code" href="classChangePoseWindow.html">ChangePoseWindow</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a> = <span class="keyword">new</span> QStatusBar(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a>-&gt;setMaximumHeight(17);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;statusBarLayout-&gt;addWidget(<a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    connect(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;resetButton, SIGNAL(clicked()),</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;mapWidget, SLOT(onResetButtonClicked()));</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    connect(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;resetButton, SIGNAL(clicked()),</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">this</span>, SLOT(<a class="code" href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">onButtonClicked</a>()));</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    connect(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;changePoseButton, SIGNAL(clicked()),</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">this</span>, SLOT(<a class="code" href="classMainWindow.html#aebc58cd5010cdb089b4d21de341ba986">onChangePoseButtonClicked</a>()));</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    connect(<a class="code" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">changePoseWindow</a>, SIGNAL(textEntered(QString)),</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;mapWidget, SLOT(handleSentString(QString)));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    connect(<a class="code" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">changePoseWindow</a>, SIGNAL(textEntered(QString)), <span class="keyword">this</span>,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            SLOT(<a class="code" href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">onButtonClicked</a>()));</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    connect(&amp;<a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>, &amp;QSerialPort::readyRead,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">this</span>, &amp;<a class="code" href="classMainWindow.html#ae545d37bc2193c9fbd66536b551b327d">MainWindow::readSerialData</a>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    connect(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;serialComboBox, &amp;QComboBox::currentTextChanged,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keyword">this</span>, &amp;<a class="code" href="classMainWindow.html#acbef195a567744592d6203716a032327">MainWindow::connectToPort</a>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    connect(&amp;<a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>, SIGNAL(error(QSerialPort::SerialPortError)),</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">this</span>, SLOT(<a class="code" href="classMainWindow.html#a19690cb09dbe0abd4252c6b8236d6810">handleError</a>(QSerialPort::SerialPortError)));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    connect(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;refreshButton, SIGNAL(clicked()),</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">this</span>, SLOT(<a class="code" href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">refreshPortList</a>()));</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    connect(<span class="keyword">this</span>, SIGNAL(<a class="code" href="classMainWindow.html#a944d21a961f1dab0d0b2217142203617">sendStringFromSerial</a>(QString)), <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;mapWidget, SLOT(handleSentStringFromSerial(QString)));</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    QMetaObject::connectSlotsByName(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.setBaudRate(QSerialPort::Baud9600);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.setDataBits(QSerialPort::Data8);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.setParity(QSerialPort::NoParity);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.setStopBits(QSerialPort::OneStop);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">refreshPortList</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classMainWindow.html#acbef195a567744592d6203716a032327">connectToPort</a>(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;serialComboBox-&gt;currentText());</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">printPoseToLabel</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">   48</a></span>&#160;<a class="code" href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a>() { <span class="keyword">delete</span> <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>; }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">MainWindow::printPoseToLabel</a>() {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    QString variableValue =</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="stringliteral">&quot;X: &quot;</span> + QString::number(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;mapWidget-&gt;getDevicePose()[0]) +</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="stringliteral">&quot;, Y: &quot;</span> + QString::number(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;mapWidget-&gt;getDevicePose()[1]) + <span class="stringliteral">&quot;, &quot;</span> +</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        QString::number(<a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;mapWidget-&gt;getDevicePose()[2]) + QChar(0x00B0);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;poseWidget-&gt;setLabelText(variableValue);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">MainWindow::onButtonClicked</a>() { <a class="code" href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">printPoseToLabel</a>(); }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classMainWindow.html#aebc58cd5010cdb089b4d21de341ba986">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#aebc58cd5010cdb089b4d21de341ba986">MainWindow::onChangePoseButtonClicked</a>() {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">changePoseWindow</a>-&gt;setModal(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">changePoseWindow</a>-&gt;exec();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classMainWindow.html#ae545d37bc2193c9fbd66536b551b327d">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ae545d37bc2193c9fbd66536b551b327d">MainWindow::readSerialData</a>()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    QByteArray data = <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.readAll();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    QString <span class="keywordtype">string</span> = QString(data);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">string</span>.chop(1);  <span class="comment">// Cut last char as it&#39;s a new line character</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;serialPortLabel-&gt;setText(<span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//    qDebug(&quot;error&quot;);</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    emit <a class="code" href="classMainWindow.html#a944d21a961f1dab0d0b2217142203617">sendStringFromSerial</a>(<span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classMainWindow.html#acbef195a567744592d6203716a032327">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#acbef195a567744592d6203716a032327">MainWindow::connectToPort</a>(<span class="keyword">const</span> QString &amp;portName)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.isOpen()) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.close();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// Check if the selected port is still available</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span> portExists = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">foreach</span> (<span class="keyword">const</span> QSerialPortInfo &amp;portInfo, QSerialPortInfo::availablePorts()) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (portInfo.portName() == portName) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            portExists = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span> (portExists) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.setPortName(portName);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">serial</a>.open(QIODevice::ReadOnly)) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            qDebug(<span class="stringliteral">&quot;Serial port opened successfully&quot;</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a>-&gt;showMessage(tr(<span class="stringliteral">&quot;Serial port opened successfully&quot;</span>), 2000);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            qDebug(<span class="stringliteral">&quot;Error opening the serial port&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a>-&gt;showMessage(tr(<span class="stringliteral">&quot;Error opening the serial port&quot;</span>), 2000);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        qDebug(<span class="stringliteral">&quot;Error opening the serial port&quot;</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">bar</a>-&gt;showMessage(tr(<span class="stringliteral">&quot;Error opening the serial port&quot;</span>), 2000);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classMainWindow.html#a19690cb09dbe0abd4252c6b8236d6810">  105</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a19690cb09dbe0abd4252c6b8236d6810">MainWindow::handleError</a>(QSerialPort::SerialPortError error)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (error == QSerialPort::ResourceError) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        qDebug(<span class="stringliteral">&quot;error&quot;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">  112</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">MainWindow::refreshPortList</a>()</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;serialComboBox-&gt;clear();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">foreach</span> (<span class="keyword">const</span> QSerialPortInfo &amp;portInfo, QSerialPortInfo::availablePorts()) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">ui</a>-&gt;serialComboBox-&gt;addItem(portInfo.portName());</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassChangePoseWindow_html"><div class="ttname"><a href="classChangePoseWindow.html">ChangePoseWindow</a></div><div class="ttdoc">Klasa okna dialogowego zmiany pozycji urządzenia.</div><div class="ttdef"><b>Definition:</b> <a href="changeposewindow_8h_source.html#l00019">changeposewindow.h:19</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_acbef195a567744592d6203716a032327"><div class="ttname"><a href="classMainWindow.html#acbef195a567744592d6203716a032327">MainWindow::connectToPort</a></div><div class="ttdeci">void connectToPort(const QString &amp;portName)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00075">mainwindow.cpp:75</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a944d21a961f1dab0d0b2217142203617"><div class="ttname"><a href="classMainWindow.html#a944d21a961f1dab0d0b2217142203617">MainWindow::sendStringFromSerial</a></div><div class="ttdeci">void sendStringFromSerial(const QString &amp;message)</div><div class="ttdoc">Sygnał</div></div>
+<div class="ttc" id="aMapowanie2_2mainwindow_8h_html"><div class="ttname"><a href="Mapowanie2_2mainwindow_8h.html">mainwindow.h</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ae98d00a93bc118200eeef9f9bba1dba7"><div class="ttname"><a href="classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdoc">Domyślny destruktor.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00048">mainwindow.cpp:48</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a68741ac8a8d924bb2f2d597161a56be5"><div class="ttname"><a href="classMainWindow.html#a68741ac8a8d924bb2f2d597161a56be5">MainWindow::changePoseWindow</a></div><div class="ttdeci">ChangePoseWindow * changePoseWindow</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8h_source.html#l00110">mainwindow.h:110</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_add8e7b6f768513bef3e4249536335c4f"><div class="ttname"><a href="classMainWindow.html#add8e7b6f768513bef3e4249536335c4f">MainWindow::bar</a></div><div class="ttdeci">QStatusBar * bar</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8h_source.html#l00124">mainwindow.h:124</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a92d2e44f31ed9946d8f2613f53e86a61"><div class="ttname"><a href="classMainWindow.html#a92d2e44f31ed9946d8f2613f53e86a61">MainWindow::serial</a></div><div class="ttdeci">QSerialPort serial</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8h_source.html#l00117">mainwindow.h:117</a></div></div>
+<div class="ttc" id="aclassMainWindow_html"><div class="ttname"><a href="classMainWindow.html">MainWindow</a></div><div class="ttdoc">Klasa głównego okna.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8h_source.html#l00029">mainwindow.h:29</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a996c5a2b6f77944776856f08ec30858d"><div class="ttname"><a href="classMainWindow.html#a996c5a2b6f77944776856f08ec30858d">MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Konstruktor klasy.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00005">mainwindow.cpp:5</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ae836db2d86325c5a7216429964a6a7d0"><div class="ttname"><a href="classMainWindow.html#ae836db2d86325c5a7216429964a6a7d0">MainWindow::onButtonClicked</a></div><div class="ttdeci">void onButtonClicked()</div><div class="ttdoc">Publiczny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00058">mainwindow.cpp:58</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ad8fe5c9581816c97475cefc601c51c1b"><div class="ttname"><a href="classMainWindow.html#ad8fe5c9581816c97475cefc601c51c1b">MainWindow::refreshPortList</a></div><div class="ttdeci">void refreshPortList()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00112">mainwindow.cpp:112</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a35466a70ed47252a0191168126a352a5"><div class="ttname"><a href="classMainWindow.html#a35466a70ed47252a0191168126a352a5">MainWindow::ui</a></div><div class="ttdeci">Ui::MainWindow * ui</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8h_source.html#l00097">mainwindow.h:97</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a19690cb09dbe0abd4252c6b8236d6810"><div class="ttname"><a href="classMainWindow.html#a19690cb09dbe0abd4252c6b8236d6810">MainWindow::handleError</a></div><div class="ttdeci">void handleError(QSerialPort::SerialPortError error)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00105">mainwindow.cpp:105</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_aebc58cd5010cdb089b4d21de341ba986"><div class="ttname"><a href="classMainWindow.html#aebc58cd5010cdb089b4d21de341ba986">MainWindow::onChangePoseButtonClicked</a></div><div class="ttdeci">void onChangePoseButtonClicked()</div><div class="ttdoc">Publiczny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00060">mainwindow.cpp:60</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_ae545d37bc2193c9fbd66536b551b327d"><div class="ttname"><a href="classMainWindow.html#ae545d37bc2193c9fbd66536b551b327d">MainWindow::readSerialData</a></div><div class="ttdeci">void readSerialData()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00065">mainwindow.cpp:65</a></div></div>
+<div class="ttc" id="aclassMainWindow_html_a6c25849a4d13afe7a5b61c165a0d6e86"><div class="ttname"><a href="classMainWindow.html#a6c25849a4d13afe7a5b61c165a0d6e86">MainWindow::printPoseToLabel</a></div><div class="ttdeci">void printPoseToLabel()</div><div class="ttdoc">Prywatna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2mainwindow_8cpp_source.html#l00050">mainwindow.cpp:50</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

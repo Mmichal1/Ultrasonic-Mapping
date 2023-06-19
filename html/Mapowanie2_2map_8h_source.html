@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy Mapowanie2/map.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e42649ba613e8cdc9c6f009c9185d1b0.html">Mapowanie2</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">map.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef MAP_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define MAP_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;obstaclepoint.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;devicepoint.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;poselabel.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;QPixmap&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;QPainter&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;QCoreApplication&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;QStringList&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;QTransform&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classMap.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMap.html">Map</a> : <span class="keyword">public</span> QWidget {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classMap.html#a02f1c3d57cf8f2bd9bcf71626d9ea5e9">Map</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::array&lt;int, 3&gt; <a class="code" href="classMap.html#a58e8e99615b49d959e5a7bf3cf77c99a">getDevicePose</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a8f0e5a81dfe36ae6c1631289d090bc15">onResetButtonClicked</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a4701c514e25c66c68f83a852783685e0">handleSentString</a>(<span class="keyword">const</span> QString&amp; text);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a5251343e5baadad5d0b1fc48bd1878d0">handleSentStringFromSerial</a>(<span class="keyword">const</span> QString&amp; message);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classMap.html#a1b979573cec2958c15eaf1f0b3a2ef13">   67</a></span>&#160;    QPixmap *<a class="code" href="classMap.html#a1b979573cec2958c15eaf1f0b3a2ef13">dev_pos_pixmap</a>;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classMap.html#ae63f035127a90a4c75c1e1bc3adae9b0">   68</a></span>&#160;    QPixmap *<a class="code" href="classMap.html#ae63f035127a90a4c75c1e1bc3adae9b0">dev_pos_prev_pixmap</a>; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classMap.html#ac4199ad8cd1245ccdf9d2293b5d6a460">   69</a></span>&#160;    QPixmap *<a class="code" href="classMap.html#ac4199ad8cd1245ccdf9d2293b5d6a460">point_pixmap</a>;  </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classMap.html#ace2445cc01c17e1e4fd345ccc5919426">   70</a></span>&#160;    QPixmap *<a class="code" href="classMap.html#ace2445cc01c17e1e4fd345ccc5919426">point_prev_pixmap</a>; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classMap.html#afa9552ddce796836bbf913dce11e79b2">   71</a></span>&#160;    <a class="code" href="classDevicePoint.html">DevicePoint</a> *<a class="code" href="classMap.html#afa9552ddce796836bbf913dce11e79b2">curr_dev_pose</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classMap.html#afdb41535e66f63f404359896515afadd">   72</a></span>&#160;    std::vector&lt;DevicePoint&gt; <a class="code" href="classMap.html#afdb41535e66f63f404359896515afadd">prev_dev_pose</a>; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classMap.html#ad01c62edf6c3ee51146d7071817756cb">   73</a></span>&#160;    std::vector&lt;ObstaclePoint&gt; <a class="code" href="classMap.html#ad01c62edf6c3ee51146d7071817756cb">curr_points</a>; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classMap.html#a08ac23c2499bcba2c1bbd05f10c227dc">   74</a></span>&#160;    std::vector&lt;ObstaclePoint&gt; <a class="code" href="classMap.html#a08ac23c2499bcba2c1bbd05f10c227dc">prev_points</a>; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a9b4a0f1acc269b284e23904b23b79371">paintEvent</a>(QPaintEvent *event);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a1005b6cddf39f21317da10e047188c05">drawGrid</a>(QPainter&amp; painter, <span class="keywordtype">int</span> mapWidth, <span class="keywordtype">int</span> mapHeight);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#a4df0a8588cdfc95d6aa9c32cd1ab34f9">drawPoints</a>(QPainter&amp; painter);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::array&lt;int, 2&gt; <a class="code" href="classMap.html#a1d8425e2bac66f85e71fabf05b1f64a0">transormCoordinates</a>(std::array&lt;int, 2&gt; goalPosition, <span class="keywordtype">int</span> pixmapWidth, <span class="keywordtype">int</span> pixmapHeight);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMap.html#abfdb4d83cb636dda781db03fa382e6d8">addPoints</a>(std::array&lt;int, 2&gt; data);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;};</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif // MAP_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassMap_html_ac4199ad8cd1245ccdf9d2293b5d6a460"><div class="ttname"><a href="classMap.html#ac4199ad8cd1245ccdf9d2293b5d6a460">Map::point_pixmap</a></div><div class="ttdeci">QPixmap * point_pixmap</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00069">map.h:69</a></div></div>
+<div class="ttc" id="aclassMap_html_a1005b6cddf39f21317da10e047188c05"><div class="ttname"><a href="classMap.html#a1005b6cddf39f21317da10e047188c05">Map::drawGrid</a></div><div class="ttdeci">void drawGrid(QPainter &amp;painter, int mapWidth, int mapHeight)</div><div class="ttdoc">Metoda rysująca układ współrzędnych.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00028">map.cpp:28</a></div></div>
+<div class="ttc" id="aclassMap_html_a9b4a0f1acc269b284e23904b23b79371"><div class="ttname"><a href="classMap.html#a9b4a0f1acc269b284e23904b23b79371">Map::paintEvent</a></div><div class="ttdeci">void paintEvent(QPaintEvent *event)</div><div class="ttdoc">Metoda nadpisująca funkcję paintEvent.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00019">map.cpp:19</a></div></div>
+<div class="ttc" id="aclassMap_html_ace2445cc01c17e1e4fd345ccc5919426"><div class="ttname"><a href="classMap.html#ace2445cc01c17e1e4fd345ccc5919426">Map::point_prev_pixmap</a></div><div class="ttdeci">QPixmap * point_prev_pixmap</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00070">map.h:70</a></div></div>
+<div class="ttc" id="aclassMap_html_afa9552ddce796836bbf913dce11e79b2"><div class="ttname"><a href="classMap.html#afa9552ddce796836bbf913dce11e79b2">Map::curr_dev_pose</a></div><div class="ttdeci">DevicePoint * curr_dev_pose</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00071">map.h:71</a></div></div>
+<div class="ttc" id="aclassMap_html_a5251343e5baadad5d0b1fc48bd1878d0"><div class="ttname"><a href="classMap.html#a5251343e5baadad5d0b1fc48bd1878d0">Map::handleSentStringFromSerial</a></div><div class="ttdeci">void handleSentStringFromSerial(const QString &amp;message)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00160">map.cpp:160</a></div></div>
+<div class="ttc" id="aclassMap_html_a02f1c3d57cf8f2bd9bcf71626d9ea5e9"><div class="ttname"><a href="classMap.html#a02f1c3d57cf8f2bd9bcf71626d9ea5e9">Map::Map</a></div><div class="ttdeci">Map(QWidget *parent=nullptr)</div><div class="ttdoc">Konstruktor klasy.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00003">map.cpp:3</a></div></div>
+<div class="ttc" id="aclassMap_html_abfdb4d83cb636dda781db03fa382e6d8"><div class="ttname"><a href="classMap.html#abfdb4d83cb636dda781db03fa382e6d8">Map::addPoints</a></div><div class="ttdeci">void addPoints(std::array&lt; int, 2 &gt; data)</div><div class="ttdoc">Metoda dodająca nowe punkty.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00174">map.cpp:174</a></div></div>
+<div class="ttc" id="aclassMap_html_ad01c62edf6c3ee51146d7071817756cb"><div class="ttname"><a href="classMap.html#ad01c62edf6c3ee51146d7071817756cb">Map::curr_points</a></div><div class="ttdeci">std::vector&lt; ObstaclePoint &gt; curr_points</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00073">map.h:73</a></div></div>
+<div class="ttc" id="aclassMap_html_a4df0a8588cdfc95d6aa9c32cd1ab34f9"><div class="ttname"><a href="classMap.html#a4df0a8588cdfc95d6aa9c32cd1ab34f9">Map::drawPoints</a></div><div class="ttdeci">void drawPoints(QPainter &amp;painter)</div><div class="ttdoc">Metoda rysująca punkty.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00087">map.cpp:87</a></div></div>
+<div class="ttc" id="aclassMap_html_a1b979573cec2958c15eaf1f0b3a2ef13"><div class="ttname"><a href="classMap.html#a1b979573cec2958c15eaf1f0b3a2ef13">Map::dev_pos_pixmap</a></div><div class="ttdeci">QPixmap * dev_pos_pixmap</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00067">map.h:67</a></div></div>
+<div class="ttc" id="aclassMap_html_a1d8425e2bac66f85e71fabf05b1f64a0"><div class="ttname"><a href="classMap.html#a1d8425e2bac66f85e71fabf05b1f64a0">Map::transormCoordinates</a></div><div class="ttdeci">std::array&lt; int, 2 &gt; transormCoordinates(std::array&lt; int, 2 &gt; goalPosition, int pixmapWidth, int pixmapHeight)</div><div class="ttdoc">Metoda transformująca współrzędne punktów.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00123">map.cpp:123</a></div></div>
+<div class="ttc" id="aclassMap_html_ae63f035127a90a4c75c1e1bc3adae9b0"><div class="ttname"><a href="classMap.html#ae63f035127a90a4c75c1e1bc3adae9b0">Map::dev_pos_prev_pixmap</a></div><div class="ttdeci">QPixmap * dev_pos_prev_pixmap</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00068">map.h:68</a></div></div>
+<div class="ttc" id="aclassMap_html_a8f0e5a81dfe36ae6c1631289d090bc15"><div class="ttname"><a href="classMap.html#a8f0e5a81dfe36ae6c1631289d090bc15">Map::onResetButtonClicked</a></div><div class="ttdeci">void onResetButtonClicked()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00134">map.cpp:134</a></div></div>
+<div class="ttc" id="aclassMap_html_a4701c514e25c66c68f83a852783685e0"><div class="ttname"><a href="classMap.html#a4701c514e25c66c68f83a852783685e0">Map::handleSentString</a></div><div class="ttdeci">void handleSentString(const QString &amp;text)</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00142">map.cpp:142</a></div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Klasa widgetu mapy.</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00028">map.h:28</a></div></div>
+<div class="ttc" id="aclassMap_html_afdb41535e66f63f404359896515afadd"><div class="ttname"><a href="classMap.html#afdb41535e66f63f404359896515afadd">Map::prev_dev_pose</a></div><div class="ttdeci">std::vector&lt; DevicePoint &gt; prev_dev_pose</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00072">map.h:72</a></div></div>
+<div class="ttc" id="aclassMap_html_a08ac23c2499bcba2c1bbd05f10c227dc"><div class="ttname"><a href="classMap.html#a08ac23c2499bcba2c1bbd05f10c227dc">Map::prev_points</a></div><div class="ttdeci">std::vector&lt; ObstaclePoint &gt; prev_points</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8h_source.html#l00074">map.h:74</a></div></div>
+<div class="ttc" id="aclassDevicePoint_html"><div class="ttname"><a href="classDevicePoint.html">DevicePoint</a></div><div class="ttdoc">Klasa urządzenia jako punktu na mapie.</div><div class="ttdef"><b>Definition:</b> <a href="devicepoint_8h_source.html#l00015">devicepoint.h:15</a></div></div>
+<div class="ttc" id="aclassMap_html_a58e8e99615b49d959e5a7bf3cf77c99a"><div class="ttname"><a href="classMap.html#a58e8e99615b49d959e5a7bf3cf77c99a">Map::getDevicePose</a></div><div class="ttdeci">std::array&lt; int, 3 &gt; getDevicePose()</div><div class="ttdef"><b>Definition:</b> <a href="Mapowanie2_2map_8cpp_source.html#l00131">map.cpp:131</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

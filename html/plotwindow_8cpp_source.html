@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy QtUltrasonicMappingApp/src/plotwindow.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3486bfa7a5c63be95d42eac91c47a44f.html">QtUltrasonicMappingApp</a></li><li class="navelem"><a class="el" href="dir_677020398e6178bb519bdf7abbfe703d.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">plotwindow.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../inc/plotwindow.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;ui_plotwindow.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classPlotWindow.html#aa4cc66ba344978ee91def66ee9703e5c">    4</a></span>&#160;<a class="code" href="classPlotWindow.html#aa4cc66ba344978ee91def66ee9703e5c">PlotWindow::PlotWindow</a>(QWidget *parent) :</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    QDialog(parent), ui(new Ui::<a class="code" href="classPlotWindow.html">PlotWindow</a>) {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;setupUi(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;addGraph();</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(0)-&gt;setPen(QPen(Qt::blue));</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(0)-&gt;setName(tr(<span class="stringliteral">&quot;Sensor 1, -45°&quot;</span>));</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;addGraph();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(1)-&gt;setPen(QPen(Qt::red));</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(1)-&gt;setName(tr(<span class="stringliteral">&quot;Sensor 2, 0°&quot;</span>));</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;addGraph();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(2)-&gt;setPen(QPen(Qt::green));</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(2)-&gt;setName(tr(<span class="stringliteral">&quot;Sensor 3, 45°&quot;</span>));</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;yAxis-&gt;setRange(0, 200);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;xAxis2-&gt;setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;xAxis2-&gt;setTickLabels(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;yAxis2-&gt;setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;yAxis2-&gt;setTickLabels(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;xAxis-&gt;setLabel(<span class="stringliteral">&quot;t [s]&quot;</span>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;yAxis-&gt;setLabel(<span class="stringliteral">&quot;d [cm]&quot;</span>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;legend-&gt;setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;legend-&gt;setFont(QFont(<span class="stringliteral">&quot;Helvetica&quot;</span>, 9));</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;legend-&gt;setSelectableParts(QCPLegend::spItems);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    connect(<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;xAxis, SIGNAL(rangeChanged(QCPRange)), <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;xAxis2, SLOT(setRange(QCPRange)));</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    connect(<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;yAxis, SIGNAL(rangeChanged(QCPRange)), <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;yAxis2, SLOT(setRange(QCPRange)));</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    connect(<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget, SIGNAL(selectionChangedByUser()), <span class="keyword">this</span>, SLOT(<a class="code" href="classPlotWindow.html#a6581c5d6ff9b00a7c301fdb4cd405578">selectionChanged</a>()));</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    connect(<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;clearButton, SIGNAL(clicked(<span class="keywordtype">bool</span>)), <span class="keyword">this</span>, SLOT(<a class="code" href="classPlotWindow.html#ad73808e1623888b69ce1b4ab4690bc85">clearData</a>()));</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    connect(<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;closeButton, SIGNAL(clicked(<span class="keywordtype">bool</span>)), <span class="keyword">this</span>, SLOT(close()));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables | QCP::iSelectLegend);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;closeButton-&gt;setText(tr(<span class="stringliteral">&quot;Close&quot;</span>));</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;clearButton-&gt;setText(tr(<span class="stringliteral">&quot;Clear&quot;</span>));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classPlotWindow.html#a684ea087a646cbe658940098a25ce150">   41</a></span>&#160;<a class="code" href="classPlotWindow.html#a684ea087a646cbe658940098a25ce150">PlotWindow::~PlotWindow</a>() {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classPlotWindow.html#afa95be634db9304396424293defb9f7f">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#afa95be634db9304396424293defb9f7f">PlotWindow::addPointsToPlot</a>(<span class="keywordtype">int</span> timeFromStart, <span class="keywordtype">int</span> sensorData0, <span class="keywordtype">int</span> sensorData1, <span class="keywordtype">int</span> sensorData2) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(0)-&gt;addData((<span class="keywordtype">double</span>)timeFromStart, (<span class="keywordtype">double</span>)sensorData0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(1)-&gt;addData((<span class="keywordtype">double</span>)timeFromStart, (<span class="keywordtype">double</span>)sensorData1);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(2)-&gt;addData((<span class="keywordtype">double</span>)timeFromStart, (<span class="keywordtype">double</span>)sensorData2);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(0)-&gt;rescaleAxes(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(1)-&gt;rescaleAxes(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(2)-&gt;rescaleAxes(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;replot();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classPlotWindow.html#ad73808e1623888b69ce1b4ab4690bc85">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#ad73808e1623888b69ce1b4ab4690bc85">PlotWindow::clearData</a>() {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(0)-&gt;data()-&gt;clear();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(1)-&gt;data()-&gt;clear();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(2)-&gt;data()-&gt;clear();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;replot();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classPlotWindow.html#a6581c5d6ff9b00a7c301fdb4cd405578">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#a6581c5d6ff9b00a7c301fdb4cd405578">PlotWindow::selectionChanged</a>() {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graphCount(); ++i) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        QCPGraph *graph = <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;graph(i);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        QCPPlottableLegendItem *item = <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;plotWidget-&gt;legend-&gt;itemWithPlottable(graph);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (item-&gt;selected() || graph-&gt;selected()) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            item-&gt;setSelected(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            graph-&gt;setSelection(QCPDataSelection(graph-&gt;data()-&gt;dataRange()));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classPlotWindow.html#ac506c9c439e61152075ff9f227eca8a7">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#ac506c9c439e61152075ff9f227eca8a7">PlotWindow::changeEvent</a>(QEvent *event) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (event-&gt;type() == QEvent::LanguageChange) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>-&gt;retranslateUi(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    QDialog::changeEvent(event);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassPlotWindow_html_aa4cc66ba344978ee91def66ee9703e5c"><div class="ttname"><a href="classPlotWindow.html#aa4cc66ba344978ee91def66ee9703e5c">PlotWindow::PlotWindow</a></div><div class="ttdeci">PlotWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Konstruktor.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00004">plotwindow.cpp:4</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_ac506c9c439e61152075ff9f227eca8a7"><div class="ttname"><a href="classPlotWindow.html#ac506c9c439e61152075ff9f227eca8a7">PlotWindow::changeEvent</a></div><div class="ttdeci">virtual void changeEvent(QEvent *event) override</div><div class="ttdoc">Metoda wirtualna nadpisująca changeEvent.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00076">plotwindow.cpp:76</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_afa95be634db9304396424293defb9f7f"><div class="ttname"><a href="classPlotWindow.html#afa95be634db9304396424293defb9f7f">PlotWindow::addPointsToPlot</a></div><div class="ttdeci">void addPointsToPlot(int timeFromStart, int sensorData0, int sensorData1, int sensorData2)</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00045">plotwindow.cpp:45</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_ad73808e1623888b69ce1b4ab4690bc85"><div class="ttname"><a href="classPlotWindow.html#ad73808e1623888b69ce1b4ab4690bc85">PlotWindow::clearData</a></div><div class="ttdeci">void clearData()</div><div class="ttdoc">Publiczny slot.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00058">plotwindow.cpp:58</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_ab8c045d2794c93656d86147e8f213423"><div class="ttname"><a href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">PlotWindow::ui</a></div><div class="ttdeci">Ui::PlotWindow * ui</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8h_source.html#l00050">plotwindow.h:50</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html"><div class="ttname"><a href="classPlotWindow.html">PlotWindow</a></div><div class="ttdoc">Klasa okna dialogowego wyświetlającego wykresy.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8h_source.html#l00017">plotwindow.h:17</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_a684ea087a646cbe658940098a25ce150"><div class="ttname"><a href="classPlotWindow.html#a684ea087a646cbe658940098a25ce150">PlotWindow::~PlotWindow</a></div><div class="ttdeci">~PlotWindow()</div><div class="ttdoc">Destruktor.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00041">plotwindow.cpp:41</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_a6581c5d6ff9b00a7c301fdb4cd405578"><div class="ttname"><a href="classPlotWindow.html#a6581c5d6ff9b00a7c301fdb4cd405578">PlotWindow::selectionChanged</a></div><div class="ttdeci">void selectionChanged()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00065">plotwindow.cpp:65</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
