@@ -9,56 +9,70 @@
 
 //!  Klasa zmapowanego punktu przeszkody
 /*!
-  Klasa zawierająca informacje o współrzędnych zmapowanego punktu przeszkody
-  oraz pixmap determinujący rodzaj punktu (pobrany z aktualnej pozycji urządzenia
-  czy z jednej z poprzednich)
-*/
+ * Klasa zawierająca informacje o współrzędnych zmapowanego punktu przeszkody
+ * oraz pixmap determinujący rodzaj punktu (pobrany z aktualnej pozycji urządzenia
+ * czy z jednej z poprzednich)
+ */
 class ObstaclePoint{
 public:
 
     //! Konstruktor klasy
     /*!
-      Przy wywołaniu konstruktora przypisywane są współrzędne
-      punktu oraz pixmap
-    */
+     * Przy wywołaniu konstruktora przypisywane są współrzędne
+     * urządzenia oraz pixmap
+     *
+     * \param pixmap Pixmap zawierający obrazek przedstawiający aktualną lub poprzednią pozycję zmapowanego punktu.
+     * \param position Tablica zawierająca informacje o współrzędnych puntku urządzenia.
+     */
     ObstaclePoint(const QPixmap& pixmap, std::array<int, 2> position);
 
-    //! Metoda pobierająca tablicę zawierającą informacje o współrzędnych
+    //! Publiczna metoda
     /*!
-      \return Tablica współrzędnych
+     * Metoda zwracająca tablicę zawierającą informacje o współrzędnych
+     *
+     * \return position Tablica współrzędnych punktu
     */
     std::array<int, 2> getPos();
 
-    //! Metoda pobierająca pixmap
+    //! Publiczna metoda
     /*!
-      \return Pixmap
-    */
+     * Metoda zwracająca Pixmap zawierający obrazek przedstawiający zmapowany punkt
+     *
+     * \return pixmap Pixmap zawierający obraze
+     */
     const QPixmap& getPixmap();
 
-    //! Metoda ustawiająca pixmap
+    //! Publiczna metoda
     /*!
-      \param newPixmap stała referencja do obiektu typu QPixmap
-    */
+     * Metoda ustawiająca nowy Pixmap
+     *
+     * \param newPixmap Pixmap, który ma zostać przypisany
+     */
     void setPixmap(const QPixmap& newPixmap);
 
-    //! Metoda ustawiająca tablice współrzędnych
+    //! Publiczna metoda
     /*!
-      \param newPose tablica liczb całkowitych
-    */
+     * Metoda ustawiająca nową pozycję
+     *
+     * \param newPosition Tablica liczb całkowitych, które mają zostać przypisane
+     * jako nowe współrzędne punktu
+     */
     void setPos(std::array<int, 2> newPosition);
 
 private:
-    //! Prywatna zmienna
+    //! Prywatny obiekt
     /*!
-      Zmienna przechowująca obiekt typu QPixmap
-    */
+     * Instancja obiektu typu QPixmap. Przechowuje obrazek przedstawiający aktualną
+     * lub poprzednią pozycję urządzenia
+     */
     QPixmap pixmap;
 
-    //! Prywatna zmienna
+    //! Prywatna tablica
     /*!
-      Zmienna przechowująca tablicę liczb całkowitych. Pierwsze pole oznacza
-      współrzędną X a drugie wsp. Y
-    */
+     * Tablica przechowująca tablicę liczb całkowitych. Pierwsze dwa pola oznaczają
+     * współrzędne X i Y, ostatnie pole oznacza orientację urządzenia jako kąt
+     * odchylenia od osi OX
+     */
     std::array<int, 2> position;
 };
 

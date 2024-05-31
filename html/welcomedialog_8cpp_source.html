@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy QtUltrasonicMappingApp/src/welcomedialog.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3486bfa7a5c63be95d42eac91c47a44f.html">QtUltrasonicMappingApp</a></li><li class="navelem"><a class="el" href="dir_677020398e6178bb519bdf7abbfe703d.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">welcomedialog.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../inc/welcomedialog.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;ui_welcomedialog.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classWelcomeDialog.html#a23dc91981b392cb98a044cd87f009404">    4</a></span>&#160;<a class="code" href="classWelcomeDialog.html#a23dc91981b392cb98a044cd87f009404">WelcomeDialog::WelcomeDialog</a>(QWidget *parent) :</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    QDialog(parent), ui(new Ui::<a class="code" href="classWelcomeDialog.html">WelcomeDialog</a>) {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">ui</a>-&gt;setupUi(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    connect(<a class="code" href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">ui</a>-&gt;startButton, SIGNAL(clicked(<span class="keywordtype">bool</span>)), <span class="keyword">this</span>, SLOT(close()));</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">ui</a>-&gt;languageComboBox-&gt;addItem(<span class="stringliteral">&quot;EN&quot;</span>);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">ui</a>-&gt;languageComboBox-&gt;addItem(<span class="stringliteral">&quot;PL&quot;</span>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classWelcomeDialog.html#aff7416acdda782ac3196ae28ea2ebe80">   13</a></span>&#160;<a class="code" href="classWelcomeDialog.html#aff7416acdda782ac3196ae28ea2ebe80">WelcomeDialog::~WelcomeDialog</a>() {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">delete</span> <a class="code" href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">ui</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classWelcomeDialog.html#adcf854adc827b2f5f29dd1f4f2cac792">   17</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classWelcomeDialog.html#adcf854adc827b2f5f29dd1f4f2cac792">WelcomeDialog::changeEvent</a>(QEvent *event) {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (event-&gt;type() == QEvent::LanguageChange) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">ui</a>-&gt;retranslateUi(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    QDialog::changeEvent(event);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassWelcomeDialog_html_adcf854adc827b2f5f29dd1f4f2cac792"><div class="ttname"><a href="classWelcomeDialog.html#adcf854adc827b2f5f29dd1f4f2cac792">WelcomeDialog::changeEvent</a></div><div class="ttdeci">virtual void changeEvent(QEvent *event) override</div><div class="ttdoc">Metoda wirtualna nadpisująca changeEvent.</div><div class="ttdef"><b>Definition:</b> <a href="welcomedialog_8cpp_source.html#l00017">welcomedialog.cpp:17</a></div></div>
+<div class="ttc" id="aclassWelcomeDialog_html"><div class="ttname"><a href="classWelcomeDialog.html">WelcomeDialog</a></div><div class="ttdoc">Klasa okna powitalnego.</div><div class="ttdef"><b>Definition:</b> <a href="welcomedialog_8h_source.html#l00015">welcomedialog.h:15</a></div></div>
+<div class="ttc" id="aclassWelcomeDialog_html_af36944082fb59facdde3b097c4a0c341"><div class="ttname"><a href="classWelcomeDialog.html#af36944082fb59facdde3b097c4a0c341">WelcomeDialog::ui</a></div><div class="ttdeci">Ui::WelcomeDialog * ui</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="welcomedialog_8h_source.html#l00036">welcomedialog.h:36</a></div></div>
+<div class="ttc" id="aclassWelcomeDialog_html_a23dc91981b392cb98a044cd87f009404"><div class="ttname"><a href="classWelcomeDialog.html#a23dc91981b392cb98a044cd87f009404">WelcomeDialog::WelcomeDialog</a></div><div class="ttdeci">WelcomeDialog(QWidget *parent=nullptr)</div><div class="ttdoc">Konstruktor.</div><div class="ttdef"><b>Definition:</b> <a href="welcomedialog_8cpp_source.html#l00004">welcomedialog.cpp:4</a></div></div>
+<div class="ttc" id="aclassWelcomeDialog_html_aff7416acdda782ac3196ae28ea2ebe80"><div class="ttname"><a href="classWelcomeDialog.html#aff7416acdda782ac3196ae28ea2ebe80">WelcomeDialog::~WelcomeDialog</a></div><div class="ttdeci">~WelcomeDialog()</div><div class="ttdoc">Destruktor klasy.</div><div class="ttdef"><b>Definition:</b> <a href="welcomedialog_8cpp_source.html#l00013">welcomedialog.cpp:13</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

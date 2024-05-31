@@ -143,12 +143,6 @@ void Map::drawDetectionArea(QPainter& painter) {
 
     painter.drawLine(currDevPose->getPose()[0], - currDevPose->getPose()[1], posRight[0] , - posRight[1] );
 
-//    int width = 450;  // Width of the arc's bounding rectangle
-//    int height = 100; // Height of the arc's bounding rectangle
-//    int startAngle = 100 * 16; // Start angle (in 1/16th of a degree)
-//    int spanAngle = 120 * 16; // Span angle (in 1/16th of a degree)
-
-//    painter.drawArc(posLeft[0], - posLeft[1], width, height, startAngle, spanAngle);
     painter.drawLine(posLeft[0], - posLeft[1], posRight[0] , - posRight[1] );
 }
 

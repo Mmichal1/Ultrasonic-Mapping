@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mapowanie obszaru: Plik źródłowy QtUltrasonicMappingApp/inc/plotwindow.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mapowanie obszaru
+   </div>
+   <div id="projectbrief">Wizualizacja mapowania obszaru za pomocą czujników ultradźwiękowych</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_3486bfa7a5c63be95d42eac91c47a44f.html">QtUltrasonicMappingApp</a></li><li class="navelem"><a class="el" href="dir_0bd7bf9e25b07e1533ecc55397d4e68a.html">inc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">plotwindow.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PLOTWINDOW_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PLOTWINDOW_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>Ui {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span><a class="code" href="classPlotWindow.html">PlotWindow</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classPlotWindow.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlotWindow.html">PlotWindow</a> : <span class="keyword">public</span> QDialog {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classPlotWindow.html#aa4cc66ba344978ee91def66ee9703e5c">PlotWindow</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classPlotWindow.html#a684ea087a646cbe658940098a25ce150">~PlotWindow</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#afa95be634db9304396424293defb9f7f">addPointsToPlot</a>(<span class="keywordtype">int</span> timeFromStart, <span class="keywordtype">int</span> sensorData0, <span class="keywordtype">int</span> sensorData1, <span class="keywordtype">int</span> sensorData2);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">   50</a></span>&#160;    Ui::PlotWindow *<a class="code" href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">ui</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#ac506c9c439e61152075ff9f227eca8a7">changeEvent</a>(QEvent *event) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#a6581c5d6ff9b00a7c301fdb4cd405578">selectionChanged</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlotWindow.html#ad73808e1623888b69ce1b4ab4690bc85">clearData</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif // PLOTWINDOW_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassPlotWindow_html_aa4cc66ba344978ee91def66ee9703e5c"><div class="ttname"><a href="classPlotWindow.html#aa4cc66ba344978ee91def66ee9703e5c">PlotWindow::PlotWindow</a></div><div class="ttdeci">PlotWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Konstruktor.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00004">plotwindow.cpp:4</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_ac506c9c439e61152075ff9f227eca8a7"><div class="ttname"><a href="classPlotWindow.html#ac506c9c439e61152075ff9f227eca8a7">PlotWindow::changeEvent</a></div><div class="ttdeci">virtual void changeEvent(QEvent *event) override</div><div class="ttdoc">Metoda wirtualna nadpisująca changeEvent.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00076">plotwindow.cpp:76</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_afa95be634db9304396424293defb9f7f"><div class="ttname"><a href="classPlotWindow.html#afa95be634db9304396424293defb9f7f">PlotWindow::addPointsToPlot</a></div><div class="ttdeci">void addPointsToPlot(int timeFromStart, int sensorData0, int sensorData1, int sensorData2)</div><div class="ttdoc">Publiczna metoda.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00045">plotwindow.cpp:45</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_ad73808e1623888b69ce1b4ab4690bc85"><div class="ttname"><a href="classPlotWindow.html#ad73808e1623888b69ce1b4ab4690bc85">PlotWindow::clearData</a></div><div class="ttdeci">void clearData()</div><div class="ttdoc">Publiczny slot.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00058">plotwindow.cpp:58</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_ab8c045d2794c93656d86147e8f213423"><div class="ttname"><a href="classPlotWindow.html#ab8c045d2794c93656d86147e8f213423">PlotWindow::ui</a></div><div class="ttdeci">Ui::PlotWindow * ui</div><div class="ttdoc">Prywatny obiekt.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8h_source.html#l00050">plotwindow.h:50</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html"><div class="ttname"><a href="classPlotWindow.html">PlotWindow</a></div><div class="ttdoc">Klasa okna dialogowego wyświetlającego wykresy.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8h_source.html#l00017">plotwindow.h:17</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_a684ea087a646cbe658940098a25ce150"><div class="ttname"><a href="classPlotWindow.html#a684ea087a646cbe658940098a25ce150">PlotWindow::~PlotWindow</a></div><div class="ttdeci">~PlotWindow()</div><div class="ttdoc">Destruktor.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00041">plotwindow.cpp:41</a></div></div>
+<div class="ttc" id="aclassPlotWindow_html_a6581c5d6ff9b00a7c301fdb4cd405578"><div class="ttname"><a href="classPlotWindow.html#a6581c5d6ff9b00a7c301fdb4cd405578">PlotWindow::selectionChanged</a></div><div class="ttdeci">void selectionChanged()</div><div class="ttdoc">Prywatny slot.</div><div class="ttdef"><b>Definition:</b> <a href="plotwindow_8cpp_source.html#l00065">plotwindow.cpp:65</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

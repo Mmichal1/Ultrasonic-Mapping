@@ -7,28 +7,31 @@
 
 //!  Klasa widgetu zawierającego label wyświetlający pozycje urządzenia
 /*!
-  Klasa wyświetla odpowiednio sformatowany tekst w polu tekstowym
-*/
+ * Klasa wyświetla odpowiednio sformatowany tekst w polu tekstowym
+ */
 class PoseLabel : public QWidget {
     Q_OBJECT
 public:
-    //! Konstruktor klasy
+    //!  Konstruktor
     /*!
-      W konstruktorze wywoływany jest layout, dodawane jest pole tekstowe do layoutu
-    */
+     * W konstruktorze wywoływane są metody konfigurujące obiekt
+     *
+     * \param parent Wskaźnik na widget rodzica (domyślnie nullptr).
+     */
     explicit PoseLabel(QWidget *parent = nullptr);
 
-    //! Metoda ustawiająca tekst wyświetlany przez label
+    //! Publiczna metoda
     /*!
-      \param text stała referenca do obiektu typu QString
+     * Metoda ustawiająca tekst wyświetlany przez label
+      \param text Obiekt zawierający tekst, który ma zostać wyświetlony
     */
     void setLabelText(const QString& text);
 private:
 
-    //! Prywatna zmienna
+    //! Prywatny obiekt
     /*!
-      Zmienna przechowująca wskaźnik do obiektu typu label
-    */
+     *  Wskaźnik na obiekt, w którym wyświetlana jest aktualna pozycja
+     */
     QLabel *label;
 };
 

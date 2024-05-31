@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     crc = new CRC16();
 
     QPushButton *clearButton = plotWindow->findChild<QPushButton*>("clearButton");
-    QComboBox *languageComboBox = welcomeWindow->findChild<QComboBox*>("languageComboBox");
+    QComboBox *welcomeLanguageBox = welcomeWindow->findChild<QComboBox*>("languageComboBox");
     stopStartButton = plotWindow->findChild<QPushButton*>("stopStartButton");
 
     connect(ui->resetButton, SIGNAL(clicked()),
@@ -35,7 +35,9 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::connectToPort);
     connect(&serial, SIGNAL(error(QSerialPort::SerialPortError)),
             this, SLOT(handleError(QSerialPort::SerialPortError)));
-    connect(languageComboBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
+    connect(welcomeLanguageBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::languageSelection);
+    connect(ui->languageComboBox, QOverload<const QString&>::of(&QComboBox::currentIndexChanged),
             this, &MainWindow::languageSelection);
     connect(ui->refreshButton, SIGNAL(clicked()),
             this, SLOT(refreshPortList()));
@@ -70,6 +72,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusBarLayout->addWidget(bar);
     ui->connectionLabel->setPixmap(*connectionBadPixmap);
     stopStartButton->setText("Start");
+
+    ui->languageComboBox->addItem("EN");
+    ui->languageComboBox->addItem("PL");
 
     timeFromStart = 0;
     timer.setInterval(1000);
@@ -254,11 +259,13 @@ void MainWindow::languageSelection(const QString& selectedText) {
         qApp->removeTranslator(translator);
         if (translator->load("mapowanie_pl","/home/michal/Desktop/WDS/QtUltrasonicMappingApp/pro/")) {
             qApp->installTranslator(translator);
+            ui->languageComboBox->setCurrentIndex(1);
         }
     } else if (selectedText == "EN") {
         qApp->removeTranslator(translator);
         if (translator->load("mapowanie_en","/home/michal/Desktop/WDS/QtUltrasonicMappingApp/pro/")) {
             qApp->installTranslator(translator);
+            ui->languageComboBox->setCurrentIndex(0);
         }
     }
 }
